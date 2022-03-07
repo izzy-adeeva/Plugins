@@ -50,13 +50,13 @@ if not Config.BOT_USERNAME:
     quit(1)
 
 
-if not Config.DB_URI:
+if not Config.DB_URI:    
     LOGS.warning("Please fill var DATABASE URL to continue.")
     quit(1)
 
 
-if not Config.STRING_SESSION:
-    LOGS.warning("Please fill var STRING SESSION to continue.")
+if not Config.HELLBOT_SESSION:
+    LOGS.warning("Please fill var HELLBOT SESSION to continue.")
     quit(1)
 
 
@@ -77,7 +77,7 @@ except Exception:
 
 
 # global variables
-CMD_LIST = {}
+#CMD_LIST = {}
 CMD_HELP = {}
 CMD_HELP_BOT = {}
 BRAIN_CHECKER = []
@@ -90,6 +90,3 @@ LASTMSG = {}
 ISAFK = False
 AFKREASON = None
 SUDO_LIST = {}
-
-
-# userbot
