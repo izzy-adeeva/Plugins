@@ -23,18 +23,18 @@ NO_HEROKU_APP_CFGD = "No Heroku App Found!"
 HEROKU_GIT_REF_SPEC = "HEAD:refs/heads/master"
 RESTARTING_APP = "Restarting Heroku App..."
 IS_SELECTED_DIFFERENT_BRANCH = "Looks like a custom branch {branch_name} is being used!\nIn this case, updater is unable to identify the branch to be updated. Please check out to an official branch, and re-start the updater."
-ram_info = "https://raw.githubusercontent.com/ izzy-adeeva/Plugins/master/ram-info.json"
+ram_info = "https://raw.githubusercontent.com/izzy-adeeva/Plugins/master/ram-info.json"
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 requirements_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "requirements.txt")
 
 
-async def hell_info(ram_info):
+async def ram_info(ram_info):
     infos = requests.get(ram_info).json()
-    _version = infos['RAMUBOT-INFO']['version']
-    _release = infos['RAMUBOT-INFO']['release-date']
-    _branch = infos['RAMUBOT-INFO']['branch']
-    _author = infos['RAMUBOT-INFO']['author']
-    _auturl = infos['RAMUBOT-INFO']['author-url']
+    _version = infos['RAM_INFO']['version']
+    _release = infos['RAM_INFO']['release-date']
+    _branch = infos['RAM_INFO']['branch']
+    _author = infos['RAM_INFO']['author']
+    _auturl = infos['RAM_INFO']['author-url']
     return _version, _release, _branch, _author, _auturl
 
 
@@ -145,7 +145,7 @@ async def upstream(event):
     cid = await client_id(event)
     ram_mention = cid[2]
     if changelog == "" and not force_update:
-        _version, _release, _branch, _author, _auturl = await hell_info(ram_info)
+        _version, _release, _branch, _author, _auturl = await ram_info(ram_info)
         output_ = f"**Your Bot Version :** `{ram_version}` \n**Owner :** {ram_mention} \n\n**Official RAM-UBOT Extended Version :** `{_version}` \n**Release Date :** `{_release}` \n**Official Repo Branch :** `{_branch}` \n**Update By :** [{_author}]({_auturl})"
         if str(_version) not in str(ram_version):
             output_ += f"\n\n**Do** `{ii}update build` **to update your RAM-UBOT Extended to latest version.**"
@@ -186,7 +186,7 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
                 f"{txt}\n" "`Invalid Heroku vars for updating."
             )
             return repo.__del__()
-        _version, _release, _branch, _author, _auturl = await hell_info(ram_info)
+        _version, _release, _branch, _author, _auturl = await ram_info(ram_info)
         await event.edit(f"<b><i>RAM-UBOT Docker Build In Progress !!!</b></i> \n\n<b><i><u>Update Information :</b></i></u> \n<b>• Branch :</b> {_branch} \n<b>• Release Date :</b> {_release} \n<b>• Version :</b> {_version} \n<b>• Author :</b> <a href='{_auturl}'>{_author}</a>", link_preview=False, parse_mode="HTML")
         ups_rem.fetch(ac_br)
         repo.git.reset("--hard", "FETCH_HEAD")
@@ -249,7 +249,7 @@ async def upstream(event):
     ac_br = repo.active_branch.name
     ups_rem = repo.remote("upstream")
     ups_rem.fetch(ac_br)
-    _version, _release, _branch, _author, _auturl = await hell_info(ram_info)
+    _version, _release, _branch, _author, _auturl = await ram_info(ram_info)
     await event.edit(f"<b><i>RAM-UBOT Docker Build In Progress !!</b></i> \n\n<b><i><u>Update Information :</b></i></u> \n<b>• Branch :</b> {_branch} \n<b>• Release Date :</b> {_release} \n<b>• Version :</b> {_version} \n<b>• Author :</b> <a href='{_auturl}'>{_author}</a>", link_preview=False, parse_mode="HTML")
     await deploy(event, repo, ups_rem, ac_br, txt)
 
