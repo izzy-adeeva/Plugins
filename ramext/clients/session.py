@@ -10,7 +10,7 @@ from ramext.config import Config
 if Config.STRING_SESSION:
     session = StringSession(str(Config.STRING_SESSION))
 else:
-    session = "ramubot"
+    session = "userbot"
 
 try:
     RAM = TelegramClient(
