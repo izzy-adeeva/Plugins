@@ -77,7 +77,7 @@ except Exception:
 
 
 # global variables
-#CMD_LIST = {}
+# CMD_LIST = {}
 CMD_HELP = {}
 CMD_HELP_BOT = {}
 BRAIN_CHECKER = []
