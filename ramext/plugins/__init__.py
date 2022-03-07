@@ -12,10 +12,10 @@ from ramext.sql.gvar_sql import gvarstat
 from telethon import version
 
 ram_logo = "https://telegra.ph/file/e62dcb31e02594af0fab4.png"
-anu = "./ramubot/resources/pics/anu.jpg"
-anu2 = "./ramubot/resources/pics/anu2.jpeg"
-anu3 = "./ramubot/resources/pics/anu3.jpg"
-anu4 = "./ramubot/resources/pics/anu4.jpeg"
+anu = "./ramext/resources/pics/anu.jpg"
+anu2 = "./ramext/resources/pics/anu2.jpeg"
+anu3 = "./ramext/resources/pics/anu3.jpg"
+anu4 = "./ramext/resources/pics/anu4.jpeg"
 ii = Config.HANDLER
 sdh = Config.SUDO_HANDLER
 ram_version = version
