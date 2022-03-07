@@ -21,7 +21,7 @@ async def download(event):
     splt = txts.split("|")
     path = splt[0]
     branch = splt[1] or "master"
-    hellbot = await eor(event, "Processing ...")
+    ramubot = await eor(event, "Processing ...")
     if not os.path.isdir(GIT_TEMP_DIR):
         os.makedirs(GIT_TEMP_DIR)
     start = datetime.datetime.now()
@@ -33,19 +33,19 @@ async def download(event):
             reply_message.media, GIT_TEMP_DIR
         )
     except Exception as e:
-        await eod(hellbot, str(e))
+        await eod(ramubot, str(e))
     else:
         end = datetime.datetime.now()
         ms = (end - start).seconds
         await event.delete()
-        await hellbot.edit(
+        await ramubot.edit(
             "Downloaded to `{}` in {} seconds.".format(downloaded_file_name, ms)
         )
-        await hellbot.edit("Committing to Github....")
-        await git_commit(downloaded_file_name, path, branch, hellbot)
+        await ramubot.edit("Committing to Github....")
+        await git_commit(downloaded_file_name, path, branch, ramubot)
 
 
-async def git_commit(file_name, path, branch, hellbot):
+async def git_commit(file_name, path, branch, ramubot):
     content_list = []
     access_token = Config.GITHUB_ACCESS_TOKEN
     g = Github(access_token)
@@ -61,7 +61,7 @@ async def git_commit(file_name, path, branch, hellbot):
     for i in content_list:
         create_file = True
         if i == 'ContentFile(path="' + file_name + '")':
-            return await hellbot.edit("`File Already Exists`")
+            return await ramubot.edit("`File Already Exists`")
             create_file = False
     path = path
     file_name = file_name
@@ -75,14 +75,14 @@ async def git_commit(file_name, path, branch, hellbot):
             print("Committed File")
             ccess = Config.GIT_REPO_NAME
             ccess = ccess.strip()
-            await hellbot.edit(
+            await ramubot.edit(
                 f"`Commited On Your Github Repo`\n\n[Your Commit](https://github.com/{ccess}/tree/{branch}/)"
             )
         except:
             print("Cannot Create Plugin")
-            await eod(hellbot, "Cannot Upload File")
+            await eod(ramubot, "Cannot Upload File")
     else:
-        return await eod(hellbot, "`Committed Suicide`")
+        return await eod(ramubot, "`Committed Suicide`")
 
 
 @ram_cmd(pattern="github(?:\s|$)([\s\S]*)")
@@ -123,7 +123,7 @@ Profile Created: {}""".format(
 
 
 CmdHelp("github").add_command(
-  "commit", "<reply to a file> <path>|<branch>", "Uploads the file on github repo as provided in Heroku Config GIT_REPO_NAME. In short makes a commit to git repo from Userbot", "commit ./hellbot/plugins/example.py|master"
+  "commit", "<reply to a file> <path>|<branch>", "Uploads the file on github repo as provided in Heroku Config GIT_REPO_NAME. In short makes a commit to git repo from Userbot", "commit ./ramubot/plugins/example.py|master"
 ).add_command(
   "github", "<git username>", "Fetches the details of the given git username"
 ).add_info(

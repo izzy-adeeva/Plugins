@@ -5,19 +5,19 @@ from . import *
 
 @ram_cmd(pattern="mediainfo$")
 async def mediainfo(event):
-    HELL_MEDIA = None
+    RAM_MEDIA = None
     reply = await event.get_reply_message()
     logo = "https://telegra.ph/file/2c546060b20dfd7c1ff2d.jpg"
     if not reply:
         return await eod(event, "Reply to a media to fetch info...")
     if not reply.media:
         return await eod(event, "Reply to a media file to fetch info...")
-    hell = await eor(event, "`Fetching media info...`")
-    HELL_MEDIA = reply.file.mime_type
-    if not HELL_MEDIA:
-        return await hell.edit("Reply to a media file to fetch info...")
-    elif HELL_MEDIA.startswith(("text")):
-        return await hell.edit("Reply to a media file to fetch info ...")
+    zzy = await eor(event, "`Fetching media info...`")
+    RAM_MEDIA = reply.file.mime_type
+    if not RAM_MEDIA:
+        return await zzy.edit("Reply to a media file to fetch info...")
+    elif RAM_MEDIA.startswith(("text")):
+        return await zzy.edit("Reply to a media file to fetch info ...")
     hel_ = await mediadata(reply)
     file_path = await reply.download_media(Config.TMP_DOWNLOAD_DIRECTORY)
     out, err, ret, pid = await runcmd(f"mediainfo '{file_path}'")
@@ -33,8 +33,8 @@ async def mediainfo(event):
 {out} 
 </code>
 <img src='{logo}'/>"""
-    paste = await telegraph_paste(f"{HELL_MEDIA}", paster)
-    await hell.edit(f"📌 Fetched  Media Info Successfully !! \n\n**Check Here :** [{HELL_MEDIA}]({paste})")
+    paste = await telegraph_paste(f"{RAM_MEDIA}", paster)
+    await zzy.edit(f"📌 Fetched  Media Info Successfully !! \n\n**Check Here :** [{RAM_MEDIA}]({paste})")
     os.remove(file_path)
 
 CmdHelp("mediainfo").add_command(

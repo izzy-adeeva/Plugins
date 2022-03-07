@@ -56,34 +56,34 @@ def user_full_name(user):
 @ram_cmd(pattern="inviteall(?:\s|$)([\s\S]*)")
 async def get_users(event):
     hel_ = event.text[11:]
-    hell_chat = hel_.lower()
-    restricted = ["@hellbot_chat", "@its_hellbot"]
-    hell = await eor(event, f"__Inviting members from__ {hel_}")
-    if hell_chat in restricted:
-        await hell.edit("You can't Invite Members from there.")
+    ram_chat = hel_.lower()
+    restricted = ["@ramubot_chat", "@its_ramubot"]
+    zzy = await eor(event, f"__Inviting members from__ {hel_}")
+    if ram_chat in restricted:
+        await zzy.edit("You can't Invite Members from there.")
         await event.client.send_message(-1001496036895, "Sorry for inviting members from here.")
         return
     iraa = await get_chatinfo(event)
     chat = await event.get_chat()
     if event.is_private:
-        return await hell.edit("`Sorry, Cant add users here`")
+        return await zzy.edit("`Sorry, Cant add users here`")
     s = 0
     f = 0
     error = "None"
-    await hell.edit("**INVITING USERS !!**")
+    await zzy.edit("**INVITING USERS !!**")
     async for user in event.client.iter_participants(iraa.full_chat.id):
         try:
             await event.client(
                 InviteToChannelRequest(channel=chat, users=[user.id])
             )
             s += 1
-            await hell.edit(
+            await zzy.edit(
                 f"**INVITING USERS.. **\n\n**Invited :**  `{s}` users \n**Failed to Invite :**  `{f}` users.\n\n**×Error :**  `{error}`"
             )
         except Exception as e:
             error = str(e)
             f += 1
-    return await hell.edit(
+    return await zzy.edit(
         f"**INVITING FINISHED** \n\n**Invited :**  `{s}` users \n**Failed :**  `{f}` users."
     )
 

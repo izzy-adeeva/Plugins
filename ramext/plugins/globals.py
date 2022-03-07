@@ -60,7 +60,7 @@ async def _(event):
     i = 0
     sender = await event.get_sender()
     me = await event.client.get_me()
-    hell = await eor(event, "`Promoting globally...`")
+    zzy = await eor(event, "`Promoting globally...`")
     my_mention = "[{}](tg://user?id={})".format(me.first_name, me.id)
     f"@{me.username}" if me.username else my_mention
     await event.get_chat()
@@ -74,13 +74,13 @@ async def _(event):
     except:
         pass
     if me == user:
-       k = await hell.edit("You can't promote yourself...")
+       k = await zzy.edit("You can't promote yourself...")
        return
     try:
         if not rank:
             rank = "ㅤ"
     except:
-        return await hell.edit("**ERROR !!**")
+        return await zzy.edit("**ERROR !!**")
     if user:
         telchanel = [d.entity.id
                      for d in await event.client.get_dialogs()
@@ -96,12 +96,12 @@ async def _(event):
           try:
              await event.client(EditAdminRequest(x, user, rgt, rank))
              i += 1
-             await hell.edit(f"**Promoting User in :**  `{i}` Chats...")
+             await zzy.edit(f"**Promoting User in :**  `{i}` Chats...")
           except:
              pass
     else:
-        await hell.edit(f"**Reply to a user !!**")
-    await hell.edit(
+        await zzy.edit(f"**Reply to a user !!**")
+    await zzy.edit(
         f"[{user.first_name}](tg://user?id={user.id}) **Was Promoted Globally In** `{i}` **Chats !!**"
     )
     await event.client.send_message(Config.LOGGER_ID, f"#GPROMOTE \n\n**Globally Promoted User :** [{user.first_name}](tg://user?id={user.id}) \n\n**Total Chats :** `{i}`")
@@ -112,7 +112,7 @@ async def _(event):
     i = 0
     sender = await event.get_sender()
     me = await event.client.get_me()
-    hell = await eor(event, "`Demoting Globally...`")
+    zzy = await eor(event, "`Demoting Globally...`")
     my_mention = "[{}](tg://user?id={})".format(me.first_name, me.id)
     f"@{me.username}" if me.username else my_mention
     await event.get_chat()
@@ -126,13 +126,13 @@ async def _(event):
     except:
         pass
     if me == user:
-       k = await hell.edit("You can't Demote yourself !!")
+       k = await zzy.edit("You can't Demote yourself !!")
        return
     try:
         if not rank:
             rank = "ㅤ"
     except:
-        return await hell.edit("**ERROR !!**")
+        return await zzy.edit("**ERROR !!**")
     if user:
         telchanel = [d.entity.id
                      for d in await event.client.get_dialogs()
@@ -148,12 +148,12 @@ async def _(event):
           try:
              await event.client(EditAdminRequest(x, user, rgt, rank))
              i += 1
-             await hell.edit(f"**Demoting Globally In Chats :** `{i}`")
+             await zzy.edit(f"**Demoting Globally In Chats :** `{i}`")
           except:
              pass
     else:
-        await hell.edit(f"**Reply to a user !!**")
-    await hell.edit(
+        await zzy.edit(f"**Reply to a user !!**")
+    await zzy.edit(
         f"[{user.first_name}](tg://user?id={user.id}) **Was Demoted Globally In** `{i}` **Chats !!**"
     )
     await event.client.send_message(Config.LOGGER_ID, f"#GDEMOTE \n\n**Globally Demoted :** [{user.first_name}](tg://user?id={user.id}) \n\n**Total Chats :** `{i}`")
@@ -161,7 +161,7 @@ async def _(event):
 
 @ram_cmd(pattern="gban(?:\s|$)([\s\S]*)")
 async def _(event):
-    hell = await eor(event, f"`Gbanning ...`")
+    zzy = await eor(event, f"`Gbanning ...`")
     reason = ""
     cid = await client_id(event)
     ramtod, RAM_USER, ram_mention = cid[0], cid[1], cid[2]
@@ -186,16 +186,16 @@ async def _(event):
         except IndexError:
             reason = ""
     else:
-        return await eod(hell, "**To gban a user i need a userid or reply to his/her message!!**")
+        return await eod(zzy, "**To gban a user i need a userid or reply to his/her message!!**")
     name = (await event.client.get_entity(userid)).first_name
     chats = 0
     if userid == ramtod:
-        return await eod(hell, "🥴 **Nashe me hai kya lawde ‽**")
+        return await eod(zzy, "🥴 **Nashe me hai kya lawde ‽**")
     if str(userid) in DEVLIST:
-        return await eod(hell, "😑 **GBan my creator ?¿ Really‽**")
+        return await eod(zzy, "😑 **GBan my creator ?¿ Really‽**")
     if is_gbanned(userid):
         return await eod(
-            hell,
+            zzy,
             "This kid is already gbanned and added to my **Gban Watch!!**",
         )
     async for gfuck in event.client.iter_dialogs():
@@ -224,16 +224,16 @@ async def _(event):
         ogmsg += f"\n**🔰 Reason :**  `{reason}`"
     if Config.ABUSE == "ON":
         await event.client.send_file(event.chat_id, gbpic, caption=gmsg)
-        await hell.delete()
+        await zzy.delete()
     else:
-        await hell.edit(ogmsg)
+        await zzy.edit(ogmsg)
 
 
 @ram_cmd(pattern="ungban(?:\s|$)([\s\S]*)")
 async def _(event):
     cid = await client_id(event)
     ramtod, RAM_USER, ram_mention = cid[0], cid[1], cid[2]
-    hell = await eor(event, "`Ungban in progress...`")
+    zzy = await eor(event, "`Ungban in progress...`")
     if event.reply_to_msg_id:
         userid = (await event.get_reply_message()).sender_id
     elif event.pattern_match.group(1):
@@ -241,12 +241,12 @@ async def _(event):
     elif event.is_private:
         userid = (await event.get_chat()).id
     else:
-        return await eod(hell, "`Reply to a user or give their userid... `")
+        return await eod(zzy, "`Reply to a user or give their userid... `")
     name = (await event.client.get_entity(userid)).first_name
     chats = 0
     if not is_gbanned(userid):
-        return await eod(hell, "`User is not gbanned.`")
-    await hell.edit(f"Ungbaning in client 1... \n**Unbanned in :** `{chats}`")
+        return await eod(zzy, "`User is not gbanned.`")
+    await zzy.edit(f"Ungbaning in client 1... \n**Unbanned in :** `{chats}`")
     async for gfuck in event.client.iter_dialogs():
         if gfuck.is_group or gfuck.is_channel:
             try:
@@ -256,7 +256,7 @@ async def _(event):
                 pass
 
     ungbaner(userid)
-    await hell.edit(
+    await zzy.edit(
         f"📍 [{name}](tg://user?id={userid}) **is now Ungbanned from `{chats}` chats and removed from Gban Watch!!**",
     )
 
@@ -269,13 +269,13 @@ async def already(event):
     if len(gbanned_users) > 0:
         for user in gbanned_users:
             hel = user.chat_id
-            hell = int(hel)
+            zzy = int(hel)
             try:
-                tity = await event.client.get_entity(hell)
+                tity = await event.client.get_entity(zzy)
                 name = tity.first_name
             except ValueError:
                 name = "User"
-            GBANNED_LIST += f"📍 [{name}](tg://user?id={hell}) (`{hell}`)\n"
+            GBANNED_LIST += f"📍 [{name}](tg://user?id={zzy}) (`{zzy}`)\n"
     else:
         GBANNED_LIST = "No Gbanned Users!!"
     await hmm.edit(GBANNED_LIST)
@@ -395,7 +395,7 @@ if RAM5:
 async def gkick(event):
     cid = await client_id(event)
     ramtod, RAM_USER, ram_mention = cid[0], cid[1], cid[2]
-    hell = await eor(event, f"`Kicking globally ...`")
+    zzy = await eor(event, f"`Kicking globally ...`")
     reply = await event.get_reply_message()
     if event.reply_to_msg_id:
         userid = (await event.get_reply_message()).sender_id
@@ -404,13 +404,13 @@ async def gkick(event):
     elif event.is_private:
         userid = (await event.get_chat()).id
     else:
-        return await eod(hell, "`Reply to some msg or add their id.`")
+        return await eod(zzy, "`Reply to some msg or add their id.`")
     name = (await event.client.get_entity(userid)).first_name
     chats = 0
     if userid == ramtod:
-        return await eod(hell, "**🥴 Nashe me hai kya lawde!!**")
+        return await eod(zzy, "**🥴 Nashe me hai kya lawde!!**")
     if str(userid) in DEVLIST:
-        return await eod(hell, "**😪 I'm not going to gkick my developer!!**")
+        return await eod(zzy, "**😪 I'm not going to gkick my developer!!**")
     async for gkick in event.client.iter_dialogs():
         if gkick.is_group or gkick.is_channel:
             try:
@@ -431,9 +431,9 @@ async def gkick(event):
     gkmsg = f"🏃 **Globally Kicked** [{name}](tg://user?id={userid})'s butts !! \n\n📝 **Chats :**  `{chats}`"
     if Config.ABUSE == "ON":
         await event.client.send_file(event.chat_id, gbpic, caption=gkmsg, reply_to=reply)
-        await hell.delete()
+        await zzy.delete()
     else:
-        await hell.edit(gkmsg)
+        await zzy.edit(gkmsg)
 
 
 @ram_cmd(pattern="gmute(?:\s|$)([\s\S]*)")

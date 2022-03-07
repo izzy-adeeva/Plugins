@@ -10,7 +10,7 @@ from ramext.config import Config
 from ramext.sql.gvar_sql import gvarstat
 
 
-def hell_cmd(
+def ram_cmd(
     pattern: str = None,
     allow_sudo: bool = True,
     disable_edited: bool = False,
@@ -101,7 +101,7 @@ def hell_cmd(
     return decorator
 
 
-def hell_handler(
+def ram_handler(
     **args,
 ):
     def decorator(func):

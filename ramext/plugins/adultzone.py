@@ -17,18 +17,18 @@ async def _(event):
         return await eor(event, "**This command is only for users with heroku variable** `ABUSE` **as** `ON`")
     owo = event.text[7:]
     if owo in neko_category:
-        hell = await eor(event, f"`Searching {owo} ...`")
+        zzy = await eor(event, f"`Searching {owo} ...`")
         link = nekos.img(owo)
         x = await event.client.send_file(event.chat_id, link, force_document=False)
-        await hell.delete()
+        await zzy.delete()
         if link.endswith((".gif")):
             await unsave_gif(event, x)
     elif owo == "":
-        hell = await eor(event, "`Searching randoms...`")
+        zzy = await eor(event, "`Searching randoms...`")
         uwu = random.choice(neko_category)
         link = nekos.img(uwu)
         x = await event.client.send_file(event.chat_id, link, force_document=False)
-        await hell.delete()
+        await zzy.delete()
         if link.endswith((".gif")):
             await unsave_gif(event, x)
     else:

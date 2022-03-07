@@ -8,14 +8,14 @@ from vcam import vcam, meshGen
 
 from . import *
 
-if not os.path.isdir("./hellbot/"):
-    os.makedirs("./hellbot/")
+if not os.path.isdir("./ramubot/"):
+    os.makedirs("./ramubot/")
 
 
 @ram_cmd(pattern="feye$")
 async def fun(event):
     path = "omk"
-    hell = await eor(event, "Editing In Progress...")
+    zzy = await eor(event, "Editing In Progress...")
     reply = await event.get_reply_message()
     lol = await event.client.download_media(reply.media, path)
     file_name = "fishy.jpg"
@@ -34,7 +34,7 @@ async def fun(event):
     out1 = cv2.resize(output,(700,350))
     cv2.imwrite(file_name,out1)
     await event.client.send_file(event.chat_id, file_name)
-    await hell.delete()
+    await zzy.delete()
     for files in (hehe, lol):
         if files and os.path.exists(files):
             os.remove(files)
@@ -43,7 +43,7 @@ async def fun(event):
 @ram_cmd(pattern="warp$")
 async def fun(event):
     path = "omk"
-    hell = await eor(event, "Warping In Progress...")
+    zzy = await eor(event, "Warping In Progress...")
     reply = await event.get_reply_message()
     lol = await event.client.download_media(reply.media, path)
     file_name = "warped.jpg"
@@ -62,7 +62,7 @@ async def fun(event):
     out1 = cv2.resize(output,(700,350))
     cv2.imwrite(file_name,out1)
     await event.client.send_file(event.chat_id, file_name)
-    await hell.delete()
+    await zzy.delete()
     for files in (hehe, lol):
         if files and os.path.exists(files):
             os.remove(files)
@@ -71,7 +71,7 @@ async def fun(event):
 @ram_cmd(pattern="distort$")
 async def fun(event):
     path = "omk"
-    hell = await eor(event, "Distortion In Progress...")
+    zzy = await eor(event, "Distortion In Progress...")
     reply = await event.get_reply_message()
     lol = await event.client.download_media(reply.media, path)
     file_name = "dist.jpg"
@@ -90,7 +90,7 @@ async def fun(event):
     out1 = cv2.resize(output,(700,350))
     cv2.imwrite(file_name,out1)
     await event.client.send_file(event.chat_id, file_name)
-    await hell.delete()
+    await zzy.delete()
     for files in (hehe, lol):
         if files and os.path.exists(files):
             os.remove(files)

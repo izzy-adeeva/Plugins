@@ -13,7 +13,7 @@ PM_WARNS = {}
 PREV_REPLY_MESSAGE = {}
 PM_ON_OFF = Config.PM_PERMIT
 CSTM_PMP = Config.CUSTOM_PMPERMIT or "**You Have Trespassed To My Master's PM!\nThis Is Illegal And Regarded As Crime.**"
-HELL_ZERO = "Go get some sleep retard. \n\n**Blocked !!**"
+RAM_ZERO = "Go get some sleep retard. \n\n**Blocked !!**"
 
 
 @ram_cmd(pattern="unblock$")
@@ -219,7 +219,7 @@ if PM_ON_OFF != "DISABLE":
         if chat_ids not in PM_WARNS:
             PM_WARNS.update({chat_ids: 0})
         if PM_WARNS[chat_ids] == Config.MAX_SPAM:
-            r = await event.reply(HELL_ZERO)
+            r = await event.reply(RAM_ZERO)
             await asyncio.sleep(3)
             await event.client(functions.contacts.BlockRequest(chat_ids))
             if chat_ids in PREV_REPLY_MESSAGE:

@@ -19,12 +19,12 @@ async def _(event):
         async for allhell in event.client.iter_dialogs():
             chat = allhell.id
             try:
-                hell = OwO.replace("-all", "")
+                zzy = OwO.replace("-all", "")
             except:
                 pass
             try:
                 if chat != -1001496036895:
-                    await event.client.send_message(chat, hell, file=file)
+                    await event.client.send_message(chat, zzy, file=file)
                     owo += 1
                 elif chat == -1001496036895:
                     pass
@@ -35,11 +35,11 @@ async def _(event):
             if pvthell.is_user and not pvthell.entity.bot:
                 chat = pvthell.id
                 try:
-                    hell = OwO.replace("-pvt", "")
+                    zzy = OwO.replace("-pvt", "")
                 except:
                     pass
                 try:
-                    await event.client.send_message(chat, hell, file=file)
+                    await event.client.send_message(chat, zzy, file=file)
                     owo += 1
                 except BaseException:
                     sed += 1
@@ -48,12 +48,12 @@ async def _(event):
             if ghell.is_group:
                 chat = ghell.id
                 try:
-                    hell = OwO.replace("-grp", "")
+                    zzy = OwO.replace("-grp", "")
                 except:
                     pass
                 try:
                     if chat != -1001496036895:
-                        await event.client.send_message(chat, hell, file=file)
+                        await event.client.send_message(chat, zzy, file=file)
                         owo += 1
                     elif chat == -1001496036895:
                         pass

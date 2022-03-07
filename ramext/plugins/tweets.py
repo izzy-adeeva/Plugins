@@ -3,15 +3,15 @@ from . import *
 
 @ram_cmd(pattern="tweet(?:\s|$)([\s\S]*)")
 async def nope(iraa):
-    hell = iraa.text[7:]
+    zzy = iraa.text[7:]
     okvai = await eor(iraa, "Trying to tweet for you...")
-    if not hell:
+    if not zzy:
         if iraa.is_reply:
             (await iraa.get_reply_message()).message
         else:
             await eod(okvai, "I need some text to make a tweet🚶")
             return
-    tweeter = await event.client.inline_query("TwitterStatusBot", f"{(deEmojify(hell))}")
+    tweeter = await event.client.inline_query("TwitterStatusBot", f"{(deEmojify(zzy))}")
     owo = await tweeter[0].click(Config.LOGGER_ID)
     stcr = await event.client.send_message(iraa.chat_id, owo)
     await okvai.delete()

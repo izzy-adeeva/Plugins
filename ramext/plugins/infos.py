@@ -32,7 +32,7 @@ async def _(event):
     if reply_message.sender.bot:
         await eod(event, "Reply to actual users message.")
         return
-    hell = await eor(event, "recognizeing this media")
+    zzy = await eor(event, "recognizeing this media")
     async with event.client.conversation(chat) as conv:
         try:
             response = conv.wait_event(
@@ -42,15 +42,15 @@ async def _(event):
             second = await response
         except YouBlockedUserError:
             await event.reply("unblock @Rekognition_Bot and try again")
-            await hell.delete()
+            await zzy.delete()
             return
         if second.text.startswith("See next message."):
             response = conv.wait_event(
                 events.NewMessage(incoming=True, from_users=461083923)
             )
             third = await response
-            hell = third.message.message
-            await eor(event, hell)
+            zzy = third.message.message
+            await eor(event, zzy)
             await event.client.delete_messages(
                 conv.chat_id, [first.id, second.id, third.id]
             )
@@ -107,7 +107,7 @@ async def _(event):
 <b>🤖 BOT</b>: {}
 <b>👥 Groups in Common</b>: {}
 
-<b>⚡ <a href='https://t.me/its_hellbot'>From DataBase of HellBot</a> ⚡ </b>
+<b>⚡ <a href='https://t.me/its_ramubot'>From DataBase of ramubot</a> ⚡ </b>
 """.format(
         user_id,
         user_id,
@@ -193,14 +193,14 @@ async def get_full_user(event):
 
 @ram_cmd(pattern="chatinfo(?:\s|$)([\s\S]*)")
 async def info(event):
-    hell = await eor(event, "`Analysing the chat...`")
+    zzy = await eor(event, "`Analysing the chat...`")
     chat = await get_chatinfo(event)
     caption = await fetch_info(chat, event)
     try:
-        await hell.edit(caption, parse_mode="HTML")
+        await zzy.edit(caption, parse_mode="HTML")
     except Exception as e:
         print("Exception:", e)
-        await eod(hell, "`An unexpected error has occurred.`")
+        await eod(zzy, "`An unexpected error has occurred.`")
     return
 
 
@@ -582,25 +582,25 @@ async def _(event):
     
 @ram_cmd(pattern="id$")
 async def _(event):
-    hell = await eor(event, "Fetching Ids...")
+    zzy = await eor(event, "Fetching Ids...")
     if event.reply_to_msg_id:
         await event.get_input_chat()
         r_msg = await event.get_reply_message()
         if r_msg.media:
             bot_api_file_id = pack_bot_file_id(r_msg.media)
-            await hell.edit(
+            await zzy.edit(
                 "🔸 **Current Chat ID:** `{}`\n\n🔰 **From User ID:** `{}`\n\n🤖 **Bot API File ID:** `{}`".format(
                     str(event.chat_id), str(r_msg.sender_id), bot_api_file_id
                 )
             )
         else:
-            await hell.edit(
+            await zzy.edit(
                 "🔸 **Current Chat ID:** `{}`\n\n🔰 **From User ID:** `{}`".format(
                     str(event.chat_id), str(r_msg.sender_id)
                 )
             )
     else:
-        await hell.edit("🔸 **Current Chat ID:** `{}`".format(str(event.chat_id)))
+        await zzy.edit("🔸 **Current Chat ID:** `{}`".format(str(event.chat_id)))
 
 
 CmdHelp("infos").add_command(

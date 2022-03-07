@@ -20,9 +20,9 @@ from telethon.tl.functions.messages import ExportChatInviteRequest
 from ramext.sql.gvar_sql import gvarstat
 from . import *
 
-hell_row = Config.BUTTONS_IN_HELP
+ram_row = Config.BUTTONS_IN_HELP
 emoji = Config.EMOJI_IN_HELP
-hell_pic = Config.PMPERMIT_PIC or "https://telegra.ph/file/e62dcb31e02594af0fab4.png"
+ram_pic = Config.PMPERMIT_PIC or "https://telegra.ph/file/e62dcb31e02594af0fab4.png"
 cstm_pmp = Config.CUSTOM_PMPERMIT
 PM_WARNS = {}
 PREV_REPLY_MESSAGE = {}
@@ -56,7 +56,7 @@ alive_txt = """{}\n
 """
 
 def button(page, modules):
-    Row = hell_row
+    Row = ram_row
     Column = 3
 
     modules = sorted([modul for modul in modules if not modul.startswith("_")])
@@ -184,7 +184,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
         elif event.query.user_id in auth and query == "pm_warn":
             hel_l = RAM_BOT.format(ram_mention, mssge)
             result = builder.photo(
-                file=hell_pic,
+                file=ram_pic,
                 text=hel_l,
                 buttons=[
                     [

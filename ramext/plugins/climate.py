@@ -172,7 +172,7 @@ async def _(event):
     ram_mention = cid[2]
     if not input_str:
         input_str = DEFCITY
-    hell = await eor(event, "Collecting Weather Reports...")
+    zzy = await eor(event, "Collecting Weather Reports...")
     async with aiohttp.ClientSession() as session:
         sample_url = "https://wttr.in/{}.png"
         response_api_zero = await session.get(sample_url.format(input_str))
@@ -180,7 +180,7 @@ async def _(event):
         with io.BytesIO(response_api) as out_file:
             await event.client.send_message(f"**City :** `{input_str}` \n**By :** {ram_mention}", file=out_file, reply_to=reply_to_id)
     try:
-        await hell.delete()
+        await zzy.delete()
     except:
         pass
 

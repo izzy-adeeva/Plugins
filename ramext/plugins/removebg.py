@@ -17,37 +17,37 @@ async def _(event):
         input_str = txt
     flag = event.text[-2:]
     cid = await client_id(event)
-    hell_memtion = cid[2]
+    ram_mention = cid[2]
     if event.reply_to_msg_id and input_str == "":
         reply_message = await event.get_reply_message()
-        hell = await eor(event, "`Analysing...`")
+        zzy = await eor(event, "`Analysing...`")
         file_name = "./remove_bg/rmbg.png"
         try:
             await event.client.download_media(reply_message, file_name)
         except Exception as e:
-            await eod(hell, f"**ERROR !!** \n\n`{str(e)}`")
+            await eod(zzy, f"**ERROR !!** \n\n`{str(e)}`")
             return
         else:
-            await hell.edit("`Removing background of this media`")
+            await zzy.edit("`Removing background of this media`")
             file_name = toimage(file_name)
             response = ReTrieveFile(file_name)
             os.remove(file_name)
     elif input_str:
-        hell = await eor(event, "`Removing Background of this media`")
+        zzy = await eor(event, "`Removing Background of this media`")
         response = ReTrieveURL(input_str)
     else:
         await eod(event, f"Reply to a image/sticker with `{ii}rmbg` or give image link to remove background.")
         return
     contentType = response.headers.get("content-type")
-    remove_bg_image = "HellBot.png"
+    remove_bg_image = "ramubot.png"
     if "image" in contentType:
-        with open("HellBot.png", "wb") as removed_bg_file:
+        with open("ramubot.png", "wb") as removed_bg_file:
             removed_bg_file.write(response.content)
     else:
-        await eod(hell, f"`{response.content.decode('UTF-8')}`")
+        await eod(zzy, f"`{response.content.decode('UTF-8')}`")
         return
     if flag and flag == "-s":
-        file = tosticker(remove_bg_image, filename="HellBot.webp")
+        file = tosticker(remove_bg_image, filename="ramubot.webp")
         await event.client.send_file(
             event.chat_id,
             file,
@@ -65,10 +65,10 @@ async def _(event):
     await event.client.send_file(
         event.chat_id,
         file,
-        caption=f"**Background removed by** {hell_memtion}",
+        caption=f"**Background removed by** {ram_mention}",
         force_document=True,
         )
-    await hell.delete()
+    await zzy.delete()
 
 
 def ReTrieveFile(input_file_name):

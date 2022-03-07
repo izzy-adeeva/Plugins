@@ -12,10 +12,10 @@ from ramext.sql.gvar_sql import gvarstat
 from telethon import version
 
 ram_logo = "https://telegra.ph/file/e62dcb31e02594af0fab4.png"
-anu = "./hellbot/resources/pics/anu.jpg"
-anu2 = "./hellbot/resources/pics/anu2.jpeg"
-anu3 = "./hellbot/resources/pics/anu3.jpg"
-anu4 = "./hellbot/resources/pics/anu4.jpeg"
+anu = "./ramubot/resources/pics/anu.jpg"
+anu2 = "./ramubot/resources/pics/anu2.jpeg"
+anu3 = "./ramubot/resources/pics/anu3.jpg"
+anu4 = "./ramubot/resources/pics/anu4.jpeg"
 ii = Config.HANDLER
 sdh = Config.SUDO_HANDLER
 ram_version = version
@@ -49,9 +49,9 @@ if "@" in my_group:
     my_group = my_group.replace("@", "")
 
 chnl_link = "https://t.me/ramsupport"
-hell_channel = f"[RAM-UBOT]({chnl_link})"
+ram_channel = f"[RAM-UBOT]({chnl_link})"
 grp_link = "https://t.me/GeezSupport"
-hell_grp = f"[GEEZ]({grp_link})"
+ram_grp = f"[GEEZ]({grp_link})"
 
 WELCOME_FORMAT = """**Use these fomats in your welcome note to make them attractive.**
   {mention} :  To mention the user

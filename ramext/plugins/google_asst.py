@@ -34,13 +34,13 @@ async def _(event):
         await eor(event, str(exc))
 
 @ram_cmd(pattern="trc$")
-async def _(hell):
-    await eor(hell, "**All The Language Codes Can Be Found** ⚡ [Here](https://telegra.ph/SfMæisér--𐌷𐌴ࠋࠋ𐌱𐍈𐌸-𐌾𐌰𐍀𐌾-06-04) ⚡", link_preview=False)
+async def _(zzy):
+    await eor(zzy, "**All The Language Codes Can Be Found** ⚡ [Here](https://telegra.ph/SfMæisér--𐌷𐌴ࠋࠋ𐌱𐍈𐌸-𐌾𐌰𐍀𐌾-06-04) ⚡", link_preview=False)
 
 
 @ram_cmd(pattern="voice(?:\s|$)([\s\S]*)")
 async def _(event):
-    hell = await eor(event, "Preparing Voice....")
+    zzy = await eor(event, "Preparing Voice....")
     input_str = event.pattern_match.group(1)
     start = datetime.datetime.now()
     if event.reply_to_msg_id:
@@ -50,7 +50,7 @@ async def _(event):
     elif "-" in input_str:
         lan, text = input_str.split("-")
     else:
-        await eod(hell, f"Invalid Syntax. Module stopping. Check out `{ii}plinfo google_asst` for help.")
+        await eod(zzy, f"Invalid Syntax. Module stopping. Check out `{ii}plinfo google_asst` for help.")
         return
     text = text.strip()
     lan = lan.strip()
@@ -79,7 +79,7 @@ async def _(event):
                 command_to_execute, stderr=subprocess.STDOUT
             )
         except (subprocess.CalledProcessError, NameError, FileNotFoundError) as exc:
-            await hell.edit(str(exc))
+            await zzy.edit(str(exc))
         else:
             os.remove(required_file_name)
             required_file_name = required_file_name + ".opus"
@@ -94,9 +94,9 @@ async def _(event):
             voice_note=True,
         )
         os.remove(required_file_name)
-        await hell.delete()
+        await zzy.delete()
     except Exception as e:
-        await eod(hell, str(e))
+        await eod(zzy, str(e))
 
 
 CmdHelp("google_asst").add_command(

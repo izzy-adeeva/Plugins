@@ -50,17 +50,17 @@ async def _(event):
     elif input_str == "apple":
         await eor(event, "\uF8FF")
     elif input_str == ":/":
-        hell = await eor(event, input_str)
+        zzy = await eor(event, input_str)
         animation_chars = [":\\", ":/"]
         for i in animation_ttl:
             await asyncio.sleep(animation_interval)
-            await hell.edit(animation_chars[i % 2])
+            await zzy.edit(animation_chars[i % 2])
     elif input_str == "-_-":
-        hell = await eor(event, input_str)
+        zzy = await eor(event, input_str)
         animation_chars = ["-__-", "-_-"]
         for i in animation_ttl:
             await asyncio.sleep(animation_interval)
-            await hell.edit(animation_chars[i % 2])
+            await zzy.edit(animation_chars[i % 2])
 
 
 @ram_cmd(pattern=f"gendar$")

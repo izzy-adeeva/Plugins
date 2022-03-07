@@ -12,20 +12,20 @@ from . import *
 @ram_cmd(pattern="frybot$")
 async def _(event):
     if not event.reply_to_msg_id:
-        hell = await eor(event, "Reply to any user message.")
+        zzy = await eor(event, "Reply to any user message.")
         return
     reply_message = await event.get_reply_message()
     if event.is_reply:
         reply_message = await event.get_reply_message()
         data = await check_media(reply_message)
         if isinstance(data, bool):
-            await hell.edit("`I can't deep fry that!`")
+            await zzy.edit("`I can't deep fry that!`")
             return
     if not event.is_reply:
-        await hell.edit("`Reply to an image or sticker to deep fry it!`")
+        await zzy.edit("`Reply to an image or sticker to deep fry it!`")
         return
     chat = "@image_deepfrybot"
-    await hell.edit("```Processing```")
+    await zzy.edit("```Processing```")
     async with event.client.conversation(chat) as conv:
         try:
             response = conv.wait_event(
@@ -34,11 +34,11 @@ async def _(event):
             await event.client.send_message(chat, reply_message)
             response = await response
         except YouBlockedUserError:
-            await hell.edit("Unblock @image_deepfrybot and try again")
+            await zzy.edit("Unblock @image_deepfrybot and try again")
             return
         await event.client.send_read_acknowledge(conv.chat_id)
         await event.client.send_file(event.chat_id, response.message.media)
-        await hell.delete()
+        await zzy.delete()
 
 
 @ram_cmd(pattern="fry(?:\s|$)([\s\S]*)")

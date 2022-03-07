@@ -15,7 +15,7 @@ async def get_media(event):
     print(limit)
     channel_username = channel_username[11:]
     print(channel_username)
-    hell = await eor(event, "Downloading Media From this Channel.")
+    zzy = await eor(event, "Downloading Media From this Channel.")
     msgs = await event.client.get_messages(channel_username, limit=int(limit))
     with open("log.txt", "w") as f:
         f.write(str(msgs))
@@ -28,7 +28,7 @@ async def get_media(event):
     output = str(output)
     output = output.replace("b'", "")
     output = output.replace("\n'", "")
-    await hell.edit("Downloaded " + output + " files.")
+    await zzy.edit("Downloaded " + output + " files.")
 
 
 @ram_cmd(pattern="geta ([\s\S]*)")
@@ -42,7 +42,7 @@ async def get_media(event):
     channel_username = channel_username[7:]
 
     print(channel_username)
-    hell = await eor(event, "Downloading All Media From this Channel.")
+    zzy = await eor(event, "Downloading All Media From this Channel.")
     msgs = await bot.get_messages(channel_username, limit=3000)
     with open("log.txt", "w") as f:
         f.write(str(msgs))
@@ -55,13 +55,13 @@ async def get_media(event):
     output = str(output)
     output = output.replace("b'", "")
     output = output.replace("\n'", "")
-    await hell.edit("Downloaded " + output + " files.")
+    await zzy.edit("Downloaded " + output + " files.")
 
 
 CmdHelp("chnl_dwl").add_command(
   "geta", "channel username", "will download all media from channel into your bot server but there is limit of 3000 to prevent API limits."
 ).add_command(
-  "getc", "<limit> <channel username>", "will download latest given number of media from channel into your bot server", "getc 1000 @Its_HellBot"
+  "getc", "<limit> <channel username>", "will download latest given number of media from channel into your bot server", "getc 1000 @Its_ramubot"
 ).add_info(
   "Channel Media Download"
 ).add_warning(

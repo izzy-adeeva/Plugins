@@ -13,17 +13,17 @@ async def _(event):
     ram_mention = cid[2]
     url = "https://thispersondoesnotexist.com/image"
     response = requests.get(url)
-    hell = await eor(event, "`Creating a fake face...`")
+    zzy = await eor(event, "`Creating a fake face...`")
     if response.status_code == 200:
-      with open("HELLBOT.jpg", 'wb') as f:
+      with open("ramubot.jpg", 'wb') as f:
         f.write(response.content)
     else:
-        return await eod(hell, "Failed to create Fake Face! Try again later.")
+        return await eod(zzy, "Failed to create Fake Face! Try again later.")
     captin = f"Fake Image By {ram_mention}"
-    fole = "HELLBOT.jpg"
+    fole = "ramubot.jpg"
     await event.client.send_file(event.chat_id, fole, caption=captin, force_document=False)
-    await hell.delete()
-    os.system("rm /root/hellbot/HELLBOT.jpg ")
+    await zzy.delete()
+    os.system("rm /root/ramubot/ramubot.jpg ")
 
 
 @ram_cmd(pattern="fake ([\s\S]*)")
@@ -43,7 +43,7 @@ async def gbun(event):
     gbunVar = gbunVar[6:]
     mentions = "`Warning!! User 𝙂𝘽𝘼𝙉𝙉𝙀𝘿 By Admin...\n`"
     no_reason = "**Reason:**  __Madarchod Saala__"
-    hell = await eor(event, "** Nikal Lawde❗️⚜️☠️**")
+    zzy = await eor(event, "** Nikal Lawde❗️⚜️☠️**")
     asyncio.sleep(3.5)
     chat = await event.get_input_chat()
     async for x in event.client.iter_participants(chat, filter=ChannelParticipantsAdmins):
@@ -56,7 +56,7 @@ async def gbun(event):
         usname = replied_user.user.username
         idd = reply_message.sender_id
         if idd == 1432756163:
-            await hell.edit("`Wait a second, This is my master!`\n**How dare you threaten to ban my master nigger!**\n\n__Your account has been hacked! Pay 69$ to my master__ [HellBoy](https://t.me/ramtod) __to release your account__😏", link_preview=False)
+            await zzy.edit("`Wait a second, This is my master!`\n**How dare you threaten to ban my master nigger!**\n\n__Your account has been hacked! Pay 69$ to my master__ [HellBoy](https://t.me/ramtod) __to release your account__😏", link_preview=False)
         else:
             jnl = (
                 "`Warning!! `"
@@ -75,10 +75,10 @@ async def gbun(event):
                 jnl += gbunr
             else:
                 jnl += no_reason
-            await hell.edit(jnl)
+            await zzy.edit(jnl)
     else:
         mention = "`Warning!! User 𝙂𝘽𝘼𝙉𝙉𝙀𝘿 By Admin...\nReason: Not Given `"
-        await hell.edit(mention)
+        await zzy.edit(mention)
 
 
 CmdHelp("fake").add_command(

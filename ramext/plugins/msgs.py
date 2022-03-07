@@ -10,9 +10,9 @@ msg_cache = {}
 groupsid = []
 
 
-async def all_groups_id(hell):
+async def all_groups_id(zzy):
     hellgroups = []
-    async for dialog in hell.client.iter_dialogs():
+    async for dialog in zzy.client.iter_dialogs():
         entity = dialog.entity
         if isinstance(entity, Channel) and entity.megagroup:
             hellgroups.append(entity.id)

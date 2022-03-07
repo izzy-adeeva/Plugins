@@ -1,6 +1,6 @@
 from . import *
-# Credits to @ramtod developer of HellBot.
-# This is my first plugin that I made when I released first HellBot.
+# Credits to @ramtod developer of ramubot.
+# This is my first plugin that I made when I released first ramubot.
 # Modified to work in groups with inline mode disabled.
 # Added error msg if no voice is found.
 # So please dont remove credit. 
@@ -8,14 +8,14 @@ from . import *
 
 @ram_cmd(pattern="mev(?:\s|$)([\s\S]*)")
 async def _(event):
-    hell = event.text[5:]
+    zzy = event.text[5:]
     rply = await event.get_reply_message()
-    if not hell:
+    if not zzy:
         if event.is_reply:
             rply.message
         else:
             return await eod(event, "`Sir please give some query to search and download it for you..!`")
-    troll = await event.client.inline_query("TrollVoiceBot", f"{(deEmojify(hell))}")
+    troll = await event.client.inline_query("TrollVoiceBot", f"{(deEmojify(zzy))}")
     if troll:
         await event.delete()
         hel_ = await troll[0].click(Config.LOGGER_ID)
@@ -33,14 +33,14 @@ async def _(event):
 
 @ram_cmd(pattern="meev(?:\s|$)([\s\S]*)")
 async def _(event):
-    hell = event.text[6:]
+    zzy = event.text[6:]
     rply = await event.get_reply_message()
-    if not hell:
+    if not zzy:
         if event.is_reply:
             rply.message
         else:
             return await eod(event, "`Sir please give some query to search and download it for you..!`")
-    troll = await event.client.inline_query("Myinstantsbot", f"{(deEmojify(hell))}")
+    troll = await event.client.inline_query("Myinstantsbot", f"{(deEmojify(zzy))}")
     if troll:
         await event.delete()
         hel_ = await troll[0].click(Config.LOGGER_ID)

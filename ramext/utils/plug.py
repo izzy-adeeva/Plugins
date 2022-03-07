@@ -37,19 +37,19 @@ def load_module(shortname):
     if shortname.startswith("__"):
         pass
     elif shortname.endswith("_"):
-        import hellbot.utils
+        import ramubot.utils
 
-        path = Path(f"hellbot/plugins/{shortname}.py")
-        name = "hellbot.plugins.{}".format(shortname)
+        path = Path(f"ramubot/plugins/{shortname}.py")
+        name = "ramubot.plugins.{}".format(shortname)
         spec = importlib.util.spec_from_file_location(name, path)
         mod = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(mod)
-        LOGS.info("HellBot - Successfully imported " + shortname)
+        LOGS.info("ramubot - Successfully imported " + shortname)
     else:
-        import hellbot.utils
+        import ramubot.utils
 
-        path = Path(f"hellbot/plugins/{shortname}.py")
-        name = "hellbot.plugins.{}".format(shortname)
+        path = Path(f"ramubot/plugins/{shortname}.py")
+        name = "ramubot.plugins.{}".format(shortname)
         spec = importlib.util.spec_from_file_location(name, path)
         mod = importlib.util.module_from_spec(spec)
         mod.bot = RAM
@@ -59,34 +59,34 @@ def load_module(shortname):
         mod.RAM4 = RAM4
         mod.RAM5 = RAM5
         mod.RAM = RAM
-        mod.HellBot = HellBot
-        mod.tbot = HellBot
+        mod.ramubot = ramubot
+        mod.tbot = ramubot
         mod.tgbot = bot.tgbot
         mod.command = command
         mod.CmdHelp = CmdHelp
         mod.client_id = client_id
         mod.logger = logging.getLogger(shortname)
         # support for uniborg
-        sys.modules["uniborg.util"] = hellbot.utils
+        sys.modules["uniborg.util"] = ramubot.utils
         mod.Config = Config
         mod.borg = bot
-        mod.hellbot = bot
+        mod.ramubot = bot
         mod.edit_or_reply = edit_or_reply
         mod.eor = edit_or_reply
-        mod.delete_hell = delete_hell
-        mod.eod = delete_hell
+        mod.del_ram = del_ram
+        mod.eod = del_ram
         mod.Var = Config
         mod.admin_cmd = admin_cmd
-        mod.hell_cmd = hell_cmd
+        mod.ram_cmd = ram_cmd
         mod.sudo_cmd = sudo_cmd
         # support for other userbots
-        sys.modules["userbot.utils"] = hellbot.utils
-        sys.modules["userbot"] = hellbot
+        sys.modules["userbot.utils"] = ramubot.utils
+        sys.modules["userbot"] = ramubot
         # support for paperplaneextended
-        sys.modules["userbot.events"] = hellbot
+        sys.modules["userbot.events"] = ramubot
         spec.loader.exec_module(mod)
         # for imports
-        sys.modules["hellbot.plugins." + shortname] = mod
+        sys.modules["ramubot.plugins." + shortname] = mod
         LOGS.info("⚡ RAM-UBOT ⚡ - Successfully Imported " + shortname)
 
 
@@ -99,7 +99,7 @@ def remove_plugin(shortname):
             del LOAD_PLUG[shortname]
 
         except BaseException:
-            name = f"hellbot.plugins.{shortname}"
+            name = f"ramubot.plugins.{shortname}"
 
             for i in reversed(range(len(bot._event_builders))):
                 ev, cb = bot._event_builders[i]

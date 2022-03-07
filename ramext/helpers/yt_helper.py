@@ -3,7 +3,7 @@ import os
 
 from youtube_search import YoutubeSearch
 
-from ramext.utils.extras import delete_hell as eod
+from ramext.utils.extras import del_ram as eod
 
 
 # Gets yt link of given query.

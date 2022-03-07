@@ -13,9 +13,9 @@ DEL_TIME_OUT = 60
 
 @ram_cmd(pattern="autoname$")
 async def _(event):
-    hell = await eor(event, "`Starting AutoName Please Wait`")
+    zzy = await eor(event, "`Starting AutoName Please Wait`")
     _id, RAM_USER, _ment = await client_id(event)
-    await hell.edit(f"Auto Name has been started my Master")
+    await zzy.edit(f"Auto Name has been started my Master")
     await event.client.send_message(Config.LOGGER_ID, "#AUTONAME \n\nAutoname Started!!")
     while True:
         HB = time.strftime("%d-%m-%y")
@@ -36,8 +36,8 @@ async def _(event):
 
 @ram_cmd(pattern="autobio$")
 async def _(event):
-    hell = await eor(event, "Starting AutoBio...")
-    await hell.edit("AutoBio Activated...")
+    zzy = await eor(event, "Starting AutoBio...")
+    await zzy.edit("AutoBio Activated...")
     await event.client.send_message(Config.LOGGER_ID, "#AUTOBIO \n\nAutoBio Started!!")
     while True:
         DMY = time.strftime("%d.%m.%Y")

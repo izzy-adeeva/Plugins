@@ -146,15 +146,15 @@ async def apkr(event):
 
 @ram_cmd(pattern="mods ([\s\S]*)")
 async def mod(event):
-    hell = event.text[6:]
-    if not hell:
+    zzy = event.text[6:]
+    if not zzy:
         if event.is_reply:
             (await event.get_reply_message()).message
         else:
             await eod(uwu, "Give name of apk to search mod...")
             return
-    uwu = await eor(event, f"Searching Mod for  `{hell}` ...")
-    troll = await event.client.inline_query("PremiumAppBot", f"{(deEmojify(hell))}")
+    uwu = await eor(event, f"Searching Mod for  `{zzy}` ...")
+    troll = await event.client.inline_query("PremiumAppBot", f"{(deEmojify(zzy))}")
     owo = await troll[0].click(Config.LOGGER_ID)
     owo_id = owo.id
     modd = await event.client.get_messages(entity=Config.LOGGER_ID, ids=owo_id)

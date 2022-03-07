@@ -31,7 +31,7 @@ async def _(event):
     if user.first_name.startswith(OFFLINE_TAG):
         await eod(event, "**Already in Offline Mode.**")
         return
-    hell = await eor(event, "**Changing Profile to Offline...**")
+    zzy = await eor(event, "**Changing Profile to Offline...**")
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
         os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
     urllib.request.urlretrieve(
@@ -43,9 +43,9 @@ async def _(event):
         try:
             await event.client(functions.photos.UploadProfilePhotoRequest(file))
         except Exception as e:
-            await eod(hell, str(e))
+            await eod(zzy, str(e))
         else:
-            await eod(hell, "**Changed profile to OffLine.**")
+            await eod(zzy, "**Changed profile to OffLine.**")
     try:
         os.system("rm -fr donottouch.jpg")
     except Exception as e:
@@ -59,9 +59,9 @@ async def _(event):
             )
         )
         result = "**`{} {}`\nI am Offline now.**".format(first_name, last_name)
-        await eod(hell, result)
+        await eod(zzy, result)
     except Exception as e:
-        await eod(hell, str(e))
+        await eod(zzy, str(e))
 
 
 @ram_cmd(pattern="online$")
@@ -82,9 +82,9 @@ async def _(event):
         try:
             await event.client(functions.photos.UploadProfilePhotoRequest(file))
         except Exception as e:
-            await eod(hell, str(e))
+            await eod(zzy, str(e))
         else:
-            await eod(hell, "**Changed profile to Online.**")
+            await eod(zzy, "**Changed profile to Online.**")
     try:
         os.system("rm -fr donottouch.jpg")
     except Exception as e:
@@ -98,9 +98,9 @@ async def _(event):
             )
         )
         result = "**`{} {}`\nI am Online !**".format(first_name, last_name)
-        await eod(hell, result)
+        await eod(zzy, result)
     except Exception as e:
-        await eod(hell, str(e))
+        await eod(zzy, str(e))
 
 
 @ram_cmd(pattern="pbio(?:\s|$)([\s\S]*)")
@@ -132,24 +132,24 @@ async def _(event):
 @ram_cmd(pattern="ppic$")
 async def _(event):
     reply_message = await event.get_reply_message()
-    hell = await eor(event, "Downloading Profile Picture to my local ...")
+    zzy = await eor(event, "Downloading Profile Picture to my local ...")
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
         os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
     photo = None
     try:
         photo = await event.client.download_media(reply_message, Config.TMP_DOWNLOAD_DIRECTORY)
     except Exception as e:
-        await hell.edit(str(e))
+        await zzy.edit(str(e))
     else:
         if photo:
-            await hell.edit("Uploading profile picture...")
+            await zzy.edit("Uploading profile picture...")
             file = await event.client.upload_file(photo)
             try:
                 await event.client(functions.photos.UploadProfilePhotoRequest(file))
             except Exception as e:
-                await hell.edit(str(e))
+                await zzy.edit(str(e))
             else:
-                await eod(hell, PP_CHANGED)
+                await eod(zzy, PP_CHANGED)
     try:
         os.remove(photo)
     except Exception as e:
@@ -176,7 +176,7 @@ async def count(event):
     bc = 0
     b = 0
     result = ""
-    hell = await eor(event, "`Processing..`")
+    zzy = await eor(event, "`Processing..`")
     dialogs = await event.client.get_dialogs(limit=None, ignore_migrated=True)
     for d in dialogs:
         currrent_entity = d.entity
@@ -201,7 +201,7 @@ async def count(event):
     result += f"<b><i>📺 Channels :</b></i>  <code>{bc}</code>\n"
     result += f"<b><i>👾 Bots :</b></i>  <code>{b}</code>"
 
-    await hell.edit(result, parse_mode="HTML")
+    await zzy.edit(result, parse_mode="HTML")
 
 
 @ram_cmd(pattern="delpfp$")

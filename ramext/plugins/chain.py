@@ -4,7 +4,7 @@ from . import *
 
 @ram_cmd(pattern="chain$")
 async def _(event):
-    hell = await eor(event, "Counting...")
+    zzy = await eor(event, "Counting...")
     count = -1
     message = event.message
     while message:
@@ -17,7 +17,7 @@ async def _(event):
             )
         message = reply
         count += 1
-    await hell.edit(f"⛓️ **Chain length :**  `{count}`")
+    await zzy.edit(f"⛓️ **Chain length :**  `{count}`")
 
 
 CmdHelp("chain").add_command(

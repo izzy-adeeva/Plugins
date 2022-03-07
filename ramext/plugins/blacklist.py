@@ -6,7 +6,7 @@ from ramext.sql import blacklist_sql as sq
 from . import *
 
 
-@hell_handler()
+@ram_handler()
 async def on_new_message(event):
     name = event.raw_text
     snips = sq.get_chat_blacklist(event.chat_id)

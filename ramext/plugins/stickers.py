@@ -34,7 +34,7 @@ KANGING_STR = [
     "Turn around, Go straight and f*ck off...",
 ]
 
-hellbot = gvarstat("STICKER_PACKNAME")
+ramubot = gvarstat("STICKER_PACKNAME")
 
 
 @ram_cmd(pattern="kang(?:\s|$)([\s\S]*)")
@@ -50,11 +50,11 @@ async def kang(event):
     emoji = None
     if message and message.media:
         if isinstance(message.media, MessageMediaPhoto):
-            hell = await eor(event, f"`{random.choice(KANGING_STR)}`")
+            zzy = await eor(event, f"`{random.choice(KANGING_STR)}`")
             photo = io.BytesIO()
             photo = await event.client.download_media(message.photo, photo)
         elif "image" in message.media.document.mime_type.split("/"):
-            hell = await eor(event, f"`{random.choice(KANGING_STR)}`")
+            zzy = await eor(event, f"`{random.choice(KANGING_STR)}`")
             photo = io.BytesIO()
             await event.client.download_file(message.media.document, photo)
             if (
@@ -64,7 +64,7 @@ async def kang(event):
                 emoji = message.media.document.attributes[1].alt
                 emojibypass = True
         elif "tgsticker" in message.media.document.mime_type:
-            hell = await eor(event, f"`{random.choice(KANGING_STR)}`")
+            zzy = await eor(event, f"`{random.choice(KANGING_STR)}`")
             await event.client.download_file(message.media.document, "AnimatedSticker.tgs")
 
             attributes = message.media.document.attributes
@@ -100,10 +100,10 @@ async def kang(event):
                 # pack
                 emoji = splat[1]
 
-        packname = f"Hellbot_{un_}_{pack}"
+        packname = f"ramubot_{un_}_{pack}"
         packnick = (
-            f"{hellbot} Vol.{pack}"
-            if hellbot
+            f"{ramubot} Vol.{pack}"
+            if ramubot
             else f"{un}'s RAM-UBOT Vol.{pack}"
         )
         cmd = "/newpack"
@@ -136,13 +136,13 @@ async def kang(event):
                 x = await conv.get_response()
                 while "120" in x.text:
                     pack += 1
-                    packname = f"HellBot_{un_}_pack_{pack}"
+                    packname = f"ramubot_{un_}_pack_{pack}"
                     packnick = (
-                        f"{hellbot} Vol.{pack}"
-                        if hellbot
+                        f"{ramubot} Vol.{pack}"
+                        if ramubot
                         else f"{un}'s RAM-UBOT Vol.{pack}"
                     )
-                    await hell.edit(
+                    await zzy.edit(
                         "`Switching to Pack "
                         + str(pack)
                         + " due to insufficient space`"
@@ -186,7 +186,7 @@ async def kang(event):
                         await conv.get_response()
                         # Ensure user doesn't get spamming notifications
                         await event.client.send_read_acknowledge(conv.chat_id)
-                        await hell.edit(
+                        await zzy.edit(
                             f"`Sticker added in a Different Pack !\
                             \nThis Pack is Newly created!\
                             \nYour pack can be found [here](t.me/addstickers/{packname})",
@@ -201,7 +201,7 @@ async def kang(event):
                     await conv.send_file(file, force_document=True)
                 rsp = await conv.get_response()
                 if "Sorry, the file type is invalid." in rsp.text:
-                    await hell.edit(
+                    await zzy.edit(
                         "`Failed to add sticker, use` @Stickers `bot to add the sticker manually.`"
                     )
                     return
@@ -214,7 +214,7 @@ async def kang(event):
                 # Ensure user doesn't get spamming notifications
                 await event.client.send_read_acknowledge(conv.chat_id)
         else:
-            await hell.edit("`Preparing a new pack....`")
+            await zzy.edit("`Preparing a new pack....`")
             async with event.client.conversation("Stickers") as conv:
                 await conv.send_message(cmd)
                 await conv.get_response()
@@ -232,7 +232,7 @@ async def kang(event):
                     await conv.send_file(file, force_document=True)
                 rsp = await conv.get_response()
                 if "Sorry, the file type is invalid." in rsp.text:
-                    await hell.edit(
+                    await zzy.edit(
                         "`Failed to add sticker, use` @Stickers `bot to add the sticker manually.`"
                     )
                     return
@@ -258,7 +258,7 @@ async def kang(event):
                 # Ensure user doesn't get spamming notifications
                 await event.client.send_read_acknowledge(conv.chat_id)
 
-        await hell.edit(
+        await zzy.edit(
             f"⚡** This Sticker iz [kanged](t.me/addstickers/{packname}) successfully to your pack **⚡",
             parse_mode="md",
         )
@@ -300,13 +300,13 @@ async def get_pack_info(event):
         return
     try:
         stickerset_attr = rep_msg.document.attributes[1]
-        hell = await eor(event, "`Fetching details of the sticker pack, please wait..`")
+        zzy = await eor(event, "`Fetching details of the sticker pack, please wait..`")
     except BaseException:
         await eod(event, "`This is not a sticker. Reply to a sticker.`")
         return
 
     if not isinstance(stickerset_attr, DocumentAttributeSticker):
-        await hell.edit("`This is not a sticker. Reply to a sticker.`")
+        await zzy.edit("`This is not a sticker. Reply to a sticker.`")
         return
 
     get_stickerset = await event.client(
@@ -331,7 +331,7 @@ async def get_pack_info(event):
         f"🔸 **Emojis In Pack :**\n{' '.join(pack_emojis)}"
     )
 
-    await hell.edit(OUTPUT)
+    await zzy.edit(OUTPUT)
 
 
 @ram_cmd(pattern="delst(?:\s|$)([\s\S]*)")
@@ -342,7 +342,7 @@ async def _(event):
     reply_message = await event.get_reply_message()
     chat = "@Stickers"
     reply_message.sender
-    hell = await eor(event, "🥴 `Deleting sticker...`")
+    zzy = await eor(event, "🥴 `Deleting sticker...`")
     async with event.client.conversation(chat) as conv:
         try:
             response = conv.wait_event(
@@ -354,9 +354,9 @@ async def _(event):
             await event.client.forward_messages(chat, reply_message)
             response = await response
         except YouBlockedUserError:
-            await hell.edit("Please unblock @Stickers and try again")
+            await zzy.edit("Please unblock @Stickers and try again")
             return
-        await hell.edit(response.message)
+        await zzy.edit(response.message)
 
 
 @ram_cmd(pattern="editst(?:\s|$)([\s\S]*)")
@@ -367,9 +367,9 @@ async def _(event):
     reply_message = await event.get_reply_message()
     hel_ = event.pattern_match.group(1)
     chat = "@Stickers"
-    hell = await eor(event, "📝 `Editing sticker emoji...`")
+    zzy = await eor(event, "📝 `Editing sticker emoji...`")
     if hel_ == "":
-        await hell.edit("**🤧 Nashe me hai kya lawde**")
+        await zzy.edit("**🤧 Nashe me hai kya lawde**")
     else:
         async with event.client.conversation(chat) as conv:
             try:
@@ -385,9 +385,9 @@ async def _(event):
                 await conv.send_message(f"{hel_}")
                 response = await response
             except YouBlockedUserError:
-                await hell.edit("Please unblock @Stickers and try again")
+                await zzy.edit("Please unblock @Stickers and try again")
                 return
-            await hell.edit(f"{response.message}")
+            await zzy.edit(f"{response.message}")
 
 
 @ram_cmd(pattern="pkang(?:\s|$)([\s\S]*)")
@@ -395,7 +395,7 @@ async def _(event):
     hel_ = await eor(event, "`Preparing pack kang...`")
     rply = await event.get_reply_message()
     ramtod, RAM_USER, ram_mention = await client_id(event)
-    hell = event.text[7:]
+    zzy = event.text[7:]
     bot_ = Config.BOT_USERNAME
     bot_un = bot_.replace("@", "")
     user = await event.client.get_me()
@@ -403,10 +403,10 @@ async def _(event):
     un_ = user.username if user.username else ramtod
     if not rply:
         return await eod(hel_, "`Reply to a stciker to kang that pack.`")
-    if hell == "":
+    if zzy == "":
         pname = f"{un}'s RAM-UBOT Pack"
     else:
-        pname = hell
+        pname = zzy
     if rply and rply.media and rply.media.document.mime_type == "image/webp":
         hell_id = rply.media.document.attributes[1].stickerset.id
         hell_hash = rply.media.document.attributes[1].stickerset.access_hash
@@ -489,7 +489,7 @@ async def sticklet(event):
     )
 
     image_stream = io.BytesIO()
-    image_stream.name = "Hellbot.webp"
+    image_stream.name = "ramubot.webp"
     image.save(image_stream, "WebP")
     image_stream.seek(0)
 

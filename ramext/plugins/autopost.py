@@ -10,43 +10,43 @@ from . import *
 async def _(event):
     if event.is_private:
         return await eod(event, "AutoPost Can Only Be Used For Channels & Groups.")
-    hell = await eor(event, "Trying to start autoposting from here...")
+    zzy = await eor(event, "Trying to start autoposting from here...")
     cid = await client_id(event)
     ramtod = cid[0]
     hel_ = event.text[10:]
     cli_ = ramtod
     checker = gvarstat(f"AUTOPOST_{str(cli_)}")
     if hel_ == "":
-        return await eod(hell, f"Give correct command for working of autopost. \n`{ii}autopost channel_id`")
+        return await eod(zzy, f"Give correct command for working of autopost. \n`{ii}autopost channel_id`")
     if str(hel_).startswith("-100"):
         kk = str(hel_).replace("-100", "")
     else:
         kk = hel_
     if not kk.isdigit():
-        return await eod(hell, "**Please Give Channel ID !!**")
+        return await eod(zzy, "**Please Give Channel ID !!**")
     if is_post(kk , event.chat_id):
         if checker and checker == "True":
-            return await hell.edit("This channel is already in this client's autopost database.")
+            return await zzy.edit("This channel is already in this client's autopost database.")
         else:
             addgvar(f"AUTOPOST_{str(cli_)}", "True")
-            return await hell.edit(f"**📍 Started AutoPosting from** `{hel_}` for `{cli_}`")
+            return await zzy.edit(f"**📍 Started AutoPosting from** `{hel_}` for `{cli_}`")
     add_post(kk, event.chat_id)
     addgvar(f"AUTOPOST_{str(cli_)}", "True")
-    await hell.edit(f"**📍 Started AutoPosting from** `{hel_}` for `{cli_}`")
+    await zzy.edit(f"**📍 Started AutoPosting from** `{hel_}` for `{cli_}`")
 
 
 @ram_cmd(pattern="rmautopost(?:\s|$)([\s\S]*)")
 async def _(event):
     if event.is_private:
         return await eod(event, "AutoPost Can Only Be Used For Channels.")
-    hell = await eor(event, "Removing autopost...")
+    zzy = await eor(event, "Removing autopost...")
     cid = await client_id(event)
     ramtod = cid[0]
     hel_ = event.text[12:]
     cli_ = ramtod
     checker = gvarstat(f"AUTOPOST_{str(cli_)}")
     if hel_ == "":
-        return await eod(hell, f"Give correct command for removing autopost. \n`{ii}autopost channel_id`")
+        return await eod(zzy, f"Give correct command for removing autopost. \n`{ii}autopost channel_id`")
     if str(hel_).startswith("-100"):
         kk = str(hel_).replace("-100", "")
     else:
@@ -59,12 +59,12 @@ async def _(event):
         if checker and checker == "True":
             remove_post(kk, event.chat_id)
             delgvar(f"AUTOPOST_{str(cli_)}")
-            return await eod(hell, f"Removed `{hel_}` from `{cli_}` autopost database.")
+            return await eod(zzy, f"Removed `{hel_}` from `{cli_}` autopost database.")
         else:
-            return await eod(hell, f"This channel is not in `{cli_}` autopost database.")
+            return await eod(zzy, f"This channel is not in `{cli_}` autopost database.")
 
 
-@hell_handler()
+@ram_handler()
 async def _(event):
     chat_id = str(event.chat_id).replace("-100", "")
     channels_set  = get_all_post(chat_id)

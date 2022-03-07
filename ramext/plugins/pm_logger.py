@@ -32,7 +32,7 @@ async def log(event):
         await eod(event, "`This feature requires Logging to be enabled!`")
 
 
-@hell_handler(func=lambda e: e.is_private)
+@ram_handler(func=lambda e: e.is_private)
 async def monito_p_m_s(event):
     if lg_id is None:
         return

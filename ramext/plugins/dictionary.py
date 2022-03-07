@@ -34,10 +34,10 @@ async def _(event):
 async def _(event):
     word = event.pattern_match.group(1)
     dictionary = PyDictionary()
-    hell = dictionary.meaning(word)
+    zzy = dictionary.meaning(word)
     output = f"**Word :** __{word}__\n\n"
     try:
-        for a, b in hell.items():
+        for a, b in zzy.items():
             output += f"**{a}**\n"
             for i in b:
                 output += f"☞ __{i}__\n"

@@ -103,7 +103,7 @@ async def get_ocr_languages(event):
 
 @ram_cmd(pattern="ocr(?:\s|$)([\s\S]*)")
 async def parse_ocr_space_api(event):
-    hell = await eor(event, "Processing weit...🤓")
+    zzy = await eor(event, "Processing weit...🤓")
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
         os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
     lang_code = event.pattern_match.group(1)
@@ -119,17 +119,17 @@ async def parse_ocr_space_api(event):
             int(test_file["ProcessingTimeInMilliseconds"]) // 1000
         )
     except Exception as e:
-        await eod(hell, "**Errors !!** \n`{}`\n**Report This to** {}\n\n`{}`".format(
-                str(e), hell_grp, json.dumps(test_file, sort_keys=True, indent=4)
+        await eod(zzy, "**Errors !!** \n`{}`\n**Report This to** {}\n\n`{}`".format(
+                str(e), ram_grp, json.dumps(test_file, sort_keys=True, indent=4)
             )
         )
     else:
-        await hell.edit("Read Document in {} seconds. \n{}".format(
+        await zzy.edit("Read Document in {} seconds. \n{}".format(
                 ProcessingTimeInMilliseconds, ParsedText
             )
         )
     os.remove(downloaded_file_name)
-    await hell.edit(ParsedText)
+    await zzy.edit(ParsedText)
 
 
 CmdHelp("ocr").add_command(

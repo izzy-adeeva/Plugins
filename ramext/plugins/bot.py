@@ -12,7 +12,7 @@ from . import *
 
 @ram_cmd(pattern="kickme$")
 async def leave(e):
-        await e.edit("😪 **KThnxBye** See u all in hell!!")
+        await e.edit("😪 **KThnxBye** See u all in zzy!!")
         time.sleep(1)
         if "-" in str(e.chat_id):
             await event.client(LeaveChannelRequest(e.chat_id))
@@ -36,11 +36,11 @@ async def _(event):
 
 @ram_cmd(pattern="vars$")
 async def lst(event):
-    hell = await eor(event, "Getting configs list...")
+    zzy = await eor(event, "Getting configs list...")
     x = "**List of all available configs are :** \n\n"
     for i in config_list:
         x += "`" + i + "`\n"
-    await hell.edit(x)
+    await zzy.edit(x)
 
 
 @ram_cmd(pattern="schd(?:\s|$)([\s\S]*)")

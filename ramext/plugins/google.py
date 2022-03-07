@@ -63,7 +63,7 @@ async def google(event):
     input_str = event.pattern_match.group(1)
     if not input_str:
         return await eod(event, "`Give something to search..`")
-    hell = await eor(event, "Searching...")
+    zzy = await eor(event, "Searching...")
     gos = GoogleSearch()
     try:
         got = await gos.async_search(f"{input_str}", cache=False)
@@ -80,7 +80,7 @@ async def google(event):
 »» <b>Results :</b>
 {output}"""
     paste = await telegraph_paste(f"Google Search Query “ {input_str} ”", res)
-    await hell.edit(f"**Google Search For** `{input_str}` \n[📌 See Results Here]({paste})", link_preview=False)
+    await zzy.edit(f"**Google Search For** `{input_str}` \n[📌 See Results Here]({paste})", link_preview=False)
 
 
 @ram_cmd(pattern="img(?:\s|$)([\s\S]*)")
@@ -88,7 +88,7 @@ async def img(event):
     sim = event.pattern_match.group(1)
     if not sim:
         return await eod(event, "`Give something to search...`")
-    hell = await eor(event, f"Searching for `{sim}`...")
+    zzy = await eor(event, f"Searching for `{sim}`...")
     if ";" in sim:
         try:
             lim = int(sim.split(";")[1])
@@ -108,7 +108,7 @@ async def img(event):
     gotit = letsgo[0][sim]
     await event.client.send_file(event.chat_id, gotit, caption=sim, album=True)
     rmtree(f"./DOWNLOADS/{sim}/")
-    await hell.delete()
+    await zzy.delete()
 
 
 @ram_cmd(pattern="reverse(?:\s|$)([\s\S]*)")
@@ -116,7 +116,7 @@ async def _(event):
     reply = await event.get_reply_message()
     if not reply:
         return await eod(event, "`Reply to an Image or stciker...`")
-    hell = await eor(event, "`Processing...`")
+    zzy = await eor(event, "`Processing...`")
     dl = await reply.download_media()
     file = {"encoded_image": (dl, open(dl, "rb"))}
     grs = requests.post(
@@ -136,7 +136,7 @@ async def _(event):
     alls = div.find("a")
     link = alls["href"]
     text = alls.text
-    await hell.edit(f"**Possible Results :** [{text}](google.com{link})")
+    await zzy.edit(f"**Possible Results :** [{text}](google.com{link})")
     img = googleimagesdownload()
     args = {
         "keywords": text,
@@ -164,16 +164,16 @@ async def gps(event):
     input_str = event.pattern_match.group(1)
     if not input_str:
         return await eod(event, "What should i find? Give me location.🤨")
-    hell = await eor(event, "Finding😁")
-    geolocator = Nominatim(user_agent="hellbot")
+    zzy = await eor(event, "Finding😁")
+    geolocator = Nominatim(user_agent="ramubot")
     geoloc = geolocator.geocode(input_str)
     if geoloc:
         lon = geoloc.longitude
         lat = geoloc.latitude
         await reply_to_id.reply(input_str, file=types.InputMediaGeoPoint(types.InputGeoPoint(lat, lon)))
-        await hell.delete()
+        await zzy.delete()
     else:
-        await eod(hell, "I coudn't find it😫")
+        await eod(zzy, "I coudn't find it😫")
 
 
 CmdHelp("google").add_command(

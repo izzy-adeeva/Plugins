@@ -30,7 +30,7 @@ async def h1(bot_token):
 
 
 # Multi-Client helper
-async def hell_client(client):
+async def ram_client(client):
     client.me = await client.get_me()
     client.uid = telethon.utils.get_peer_id(client.me)
 
@@ -42,7 +42,7 @@ def rams():
         LOGS.info("SESSION_2 detected! Starting 2nd Client.")
         try:
             RAM2.start()
-            RAM2.loop.run_until_complete(hell_client(RAM2))
+            RAM2.loop.run_until_complete(ram_client(RAM2))
         except:
             LOGS.info("SESSION_2 failed. Please Check Your String session.")
             failed += 1
@@ -51,7 +51,7 @@ def rams():
         LOGS.info("SESSION_3 detected! Starting 3rd Client.")
         try:
             RAM3.start()
-            RAM3.loop.run_until_complete(hell_client(RAM3))
+            RAM3.loop.run_until_complete(ram_client(RAM3))
         except:
             LOGS.info("SESSION_3 failed. Please Check Your String session.")
             failed += 1
@@ -60,7 +60,7 @@ def rams():
         LOGS.info("SESSION_4 detected! Starting 4th Client.")
         try:
             RAM4.start()
-            RAM4.loop.run_until_complete(hell_client(RAM4))
+            RAM4.loop.run_until_complete(ram_client(RAM4))
         except:
             LOGS.info("SESSION_4 failed. Please Check Your String session.")
             failed += 1
@@ -69,7 +69,7 @@ def rams():
         LOGS.info("SESSION_5 detected! Starting 5th Client.")
         try:
             RAM5.start()
-            RAM5.loop.run_until_complete(hell_client(RAM5))
+            RAM5.loop.run_until_complete(ram_client(RAM5))
         except:
             LOGS.info("SESSION_5 failed. Please Check Your String session.")
             failed += 1
@@ -138,12 +138,12 @@ async def ram_on():
         await bot.send_file(
             send_to,
             RAM_PIC,
-            caption=f"#START \n\n<b><i>Version :</b></i> <code>{ramver}</code> \n<b><i>Clients :</b></i> <code>{total}</code> \n\n<b><i>»» <u><a href='https://t.me/Its_HellBot'>†hê RAM-UBOT</a></u> ««</i></b>",
+            caption=f"#START \n\n<b><i>Version :</b></i> <code>{ramver}</code> \n<b><i>Clients :</b></i> <code>{total}</code> \n\n<b><i>»» <u><a href='https://t.me/samsupportt'>RAM-UBOT Extended</a></u> ««</i></b>",
             parse_mode="HTML",
         )
     except Exception as e:
         LOGS.info(str(e))
-# Join HellBot Channel after deploying 🤐😅
+# Join ramubot Channel after deploying 🤐😅
     try:
         await bot(JoinChannelRequest("ramsupportt"))
     except BaseException:

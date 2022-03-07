@@ -24,7 +24,7 @@ async def _(event):
     else:
         to_quote.append(reply_message.id)
     chat = "@QuotLyBot"
-    hell = await eor(event, "```Making a Quote...```")
+    zzy = await eor(event, "```Making a Quote...```")
     async with event.client.conversation(chat) as conv:
         try:
             first = await conv.send_message(f"/qcolor {colour}")
@@ -32,9 +32,9 @@ async def _(event):
             third = await event.client.forward_messages(chat, to_quote, event.chat_id)
             fourth = await conv.get_response()
         except YouBlockedUserError:
-            await hell.edit("Please unblock @QuotLyBot and try again!!")
+            await zzy.edit("Please unblock @QuotLyBot and try again!!")
             return
-        await hell.delete()
+        await zzy.delete()
         await event.client.send_message(event.chat_id, fourth, reply_to=reply_message)
     q_d = []
     async for qdel in event.client.iter_messages(chat, min_id=first.id):

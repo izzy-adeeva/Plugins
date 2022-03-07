@@ -12,18 +12,18 @@ async def _(event):
     query = event.text[7:]
     if query == "":
         return await eor(event, "Please give anime name to search on Anilist.")
-    hell = await eor(event, f"__Searching for__ `{query}` __on Anilist.__")
+    zzy = await eor(event, f"__Searching for__ `{query}` __on Anilist.__")
     qdb = rand_key()
     ANIME_DB[qdb] = query
     result = await get_anilist(qdb, 1)
     if len(result) == 1:
-        return await hell.edit(result[0])
+        return await zzy.edit(result[0])
     pic, msg = result[0], result[1][0]
     try:
         await event.client.send_file(event.chat_id, file=pic, caption=msg, force_document=False)
-        await hell.delete()
+        await zzy.delete()
     except ChatSendMediaForbiddenError:
-        await hell.edit(msg)
+        await zzy.edit(msg)
     if os.path.exists(pic):
         os.remove(pic)
 
@@ -33,18 +33,18 @@ async def _(event):
     query = event.text[7:]
     if query == "":
         await eor(event, "Please give manga name to search..")
-    hell = await eor(event, f"__Searching for__ `{query}` ...")
+    zzy = await eor(event, f"__Searching for__ `{query}` ...")
     qdb = rand_key()
     MANGA_DB[qdb] = query
     result = await get_manga(qdb, 1)
     if len(result) == 1:
-        return await hell.edit(result[0])
+        return await zzy.edit(result[0])
     pic, finals_ = result[0], result[1][0]
     try:
         await event.client.send_file(event.chat_id, file=pic, caption=finals_)
-        await hell.delete()
+        await zzy.delete()
     except ChatSendMediaForbiddenError:
-        await hell.edit(finals_)
+        await zzy.edit(finals_)
     if os.path.exists(pic):
         os.remove(pic)
 
@@ -54,32 +54,32 @@ async def _(event):
     query = event.text[11:]
     if query == "":
         return await eor(event, "Give character name to get details.")
-    hell = await eor(event, f"__Searching for__ `{query}`")
+    zzy = await eor(event, f"__Searching for__ `{query}`")
     qdb = rand_key()
     CHARC_DB[qdb]=query
     result = await get_character(qdb, 1)
     if len(result) == 1:
-        return await hell.edit(result[0])
+        return await zzy.edit(result[0])
     img = result[0]
     cap_text = result[1][0]
     try:
         await event.client.send_file(event.chat_id, file=img, caption=cap_text)
-        await hell.delete()
+        await zzy.delete()
     except ChatSendMediaForbiddenError:
-        await hell.delete(cap_text)
+        await zzy.delete(cap_text)
     if os.path.exists(img):
         os.remove(img)
 
 
 @ram_cmd(pattern="fillers(?:\s|$)([\s\S]*)")
 async def canon(event):
-    hell = event.text[9:]
-    if hell == "":
+    zzy = event.text[9:]
+    if zzy == "":
         return await eor(event, "`Give anime name to search filler episodes.`")
-    nub = await eor(event, f"Searching Filler Episodes For `{hell}`")
-    hel_ = search_filler(hell)
+    nub = await eor(event, f"Searching Filler Episodes For `{zzy}`")
+    hel_ = search_filler(zzy)
     if hel_ == {}:
-        return await nub.edit(f"No filler found for `{hell}`")
+        return await nub.edit(f"No filler found for `{zzy}`")
     list_ = list(hel_.keys())
     if len(list_) == 1:
         result = parse_filler(hel_.get(list_[0]))
@@ -96,7 +96,7 @@ async def canon(event):
         paste = await telegraph_paste(f"📃 Fillers List For “ {list_[0]} ”", msg)
         await nub.edit(f"**📃 Filler Episode List For [“ {list_[0]} ”]({paste}) !!**")
         return
-    hellbot = f"**📃 Filler Episode Lists :** \n\n"
+    ramubot = f"**📃 Filler Episode Lists :** \n\n"
     for i in list_:
         result = parse_filler(hel_.get(i))
         msg = ""
@@ -110,28 +110,28 @@ async def canon(event):
             msg += "\n\n<b>Anime Canon episodes :</b>\n"
             msg += f'<code>{str(result.get("ac_ep"))}</code>'
         paste = await telegraph_paste(f"📃 Fillers List For “ {i} ”", msg)
-        hellbot += f"• [{i}]({paste})\n"
-    await nub.edit(hellbot)
+        ramubot += f"• [{i}]({paste})\n"
+    await nub.edit(ramubot)
 
 
 @ram_cmd(pattern="airing(?:\s|$)([\s\S]*)")
 async def _(event):
     query = event.text[8:]
-    hell = await eor(event, f"__Searching airing details for__ `{query}`")
+    zzy = await eor(event, f"__Searching airing details for__ `{query}`")
     if query == "":
-        return await eod(hell, "Give anime name to seaech airing information.")
+        return await eod(zzy, "Give anime name to seaech airing information.")
     vars_ = {"search": query}
     if query.isdigit():
         vars_ = {"id": int(query), "asHtml": True}
     result = await get_airing(vars_)
     if len(result) == 1:
-        return await hell.edit(result[0])
+        return await zzy.edit(result[0])
     coverImg, out = result[0]
     try:
         await event.client.send_file(event.chat_id, coverImg, caption=out, force_document=False)
-        await hell.delete()
+        await zzy.delete()
     except ChatSendMediaForbiddenError:
-        await hell.edit(out)
+        await zzy.edit(out)
     if os.path.exists(coverImg):
         os.remove(coverImg)
 
@@ -139,29 +139,29 @@ async def _(event):
 @ram_cmd(pattern="aniuser(?:\s|$)([\s\S]*)")
 async def _(event):
     query = event.text[9:]
-    hell = await eor(event, "Searching user's Anilist Stats...")
+    zzy = await eor(event, "Searching user's Anilist Stats...")
     if query == "":
-        return await hell.edit("No user found. Give anilist username.")
+        return await zzy.edit("No user found. Give anilist username.")
     qry = {"search": query}
     result = await get_user(qry)
     if len(result) == 1:
-        return await eod(hell, result[0])
+        return await eod(zzy, result[0])
     pic, msg = result
     try:
         await event.client.send_file(event.chat_id, file=pic, caption=msg, force_document=False, parse_mode="HTML")
-        await hell.delete()
+        await zzy.delete()
     except ChatSendMediaForbiddenError:
-        await hell.edit(msg)
+        await zzy.edit(msg)
     if os.path.exists(pic):
         os.remove(pic)
 
 
 @ram_cmd(pattern="aniquote$")
 async def quote(event):
-    hell = await eor(event, "(ﾉ◕ヮ◕)ﾉ*.✧")
+    zzy = await eor(event, "(ﾉ◕ヮ◕)ﾉ*.✧")
     q = requests.get("https://animechan.vercel.app/api/random").json()
     await asyncio.sleep(1.5)
-    await hell.edit("`"+q["quote"]+"`\n\n—  **"+q["character"]+"** (From __"+q["anime"]+"__)") #dimag ka bhosda hogya bc yha pe (*﹏*;)
+    await zzy.edit("`"+q["quote"]+"`\n\n—  **"+q["character"]+"** (From __"+q["anime"]+"__)") #dimag ka bhosda hogya bc yha pe (*﹏*;)
 
 
 CmdHelp("anime").add_command(

@@ -20,24 +20,24 @@ if not os.path.isdir("./temp"):
 async def _(event):
     if not event.reply_to_msg_id:
         return await eod(event, "Reply to animated sticker to make gif.")
-    hell = await eor(event, "Converting...")
+    zzy = await eor(event, "Converting...")
     if event.pattern_match.group(1):
         quality = event.pattern_match.group(1)
     else:
         quality = 512
     rply = await event.get_reply_message()
-    hell = await event.client.download_media(rply.media)
-    gifs = tgs_to_gif(hell, quality)
+    zzy = await event.client.download_media(rply.media)
+    gifs = tgs_to_gif(zzy, quality)
     await event.client.send_file(event.chat_id, file=gifs, force_document=False)
-    await hell.delete()
+    await zzy.delete()
 
 
 @ram_cmd(pattern="stoi$")
-async def _(hell):
-    reply_to_id = hell.message.id
-    if hell.reply_to_msg_id:
-        reply_to_id = hell.reply_to_msg_id
-    event = await eor(hell, "Converting.....")
+async def _(zzy):
+    reply_to_id = zzy.message.id
+    if zzy.reply_to_msg_id:
+        reply_to_id = zzy.reply_to_msg_id
+    event = await eor(zzy, "Converting.....")
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
         os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
     if event.reply_to_msg_id:
@@ -46,11 +46,11 @@ async def _(hell):
         reply_message = await event.get_reply_message()
         to_download_directory = Config.TMP_DOWNLOAD_DIRECTORY
         downloaded_file_name = os.path.join(to_download_directory, file_name)
-        downloaded_file_name = await hell.client.download_media(
+        downloaded_file_name = await zzy.client.download_media(
             reply_message, downloaded_file_name
         )
         if os.path.exists(downloaded_file_name):
-            await hell.client.send_file(
+            await zzy.client.send_file(
                 event.chat_id,
                 downloaded_file_name,
                 force_document=False,
@@ -65,11 +65,11 @@ async def _(hell):
 
 
 @ram_cmd(pattern="itos$")
-async def _(hell):
-    reply_to_id = hell.message.id
-    if hell.reply_to_msg_id:
-        reply_to_id = hell.reply_to_msg_id
-    event = await eor(hell, "Converting.....")
+async def _(zzy):
+    reply_to_id = zzy.message.id
+    if zzy.reply_to_msg_id:
+        reply_to_id = zzy.reply_to_msg_id
+    event = await eor(zzy, "Converting.....")
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
         os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
     if event.reply_to_msg_id:
@@ -78,11 +78,11 @@ async def _(hell):
         reply_message = await event.get_reply_message()
         to_download_directory = Config.TMP_DOWNLOAD_DIRECTORY
         downloaded_file_name = os.path.join(to_download_directory, file_name)
-        downloaded_file_name = await hell.client.download_media(
+        downloaded_file_name = await zzy.client.download_media(
             reply_message, downloaded_file_name
         )
         if os.path.exists(downloaded_file_name):
-            await hell.client.send_file(
+            await zzy.client.send_file(
                 event.chat_id,
                 downloaded_file_name,
                 force_document=False,
@@ -147,24 +147,24 @@ async def on_file_to_photo(event):
 
 
 @ram_cmd(pattern="itof$")
-async def _(hell):
-    reply_to_id = hell.message.id
-    if hell.reply_to_msg_id:
-        reply_to_id = hell.reply_to_msg_id
-    event = await eor(hell, "Converting.....")
+async def _(zzy):
+    reply_to_id = zzy.message.id
+    if zzy.reply_to_msg_id:
+        reply_to_id = zzy.reply_to_msg_id
+    event = await eor(zzy, "Converting.....")
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
         os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
     if event.reply_to_msg_id:
-        filename = "hellbot.jpg"
+        filename = "ramubot.jpg"
         file_name = filename
         reply_message = await event.get_reply_message()
         to_download_directory = Config.TMP_DOWNLOAD_DIRECTORY
         downloaded_file_name = os.path.join(to_download_directory, file_name)
-        downloaded_file_name = await hell.client.download_media(
+        downloaded_file_name = await zzy.client.download_media(
             reply_message, downloaded_file_name
         )
         if os.path.exists(downloaded_file_name):
-            await hell.client.send_file(
+            await zzy.client.send_file(
                 event.chat_id,
                 downloaded_file_name,
                 force_document=True,

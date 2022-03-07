@@ -55,7 +55,7 @@ async def morning(e):
 
 @ram_cmd(pattern="quote(?:\s|$)([\s\S]*)")
 async def quote_search(event):
-    hell = await eor(event, "`Processing...`")
+    zzy = await eor(event, "`Processing...`")
     input_str = event.pattern_match.group(1)
     if not input_str:
         api_url = "https://quotes.cwprojects.live/random"
@@ -70,9 +70,9 @@ async def quote_search(event):
         except:
             response = None
     if response is not None:
-        await hell.edit(f"`{response['text']}`")
+        await zzy.edit(f"`{response['text']}`")
     else:
-        await eod(hell, "`Sorry Zero results found`")
+        await eod(zzy, "`Sorry Zero results found`")
 
 
 CmdHelp("quotes").add_command(

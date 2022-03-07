@@ -26,10 +26,10 @@ async def _(event):
         await eod(event, "`Can't memify this 🥴`")
         return
     hel_ = await eor(event, "**Memifying 🌚🌝**")
-    hell = await _reply.download_media()
-    if hell.endswith((".tgs")):
+    zzy = await _reply.download_media()
+    if zzy.endswith((".tgs")):
         await hel_.edit("OwO animated sticker...")
-        cmd = ["lottie_convert.py", hell, "pic.png"]
+        cmd = ["lottie_convert.py", zzy, "pic.png"]
         file = "pic.png"
         process = await asyncio.create_subprocess_exec(
             *cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
@@ -37,12 +37,12 @@ async def _(event):
         stdout, stderr = await process.communicate()
         stderr.decode().strip()
         stdout.decode().strip()
-    elif hell.endswith((".webp", ".png")):
-        pics = Image.open(hell)
+    elif zzy.endswith((".webp", ".png")):
+        pics = Image.open(zzy)
         pics.save("pic.png", format="PNG", optimize=True)
         file = "pic.png"
     else:
-        img = cv2.VideoCapture(hell)
+        img = cv2.VideoCapture(zzy)
         tal, semx = img.read()
         cv2.imwrite("pic.png", semx)
         file = "pic.png"
@@ -52,7 +52,7 @@ async def _(event):
     )
     await hel_.delete()
     try:
-        os.remove(hell)
+        os.remove(zzy)
         os.remove(file)
         os.remove(output)
     except BaseException:
@@ -67,10 +67,10 @@ async def _(event):
         await eod(event, "`Can't memify this 🥴`")
         return
     hel_ = await eor(event, "**Memifying 🌚🌝**")
-    hell = await _reply.download_media()
-    if hell.endswith((".tgs")):
+    zzy = await _reply.download_media()
+    if zzy.endswith((".tgs")):
         await hel_.edit("OwO animated sticker...")
-        cmd = ["lottie_convert.py", hell, "pic.png"]
+        cmd = ["lottie_convert.py", zzy, "pic.png"]
         file = "pic.png"
         process = await asyncio.create_subprocess_exec(
             *cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
@@ -78,12 +78,12 @@ async def _(event):
         stdout, stderr = await process.communicate()
         stderr.decode().strip()
         stdout.decode().strip()
-    elif hell.endswith((".webp", ".png")):
-        pic = Image.open(hell)
+    elif zzy.endswith((".webp", ".png")):
+        pic = Image.open(zzy)
         pic.save("pic.png", format="PNG", optimize=True)
         file = "pic.png"
     else:
-        img = cv2.VideoCapture(hell)
+        img = cv2.VideoCapture(zzy)
         tal, semx = img.read()
         cv2.imwrite("pic.png", semx)
         file = "pic.png"
@@ -93,7 +93,7 @@ async def _(event):
     )
     await hel_.delete()
     try:
-        os.remove(hell)
+        os.remove(zzy)
         os.remove(file)
     except BaseException:
         pass
@@ -102,8 +102,8 @@ async def _(event):
 
 @ram_cmd(pattern="doge(?:\s|$)([\s\S]*)")
 async def nope(event):
-    hell = event.text[6:]
-    if not hell:
+    zzy = event.text[6:]
+    if not zzy:
         if event.is_reply:
             (await event.get_reply_message()).message
         else:
@@ -112,7 +112,7 @@ async def nope(event):
             else:
                 return await eor(event, "Doge need some text to make sticker.")
 
-    troll = await event.client.inline_query("DogeStickerBot", f"{(deEmojify(hell))}")
+    troll = await event.client.inline_query("DogeStickerBot", f"{(deEmojify(zzy))}")
     if troll:
         await event.delete()
         hel_ = await troll[0].click(Config.LOGGER_ID)
@@ -129,8 +129,8 @@ async def nope(event):
 
 @ram_cmd(pattern="gg(?:\s|$)([\s\S]*)")
 async def nope(event):
-    hell = event.text[4:]
-    if not hell:
+    zzy = event.text[4:]
+    if not zzy:
         if event.is_reply:
             (await event.get_reply_message()).message
         else:
@@ -139,7 +139,7 @@ async def nope(event):
             else:
                 return await eor(event, "Googlax need some text to make sticker.")
 
-    troll = await event.client.inline_query("GooglaxBot", f"{(deEmojify(hell))}")
+    troll = await event.client.inline_query("GooglaxBot", f"{(deEmojify(zzy))}")
     if troll:
         await event.delete()
         hel_ = await troll[0].click(Config.LOGGER_ID)
@@ -156,8 +156,8 @@ async def nope(event):
 
 @ram_cmd(pattern="honk(?:\s|$)([\s\S]*)")
 async def nope(event):
-    hell = event.text[6:]
-    if not hell:
+    zzy = event.text[6:]
+    if not zzy:
         if event.is_reply:
             (await event.get_reply_message()).message
         else:
@@ -166,7 +166,7 @@ async def nope(event):
             else:
                 return await eor(event, "Honka need some text to make sticker.")
 
-    troll = await event.client.inline_query("honka_says_bot", f"{(deEmojify(hell))}.")
+    troll = await event.client.inline_query("honka_says_bot", f"{(deEmojify(zzy))}.")
     if troll:
         await event.delete()
         hel_ = await troll[0].click(Config.LOGGER_ID)
@@ -183,8 +183,8 @@ async def nope(event):
 
 @ram_cmd(pattern="gogl(?:\s|$)([\s\S]*)")
 async def nope(event):
-    hell = event.text[6:]
-    if not hell:
+    zzy = event.text[6:]
+    if not zzy:
         if event.is_reply:
             (await event.get_reply_message()).message
         else:
@@ -193,7 +193,7 @@ async def nope(event):
             else:
                 return await eor(event, "Need some text...")
 
-    troll = await event.client.inline_query("stickerizerbot", f"#12{(deEmojify(hell))}")
+    troll = await event.client.inline_query("stickerizerbot", f"#12{(deEmojify(zzy))}")
     if troll:
         await event.delete()
         hel_ = await troll[0].click(Config.LOGGER_ID)

@@ -12,11 +12,11 @@ async def _(event):
     reply_to = await reply_id(event)
     hel_ = await eor(event, "`Processing ...`")
     try:
-        hell = event.pattern_match.group(1)
-        await hel_.edit("__Searching for__ `{}`".format(hell))
+        zzy = event.pattern_match.group(1)
+        await hel_.edit("__Searching for__ `{}`".format(zzy))
         # Credits to catuserbot.
-        # Ported to Hellbot and beautifications by @ramtod.
-        movies = imdb.search_movie(hell)
+        # Ported to ramubot and beautifications by @ramtod.
+        movies = imdb.search_movie(zzy)
         movieid = movies[0].movieID
         movie = imdb.get_movie(movieid)
         moviekeys = list(movie.keys())
@@ -96,7 +96,7 @@ async def _(event):
             while not downloader.isFinished():
                 pass
         telegraph_ = f"<img src='{imageurl}'/> \n{resulttext} \n<img src='{logo}'/>"
-        paste = await telegraph_paste(f"IMDb Movie Result for “ {hell} ”", telegraph_)
+        paste = await telegraph_paste(f"IMDb Movie Result for “ {zzy} ”", telegraph_)
         omk = f"{omk_}\n\n<u><b><a href='{paste}'>📌 Get more details here.</a></b></u>"
         if os.path.exists(moviepath):
             await event.client.send_file(
@@ -114,7 +114,7 @@ async def _(event):
             parse_mode="HTML",
         )
     except IndexError:
-        await hel_.edit(f"__No movie found with name {hell}.__")
+        await hel_.edit(f"__No movie found with name {zzy}.__")
     except Exception as e:
         await hel_.edit(f"**Error:**\n__{e}__")
 
@@ -122,7 +122,7 @@ async def _(event):
 @ram_cmd(pattern="watch(?:\s|$)([\s\S]*)")
 async def _(event):
     query = event.pattern_match.group(1)
-    hell = await eor(event, "Finding Sites...")
+    zzy = await eor(event, "Finding Sites...")
     streams = get_stream_data(query)
     title = streams["title"]
     thumb_link = streams["movie_thumb"]

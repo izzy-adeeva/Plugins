@@ -132,15 +132,15 @@ async def _(event):
     text = event.text[6:]
     cid = await client_id(event)
     ram_mention = cid[2]
-    hell = await eor(event, f"Trying to lock `{text}`")
+    zzy = await eor(event, f"Trying to lock `{text}`")
     if text == "":
-        return await eod(hell, "Need something to lock...")
+        return await eod(zzy, "Need something to lock...")
     locker = lock(text)
     if not locker:
-        return await eod(hell, f"**🤐 Invalid lock type:** {text} \nDo `{ii}ltype` to get all lock types.")
+        return await eod(zzy, f"**🤐 Invalid lock type:** {text} \nDo `{ii}ltype` to get all lock types.")
     await event.client(EditChatDefaultBannedRightsRequest(event.chat_id, locker))
     await event.client.send_file(event.chat_id, anu, caption=f"{ram_mention} Locked `{text}` \n__Cause its Rest Time !!__")
-    await hell.delete()
+    await zzy.delete()
 
 
 @ram_cmd(pattern="unlock(?:\s|$)([\s\S]*)")
@@ -148,15 +148,15 @@ async def _(event):
     text = event.text[8:]
     cid = await client_id(event)
     ram_mention = cid[2]
-    hell = await eor(event, f"Trying to unlock `{text}`")
+    zzy = await eor(event, f"Trying to unlock `{text}`")
     if text == "":
-        return await eod(hell, "Need something to unlock...")
+        return await eod(zzy, "Need something to unlock...")
     unlocker = unlock(text)
     if not unlocker:
-        return await eod(hell, f"**🤐 Invalid unlock type:** {text} \nDo `{ii}ltype` to get all unlock types.")
+        return await eod(zzy, f"**🤐 Invalid unlock type:** {text} \nDo `{ii}ltype` to get all unlock types.")
     await event.client(EditChatDefaultBannedRightsRequest(event.chat_id, unlocker))
     await event.client.send_file(event.chat_id, anu2, caption=f"**{ram_mention} unlocked** `{text}`")
-    await hell.delete()
+    await zzy.delete()
 
 
 @ram_cmd(pattern="ltype$")

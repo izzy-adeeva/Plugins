@@ -29,7 +29,7 @@ async def up(event):
     cid = await client_id(event)
     ramtod, RAM_USER, ram_mention = cid[0], cid[1], cid[2]
     start = datetime.datetime.now()
-    hell = await eor(event, "`Building Alive....`")
+    zzy = await eor(event, "`Building Alive....`")
     uptime = await get_time((time.time() - StartTime))
     a = gvarstat("ALIVE_PIC")
     if a is not None:
@@ -41,12 +41,12 @@ async def up(event):
         PIC = random.choice(c)
     else:
         PIC = "https://telegra.ph/file/e62dcb31e02594af0fab4.png"
-    hell_pic = PIC
+    ram_pic = PIC
     end = datetime.datetime.now()
     ling = (end - start).microseconds / 1000
     omk = ALIVE_TEMP.format(ramtod, RAM_USER, telethon_ver, ram_version, is_sudo, uptime, ling)
-    await event.client.send_file(event.chat_id, file=hell_pic, caption=omk, parse_mode="HTML")
-    await hell.delete()
+    await event.client.send_file(event.chat_id, file=ram_pic, caption=omk, parse_mode="HTML")
+    await zzy.delete()
 
 
 msg = """{}\n
@@ -59,14 +59,14 @@ msg = """{}\n
 botname = Config.BOT_USERNAME
 
 @ram_cmd(pattern="ram$")
-async def hell_a(event):
+async def ram_a(event):
     cid = await client_id(event)
     ramtod, RAM_USER, ram_mention = cid[0], cid[1], cid[2]
     uptime = await get_time((time.time() - StartTime))
     am = gvarstat("ALIVE_MSG") or "<b>RAM-UBOT is ONLINE</b>"
     try:
-        hell = await event.client.inline_query(botname, "alive")
-        await hell[0].click(event.chat_id)
+        zzy = await event.client.inline_query(botname, "alive")
+        await zzy[0].click(event.chat_id)
         if event.sender_id == ramtod:
             await event.delete()
     except (noin, dedbot):

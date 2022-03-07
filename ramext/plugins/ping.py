@@ -12,9 +12,9 @@ ping_txt = """<b><i>╰•★★  ℘ơŋɠ ★★•╯</b></i>
 
 
 @ram_cmd(pattern="ping$")
-async def pong(hell):
+async def pong(zzy):
     start = datetime.datetime.now()
-    event = await eor(hell, "`·.·PINGING·.·´")
+    event = await eor(zzy, "`·.·PINGING·.·´")
     cid = await client_id(event)
     ramtod, RAM_USER = cid[0], cid[1]
     ram_mention = f"<a href='tg://user?id={ramtod}'>{RAM_USER}</a>"

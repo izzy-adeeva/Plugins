@@ -22,7 +22,7 @@ def progress(current, total):
 
 @ram_cmd(pattern="pt(?:\s|$)([\s\S]*)")
 async def _(event):
-    hell = await eor(event, "Hmm..")
+    zzy = await eor(event, "Hmm..")
     BASE_URL = "http://images.google.com"
     if event.reply_to_msg_id:
         previous_message = await event.get_reply_message()
@@ -63,10 +63,10 @@ async def _(event):
         img_size = img_size_div.find_all("div")
         OUTPUT_STR = """/protecc {prs_text}""".format(
             **locals())
-    await hell.edit(OUTPUT_STR, parse_mode="HTML", link_preview=False)
+    await zzy.edit(OUTPUT_STR, parse_mode="HTML", link_preview=False)
 
 
-@hell_handler()
+@ram_handler()
 async def _(event):
     if not event.media:
         return
@@ -103,9 +103,9 @@ async def _(event):
                         return
                 except:
                     pass
-                hell = await event.client.send_message(event.chat_id, f"/protecc {text}")
+                zzy = await event.client.send_message(event.chat_id, f"/protecc {text}")
                 await sleep(2)
-                await hell.delete()
+                await zzy.delete()
                 os.remove(dl)
             except:
                 pass
@@ -139,14 +139,14 @@ async def _(event):
 
 @ram_cmd(pattern="aw$")
 async def _(event):
-    hell = await eor(event, "Fetching Autowaifu chats...")
+    zzy = await eor(event, "Fetching Autowaifu chats...")
     all_grp = get_all_grp()
     x = "**Autowaifu enabled chats :** \n\n"
     for i in all_grp:
         ch = i.chat_id
         cht = int(ch)
         x += f"• `{cht}`\n"
-    await hell.edit(x)
+    await zzy.edit(x)
 
 
 CmdHelp("protecc").add_command(

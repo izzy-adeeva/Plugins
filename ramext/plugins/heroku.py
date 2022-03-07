@@ -39,8 +39,8 @@ async def restart(event):
 
 
 @ram_cmd(pattern="restart$")
-async def re(hell):
-    event = await eor(hell, "Restarting RAM-UBOT ...")
+async def re(zzy):
+    event = await eor(zzy, "Restarting RAM-UBOT ...")
     try:
         await restart(event)
     except CancelledError:
@@ -52,12 +52,12 @@ async def re(hell):
 @ram_cmd(pattern="reload$")
 async def rel(event):
     await eor(event, "Reloading RAM-UBOT... Wait for few seconds...")
-    await reload_hellbot()
+    await reload_ramubot()
 
 
 @ram_cmd(pattern="shutdown$")
-async def down(hell):
-    event = await eor(hell, "`Turing Off RAM-UBOT...`")
+async def down(zzy):
+    event = await eor(zzy, "`Turing Off RAM-UBOT...`")
     await asyncio.sleep(2)
     await event.edit("**[ ⚠️ ]** \n**RAM-UBOT is now turned off. Manually turn it on to start again.**")
     if HEROKU_APP is not None:
@@ -72,71 +72,71 @@ async def sett(event):
     var_ = hel_.split(" ")[0].upper()
     val_ = hel_.split(" ")[1:]
     valu = " ".join(val_)
-    hell = await eor(event, f"**Setting variable** `{var_}` **as** `{valu}`")
+    zzy = await eor(event, f"**Setting variable** `{var_}` **as** `{valu}`")
     if var_ == "":
-        return await hell.edit(f"**Invalid Syntax !!** \n\nTry: `{ii}svar VARIABLE_NAME variable_value`")
+        return await zzy.edit(f"**Invalid Syntax !!** \n\nTry: `{ii}svar VARIABLE_NAME variable_value`")
     elif valu == "":
-        return await hell.edit(f"**Invalid Syntax !!** \n\nTry: `{ii}svar VARIABLE_NAME variable_value`")
+        return await zzy.edit(f"**Invalid Syntax !!** \n\nTry: `{ii}svar VARIABLE_NAME variable_value`")
     if var_ not in config_list:
-        return await hell.edit(f"__There isn't any variable named__ `{var_}`. __Check spelling or get full list by__ `{ii}vars`")
+        return await zzy.edit(f"__There isn't any variable named__ `{var_}`. __Check spelling or get full list by__ `{ii}vars`")
     try:
         addgvar(var_, valu)
     except Exception as e:
-        return await hell.edit(f"**ERROR !!** \n\n`{e}`")
-    await hell.edit(f"**Variable** `{var_}` **successfully added with value** `{valu}`")
+        return await zzy.edit(f"**ERROR !!** \n\n`{e}`")
+    await zzy.edit(f"**Variable** `{var_}` **successfully added with value** `{valu}`")
 
 
 @ram_cmd(pattern="gvar(?:\s|$)([\s\S]*)")
 async def gett(event):
     var_ = event.pattern_match.group(1).upper()
-    hell = await eor(event, f"**Getting variable** `{var_}`")
+    zzy = await eor(event, f"**Getting variable** `{var_}`")
     if var_ == "":
-        return await hell.edit(f"**Invalid Syntax !!** \n\nTry: `{ii}gvar VARIABLE_NAME`")
+        return await zzy.edit(f"**Invalid Syntax !!** \n\nTry: `{ii}gvar VARIABLE_NAME`")
     if var_ not in config_list:
-        return await hell.edit(f"__There isn't any variable named__ `{var_}`. __Check spelling or get full list by `{ii}vars`")
+        return await zzy.edit(f"__There isn't any variable named__ `{var_}`. __Check spelling or get full list by `{ii}vars`")
     try:
         sql_v = gvarstat(var_)
         os_v = os.environ.get(var_) or "None"
     except Exception as e:
-        return await hell.edit(f"**ERROR !!** \n\n`{e}`")
-    await hell.edit(f"**OS VARIABLE:** `{var_}`\n**OS VALUE :** `{os_v}`\n------------------\n**SQL VARIABLE:** `{var_}`\n**SQL VALUE :** `{sql_v}`\n")
+        return await zzy.edit(f"**ERROR !!** \n\n`{e}`")
+    await zzy.edit(f"**OS VARIABLE:** `{var_}`\n**OS VALUE :** `{os_v}`\n------------------\n**SQL VARIABLE:** `{var_}`\n**SQL VALUE :** `{sql_v}`\n")
 
 
 @ram_cmd(pattern="dvar(?:\s|$)([\s\S]*)")
 async def dell(event):
     var_ = event.pattern_match.group(1).upper()
-    hell = await eor(event, f"**Deleting Variable** `{var_}`")
+    zzy = await eor(event, f"**Deleting Variable** `{var_}`")
     if var_ == "":
-        return await hell.edit(f"**Invalid Syntax !!** \n\nTry: `{ii}dvar VARIABLE_NAME`")
+        return await zzy.edit(f"**Invalid Syntax !!** \n\nTry: `{ii}dvar VARIABLE_NAME`")
     if var_ not in config_list:
-        return await hell.edit(f"__There isn't any variable named__ `{var_}`. Check spelling or get full list by `{ii}vars`")
+        return await zzy.edit(f"__There isn't any variable named__ `{var_}`. Check spelling or get full list by `{ii}vars`")
     try:
         delgvar(var_)
     except Exception as e:
-        return await hell.edit(f"**ERROR !!** \n\n`{e}`")
-    await hell.edit(f"**Deleted Variable** `{var_}`")
+        return await zzy.edit(f"**ERROR !!** \n\n`{e}`")
+    await zzy.edit(f"**Deleted Variable** `{var_}`")
 
 
 @ram_cmd(pattern="(set|get|del) var(?: |$)(.*)(?: |$)([\s\S]*)")
-async def variable(hell):
+async def variable(zzy):
     if Config.HEROKU_APP_NAME is not None:
         app = Heroku.app(Config.HEROKU_APP_NAME)
     else:
-        return await eor(hell, "`[HEROKU]:" "\nPlease setup your` **HEROKU_APP_NAME**")
-    exe = hell.pattern_match.group(1)
+        return await eor(zzy, "`[HEROKU]:" "\nPlease setup your` **HEROKU_APP_NAME**")
+    exe = zzy.pattern_match.group(1)
     heroku_var = app.config()
     if exe == "get":
-        event = await eor(hell, "Getting Variable Info...")
+        event = await eor(zzy, "Getting Variable Info...")
         cap = "Logger me chala jaa bsdk."
         capn = "Saved in LOGGER_ID !!"
         try:
-            xvar = hell.pattern_match.group(2).split()[0]
+            xvar = zzy.pattern_match.group(2).split()[0]
             variable = xvar.upper()
             if variable in config_list:
                 return await event.edit(f"This is a SQL based variable. Do `{ii}gvar {variable}` to get variable info.")
             if variable in ("STRING_SESSION", "BOT_TOKEN", "HEROKU_API_KEY"):
                 if Config.ABUSE == "ON":
-                    await event.client.send_file(hell.chat_id, anu, caption=cap)
+                    await event.client.send_file(zzy.chat_id, anu, caption=cap)
                     await event.delete()
                     await event.client.send_message(lg_id, f"#HEROKU_VAR \n\n`{heroku_var[variable]}`")
                     return
@@ -159,10 +159,10 @@ async def variable(hell):
             with open("configs.json", "r") as fp:
                 result = fp.read()
                 if len(result) >= 4096:
-                    await hell.client.send_file(
-                        hell.chat_id,
+                    await zzy.client.send_file(
+                        zzy.chat_id,
                         "configs.json",
-                        reply_to=hell.id,
+                        reply_to=zzy.id,
                         caption="`Output too large, sending it as a file`",
                     )
                 else:
@@ -175,16 +175,16 @@ async def variable(hell):
             os.remove("configs.json")
             return
     elif exe == "set":
-        event = await eor(hell, "Setting Heroku Variable...")
-        xvar = hell.pattern_match.group(2)
+        event = await eor(zzy, "Setting Heroku Variable...")
+        xvar = zzy.pattern_match.group(2)
         if not xvar:
             return await event.edit(f"`{ii}set var <Var Name> <Value>`")
         variable = xvar.upper()
-        value = hell.pattern_match.group(3)
+        value = zzy.pattern_match.group(3)
         if not value:
             variable = variable.split()[0]
             try:
-                value = hell.pattern_match.group(2).split()[1]
+                value = zzy.pattern_match.group(2).split()[1]
             except IndexError:
                 return await event.edit(f"`{ii}set var <Var Name> <Value>`")
         if variable in config_list:
@@ -199,9 +199,9 @@ async def variable(hell):
             )
         heroku_var[variable] = value
     elif exe == "del":
-        event = await eor(hell, "Getting info to delete Variable")
+        event = await eor(zzy, "Getting info to delete Variable")
         try:
-            xvar = hell.pattern_match.group(2).split()[0]
+            xvar = zzy.pattern_match.group(2).split()[0]
         except IndexError:
             return await event.edit("`Please specify ConfigVars you want to delete`")
         variable = xvar.upper()
@@ -215,8 +215,8 @@ async def variable(hell):
 
 
 @ram_cmd(pattern="usage$")
-async def dyno_usage(hell):
-    event = await eor(hell, "`Processing...`")
+async def dyno_usage(zzy):
+    event = await eor(zzy, "`Processing...`")
     useragent = (
         "Mozilla/5.0 (Linux; Android 10; SM-G975F) "
         "AppleWebKit/537.36 (KHTML, like Gecko) "
@@ -272,16 +272,16 @@ async def dyno_usage(hell):
 @ram_cmd(pattern="logs$")
 async def _(event):
     if (HEROKU_APP_NAME is None) or (HEROKU_API_KEY is None):
-        return await eor(event, f"Make Sure Your HEROKU_APP_NAME & HEROKU_API_KEY are filled correct. Visit {hell_grp} for help.", link_preview=False)
+        return await eor(event, f"Make Sure Your HEROKU_APP_NAME & HEROKU_API_KEY are filled correct. Visit {ram_grp} for help.", link_preview=False)
     try:
         Heroku = heroku3.from_key(HEROKU_API_KEY)
         app = Heroku.app(HEROKU_APP_NAME)
     except BaseException:
-        return await event.reply(f"Make Sure Your Heroku AppName & API Key are filled correct. Visit {hell_grp} for help.", link_preview=False)
+        return await event.reply(f"Make Sure Your Heroku AppName & API Key are filled correct. Visit {ram_grp} for help.", link_preview=False)
     cid = await client_id(event)
     ram_mention = cid[2]
-    hell_data = app.get_log()
-    await eor(event, hell_data, deflink=True, linktext=f"**🗒️ Heroku Logs of 💯 lines. 🗒️**\n\n🌟 **Bot Of :**  {ram_mention}\n\n🚀** Pasted**  ")
+    ram_data = app.get_log()
+    await eor(event, ram_data, deflink=True, linktext=f"**🗒️ Heroku Logs of 💯 lines. 🗒️**\n\n🌟 **Bot Of :**  {ram_mention}\n\n🚀** Pasted**  ")
 
 
 def prettyjson(obj, indent=2, maxlinelength=80):

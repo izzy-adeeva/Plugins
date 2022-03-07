@@ -11,7 +11,7 @@ from . import *
 async def stats(
     event: NewMessage.Event,
 ) -> None:
-    hell = await eor(event, "`Collecting stats...`")
+    zzy = await eor(event, "`Collecting stats...`")
     start_time = time.time()
     private_chats = 0
     bots = 0
@@ -76,7 +76,7 @@ async def stats(
     response += f"🔱 **Unread:** {unread} \n"
     response += f"🔱 **Unread Mentions:** {unread_mentions} \n\n"
     response += f"☣️   __It Took:__ {stop_time:.02f}s \n"
-    await hell.edit(response)
+    await zzy.edit(response)
 
 
 def make_mention(user):

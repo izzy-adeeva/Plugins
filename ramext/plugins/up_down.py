@@ -72,7 +72,7 @@ async def labstack(event):
 async def uploadir(event):
     input_str = event.pattern_match.group(1)
     if os.path.exists(input_str):
-        hell = await eor(event, "Downloading Using Userbot Server....")
+        zzy = await eor(event, "Downloading Using Userbot Server....")
         lst_of_files = []
         for r, d, f in os.walk(input_str):
             for file in f:
@@ -81,7 +81,7 @@ async def uploadir(event):
                 lst_of_files.append(os.path.join(r, file))
         LOGS.info(lst_of_files)
         uploaded = 0
-        await hell.edit("Found {} files. Uploading will start soon. Please wait!".format(len(lst_of_files)))
+        await zzy.edit("Found {} files. Uploading will start soon. Please wait!".format(len(lst_of_files)))
         for single_file in lst_of_files:
             if os.path.exists(single_file):
                 # https://stackoverflow.com/a/678242/4723940
@@ -144,13 +144,13 @@ async def uploadir(event):
                     )
                 os.remove(single_file)
                 uploaded = uploaded + 1
-        await hell.edit("Uploaded {} files successfully !!".format(uploaded))
+        await zzy.edit("Uploaded {} files successfully !!".format(uploaded))
     else:
-        await hell.edit("404: Directory Not Found")
+        await zzy.edit("404: Directory Not Found")
 
 @ram_cmd(pattern="upload(?:\s|$)([\s\S]*)")
 async def upload(event):
-    hell = await eor(event, "Processing ...")
+    zzy = await eor(event, "Processing ...")
     input_str = event.pattern_match.group(1)
     cap = "Chala Jaa Bhosdike. Hack hona h kya tujhe"
     if input_str == "config.env":
@@ -169,9 +169,9 @@ async def upload(event):
                 progress(d, t, event, c_time, "Uploading...", input_str)
             ),
         )
-        await hell.edit("Uploaded successfully !!")
+        await zzy.edit("Uploaded successfully !!")
     else:
-        await hell.edit("404: File Not Found")
+        await zzy.edit("404: File Not Found")
 
 
 def get_video_thumb(file, output=None, width=90):
@@ -227,7 +227,7 @@ def extract_w_h(file):
 
 @ram_cmd(pattern="upld_as_(stm|vnr|all)(?:\s|$)([\s\S]*)")
 async def uploadas(event):
-    hell = await eor(event, "Processing ...")
+    zzy = await eor(event, "Processing ...")
     type_of_upload = event.text[9:12]
     supports_streaming = False
     round_message = False
@@ -307,18 +307,18 @@ async def uploadas(event):
                     ),
                 )
             elif spam_big_messages:
-                await hell.edit("TBD: Not (yet) Implemented")
+                await zzy.edit("TBD: Not (yet) Implemented")
                 return
             os.remove(thumb)
-            await hell.edit("Uploaded successfully !!")
+            await zzy.edit("Uploaded successfully !!")
         except FileNotFoundError as err:
-            await hell.edit(str(err))
+            await zzy.edit(str(err))
     else:
-        await hell.edit("404: File Not Found")
+        await zzy.edit("404: File Not Found")
 
 @ram_cmd(pattern="download(?:\s|$)([\s\S]*)")
 async def _(event):
-    hell = await eor(event, "`Processing ...`")
+    zzy = await eor(event, "`Processing ...`")
     cid = await client_id(event)
     ram_mention = cid[2]
     input_str = event.pattern_match.group(1)
@@ -333,15 +333,15 @@ async def _(event):
                 reply_message,
                 Config.TMP_DOWNLOAD_DIRECTORY,
                 progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                    progress(d, t, hell, c_time, "trying to download")
+                    progress(d, t, zzy, c_time, "trying to download")
                 ),
             )
         except Exception as e:  # pylint:disable=C0103,W0703
-            await hell.edit(str(e))
+            await zzy.edit(str(e))
         else:
             end = datetime.datetime.now()
             ms = (end - start).seconds
-            await hell.edit(f"**•  Downloaded in {ms} seconds.**\n**•  Downloaded to :- ** `{downloaded_file_name}`\n**•  Downloaded by :-** {ram_mention}")
+            await zzy.edit(f"**•  Downloaded in {ms} seconds.**\n**•  Downloaded to :- ** `{downloaded_file_name}`\n**•  Downloaded by :-** {ram_mention}")
     elif input_str:
         start = datetime.datetime.now()
         url = input_str
@@ -377,20 +377,20 @@ async def _(event):
                                 \n`{humanbytes(downloaded)} of {humanbytes(total_length)}`\
                                 \n**ETA : **`{estimated_total_time}``"
                 if round(diff % 10.00) == 0 and current_message != display_message:
-                    await hell.edit(current_message)
+                    await zzy.edit(current_message)
                     display_message = current_message
             except Exception as e:
                 logger.info(str(e))
         end = datetime.datetime.now()
         ms = (end - start).seconds
         if downloader.isSuccessful():
-            await hell.edit(
+            await zzy.edit(
                 f"**•  Downloaded in {ms} seconds.**\n**•  Downloaded to :- ** `{downloaded_file_name}`"
             )
         else:
-            await hell.edit("Incorrect URL\n {}".format(input_str))
+            await zzy.edit("Incorrect URL\n {}".format(input_str))
     else:
-        await hell.edit("Reply to a message to download to my local server.")
+        await zzy.edit("Reply to a message to download to my local server.")
 
 
 CmdHelp("up_down").add_command(

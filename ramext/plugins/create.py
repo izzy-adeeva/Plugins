@@ -8,7 +8,7 @@ from . import *
 async def _(event):
     type_of_group = event.pattern_match.group(1)
     group_name = event.pattern_match.group(2)
-    hell = await eor(event, "Creating wait sar.....")
+    zzy = await eor(event, "Creating wait sar.....")
     if type_of_group == "b":
         try:
             result = await event.client(
@@ -28,13 +28,13 @@ async def _(event):
                     peer=created_chat_id,
                 )
             )
-            await hell.edit(
+            await zzy.edit(
                 "Group `{}` created successfully. Join {}".format(
                     group_name, result.link
                 )
             )
         except Exception as e:
-            await hell.edit(str(e))
+            await zzy.edit(str(e))
     elif type_of_group in ["g", "c"]:
         try:
             r = await event.client(
@@ -51,7 +51,7 @@ async def _(event):
                     peer=created_chat_id,
                 )
             )
-            await hell.edit(
+            await zzy.edit(
                 "Channel `{}` created successfully. Join {}".format(
                     group_name, result.link
                 )
@@ -59,7 +59,7 @@ async def _(event):
         except Exception as e:
             await event.edit(str(e))
     else:
-        await hell.edit(f"Read `{ii}plinfo create` to know how to use me")
+        await zzy.edit(f"Read `{ii}plinfo create` to know how to use me")
 
 
 @ram_cmd(pattern="link ([\s\S]*)")

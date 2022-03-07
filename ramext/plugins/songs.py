@@ -26,7 +26,7 @@ async def _(event):
     max_results = 1
     if query == "":
         return await eod(event, "__Please give a song name to search.__")
-    hell = await eor(event, f"__Searching for__ `{query}`")
+    zzy = await eor(event, f"__Searching for__ `{query}`")
     hel_ = await song_search(event, query, max_results, details=True)
     x, title, views, duration, thumb = hel_[0], hel_[1], hel_[2], hel_[3], hel_[4]
     thumb_name = f'thumb{ramtod}.jpg'
@@ -34,48 +34,48 @@ async def _(event):
     open(thumb_name, 'wb').write(thumbnail.content)
     url = x.replace("\n", "")
     try:
-        await hell.edit("**Fetching Song**")
+        await zzy.edit("**Fetching Song**")
         with YoutubeDL(song_opts) as somg:
-            hell_data = somg.extract_info(url)
+            ram_data = somg.extract_info(url)
     except DownloadError as DE:
-        return await eod(hell, f"`{str(DE)}`")
+        return await eod(zzy, f"`{str(DE)}`")
     except ContentTooShortError:
-        return await eod(hell, "`The download content was too short.`")
+        return await eod(zzy, "`The download content was too short.`")
     except GeoRestrictedError:
-        return await eod(hell, "`Video is not available from your geographic location due to geographic restrictions imposed by a website.`")
+        return await eod(zzy, "`Video is not available from your geographic location due to geographic restrictions imposed by a website.`")
     except MaxDownloadsReached:
-        return await eod(hell, "`Max-downloads limit has been reached.`")
+        return await eod(zzy, "`Max-downloads limit has been reached.`")
     except PostProcessingError:
-        return await eod(hell, "`There was an error during post processing.`")
+        return await eod(zzy, "`There was an error during post processing.`")
     except UnavailableVideoError:
-        return await eod(hell, "`Media is not available in the requested format.`")
+        return await eod(zzy, "`Media is not available in the requested format.`")
     except XAttrMetadataError as XAME:
-        return await eod(hell, f"`{XAME.code}: {XAME.msg}\n{XAME.reason}`")
+        return await eod(zzy, f"`{XAME.code}: {XAME.msg}\n{XAME.reason}`")
     except ExtractorError:
-        return await eod(hell, "`There was an error during info extraction.`")
+        return await eod(zzy, "`There was an error during info extraction.`")
     except Exception as e:
-        return await eod(hell, f"{str(type(e)): {str(e)}}")
+        return await eod(zzy, f"{str(type(e)): {str(e)}}")
     c_time = time.time()
-    await hell.edit(f"**🎶 Preparing to upload song 🎶 :** \n\n{hell_data['title']} \n**By :** {hell_data['uploader']}")
+    await zzy.edit(f"**🎶 Preparing to upload song 🎶 :** \n\n{ram_data['title']} \n**By :** {ram_data['uploader']}")
     await event.client.send_file(
         event.chat_id,
-        f"{hell_data['id']}.mp3",
+        f"{ram_data['id']}.mp3",
         supports_streaming=True,
         caption=f"**✘ Song -** `{title}` \n**✘ Views -** `{views}` \n**✘ Duration -** `{duration}` \n\n**✘ By :** {ram_mention}",
         thumb=thumb_name,
         attributes=[
             DocumentAttributeAudio(
-                duration=int(hell_data["duration"]),
-                title=str(hell_data["title"]),
+                duration=int(ram_data["duration"]),
+                title=str(ram_data["title"]),
                 performer=perf,
             )
         ],
         progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-            progress(d, t, event, c_time, "Uploading..", f"{hell_data['title']}.mp3")
+            progress(d, t, event, c_time, "Uploading..", f"{ram_data['title']}.mp3")
         ),
     )
-    await hell.delete()
-    os.remove(f"{hell_data['id']}.mp3")
+    await zzy.delete()
+    os.remove(f"{ram_data['id']}.mp3")
 
 
 @ram_cmd(pattern="vsong(?:\s|$)([\s\S]*)")
@@ -86,7 +86,7 @@ async def _(event):
     max_results = 1
     if query == "":
         return await eod(event, "__Please give a song name to search.__")
-    hell = await eor(event, f"__Searching for__ `{query}`")
+    zzy = await eor(event, f"__Searching for__ `{query}`")
     hel_ = await song_search(event, query, max_results, details=True)
     x, title, views, duration, thumb = hel_[0], hel_[1], hel_[2], hel_[3], hel_[4]
     thumb_name = f'thumb{ramtod}.jpg'
@@ -94,55 +94,55 @@ async def _(event):
     open(thumb_name, 'wb').write(thumbnail.content)
     url = x.replace("\n", "")
     try:
-        await hell.edit("**Fetching Video**")
+        await zzy.edit("**Fetching Video**")
         with YoutubeDL(video_opts) as somg:
-            hell_data = somg.extract_info(url)
+            ram_data = somg.extract_info(url)
     except DownloadError as DE:
-        return await eod(hell, f"`{str(DE)}`")
+        return await eod(zzy, f"`{str(DE)}`")
     except ContentTooShortError:
-        return await eod(hell, "`The download content was too short.`")
+        return await eod(zzy, "`The download content was too short.`")
     except GeoRestrictedError:
-        return await eod(hell, "`Video is not available from your geographic location due to geographic restrictions imposed by a website.`")
+        return await eod(zzy, "`Video is not available from your geographic location due to geographic restrictions imposed by a website.`")
     except MaxDownloadsReached:
-        return await eod(hell, "`Max-downloads limit has been reached.`")
+        return await eod(zzy, "`Max-downloads limit has been reached.`")
     except PostProcessingError:
-        return await eod(hell, "`There was an error during post processing.`")
+        return await eod(zzy, "`There was an error during post processing.`")
     except UnavailableVideoError:
-        return await eod(hell, "`Media is not available in the requested format.`")
+        return await eod(zzy, "`Media is not available in the requested format.`")
     except XAttrMetadataError as XAME:
-        return await eod(hell, f"`{XAME.code}: {XAME.msg}\n{XAME.reason}`")
+        return await eod(zzy, f"`{XAME.code}: {XAME.msg}\n{XAME.reason}`")
     except ExtractorError:
-        return await eod(hell, "`There was an error during info extraction.`")
+        return await eod(zzy, "`There was an error during info extraction.`")
     except Exception as e:
-        return await eod(hell, f"{str(type(e)): {str(e)}}")
+        return await eod(zzy, f"{str(type(e)): {str(e)}}")
     c_time = time.time()
-    await hell.edit(f"**📺 Preparing to upload video 📺 :** \n\n{hell_data['title']}\n**By :** {hell_data['uploader']}")
+    await zzy.edit(f"**📺 Preparing to upload video 📺 :** \n\n{ram_data['title']}\n**By :** {ram_data['uploader']}")
     await event.client.send_file(
         event.chat_id,
-        f"{hell_data['id']}.mp4",
+        f"{ram_data['id']}.mp4",
         supports_streaming=True,
         caption=f"**✘ Video :** `{title}` \n\n**✘ By :** {ram_mention}",
         thumb=thumb_name,
         progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-            progress(d, t, event, c_time, "Uploading..", f"{hell_data['title']}.mp4")
+            progress(d, t, event, c_time, "Uploading..", f"{ram_data['title']}.mp4")
         ),
     )
-    await hell.delete()
-    os.remove(f"{hell_data['id']}.mp4")
+    await zzy.delete()
+    os.remove(f"{ram_data['id']}.mp4")
 
 
 @ram_cmd(pattern="lyrics(?: |$)(.*)")
 async def nope(iraa):
-    hell = iraa.text[8:]
-    uwu = await eor(iraa, f"Searching lyrics for  `{hell}` ...")
-    if not hell:
+    zzy = iraa.text[8:]
+    uwu = await eor(iraa, f"Searching lyrics for  `{zzy}` ...")
+    if not zzy:
         if iraa.is_reply:
             (await iraa.get_reply_message()).message
         else:
             await eod(uwu, "Give song name to get lyrics...")
             return
     try:
-        troll = await event.client.inline_query("iLyricsBot", f"{(deEmojify(hell))}")
+        troll = await event.client.inline_query("iLyricsBot", f"{(deEmojify(zzy))}")
         owo = await troll[0].click(Config.LOGGER_ID)
         await asyncio.sleep(3)
         owo_id = owo.id
@@ -161,7 +161,7 @@ async def _(event):
     ramtod, ram_mention = xyz[0], xyz[2]
     if ram_ == "":
         return await eor(event, "Give a song name to search")
-    hell = await eor(event, f"Searching song `{ram_}`")
+    zzy = await eor(event, f"Searching song `{ram_}`")
     somg = await event.client.inline_query("Lybot", f"{(deEmojify(ram_))}")
     if somg:
         fak = await somg[0].click(Config.LOGGER_ID)
@@ -171,10 +171,10 @@ async def _(event):
                 file=fak,
                 caption=f"**Song by :** {ram_mention}",
             )
-        await hell.delete()
+        await zzy.delete()
         await fak.delete()
     else:
-        await hell.edit("**ERROR 404 :** __NOT FOUND__")
+        await zzy.edit("**ERROR 404 :** __NOT FOUND__")
 
 
 @ram_cmd(pattern="wsong(?:\s|$)([\s\S]*)")
@@ -183,7 +183,7 @@ async def _(event):
         return await eor(event, "Reply to a mp3 file.")
     rply = await event.get_reply_message()
     chat = "@auddbot"
-    hell = await eor(event, "Trying to identify song...")
+    zzy = await eor(event, "Trying to identify song...")
     async with event.client.conversation(chat) as conv:
         try:
             first = await conv.send_message("/start")
@@ -191,18 +191,18 @@ async def _(event):
             third = await conv.send_message(rply)
             fourth = await conv.get_response()
             if not fourth.text.startswith("Audio received"):
-                await hell.edit(
+                await zzy.edit(
                     "Error identifying audio."
                 )
                 await event.client.delete_messages(conv.chat_id, [first.id, second.id, third.id, fourth.id])
                 return
-            await hell.edit("Processed...")
+            await zzy.edit("Processed...")
             fifth = await conv.get_response()
             await event.client.send_read_acknowledge(conv.chat_id)
         except YouBlockedUserError:
-            return await hell.edit("Please unblock @auddbot and try again")
+            return await zzy.edit("Please unblock @auddbot and try again")
     audio = f"**Song Name : **{fifth.text.splitlines()[0]}\n\n**Details : **__{fifth.text.splitlines()[2]}__"
-    await hell.edit(audio)
+    await zzy.edit(audio)
     await event.client.delete_messages(conv.chat_id, [first.id, second.id, third.id, fourth.id, fifth.id])
 
 
@@ -212,7 +212,7 @@ async def _(event):
     chat = "@spotifysavebot"
     if text == "":
         return await eod(event, "Give something to download from Spotify.")
-    hell = await eor(event, f"**Trying to download** `{text}` **from Spotify...**")
+    zzy = await eor(event, f"**Trying to download** `{text}` **from Spotify...**")
     async with event.client.conversation(chat) as conv:
         try:
             first = await conv.send_message("/start")
@@ -221,16 +221,16 @@ async def _(event):
             if somg:
                 third = await somg[0].click(chat)
             else:
-                return await eod(hell, "**ERROR !!** __404 : NOT FOUND__")
+                return await eod(zzy, "**ERROR !!** __404 : NOT FOUND__")
             fourth = await conv.get_response()
             fifth = await conv.get_response()
             await event.client.send_read_acknowledge(conv.chat_id)
         except YouBlockedUserError:
-            return await eod(hell, f"Please unblock {chat} to use Spotify module.")
+            return await eod(zzy, f"Please unblock {chat} to use Spotify module.")
         except Exception as e:
-            return await eod(hell, f"**ERROR !!** \n\n{e}")
+            return await eod(zzy, f"**ERROR !!** \n\n{e}")
         await event.client.send_file(event.chat_id, file=fourth, caption="")
-        await hell.delete()
+        await zzy.delete()
         await event.client.delete_messages(conv.chat_id, [first.id, second.id, third.id, fourth.id, fifth.id])
 
 

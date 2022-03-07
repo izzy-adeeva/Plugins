@@ -24,7 +24,7 @@ async def _(event):
     if helluser.username:
         curruser = helluser.username
     else:
-        curruser = "@Its_HellBot"
+        curruser = "@Its_ramubot"
     uid = os.geteuid()
     if uid == 0:
         cresult = f"`{curruser}:~#` `{cmd}`\n`{result}`"
@@ -126,7 +126,7 @@ async def _(event):
 CmdHelp("evaluators").add_command(
   "eval", "<expr>", "Execute a python script", "eval print('Hello World.')"
 ).add_command(
-  "exec", "<command>", "Execute a Terminal command on HellBot server and shows details"
+  "exec", "<command>", "Execute a Terminal command on ramubot server and shows details"
 ).add_command(
   "bash", "<query>", "Bash your codes on linux and gives the output in current chat"
 ).add_info(

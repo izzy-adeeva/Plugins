@@ -27,7 +27,7 @@ async def kk(event):
     o = stdout.decode()
     _o = o.split("\n")
     o = "\n".join(_o)
-    OUTPUT = f"List of Plugins in bot :- \n\n{o}\n\n<><><><><><><><><><><><><><><><><><><><><><><><>\nHELP:- If you want to know the commands for a plugin, do :- \n.plinfo <plugin name> without the < > brackets. \nJoin {hell_grp} for help."
+    OUTPUT = f"List of Plugins in bot :- \n\n{o}\n\n<><><><><><><><><><><><><><><><><><><><><><><><>\nHELP:- If you want to know the commands for a plugin, do :- \n.plinfo <plugin name> without the < > brackets. \nJoin {ram_grp} for help."
     if len(OUTPUT) > 69:
         with io.BytesIO(str.encode(OUTPUT)) as out_file:
             out_file.name = "cmd_list.text"
@@ -73,7 +73,7 @@ async def install(event):
     ramtod, RAM_USER, ram_mention = cids[0], cids[1], cids[2]
     b = 1
     owo = event.text[9:]
-    hell = await eor(event, "__Installing.__")
+    zzy = await eor(event, "__Installing.__")
     if event.reply_to_msg_id:
         try:
             downloaded_file_name = await event.client.download_media(  # pylint:disable=E0602
@@ -88,7 +88,7 @@ async def install(event):
                     for harm in HARMFUL:
                         if harm in rd:
                             os.remove(downloaded_file_name)
-                            return await hell.edit(f"**⚠️ WARNING !!** \n\n__Replied plugin file contains some harmful codes. Please consider checking the file. If you still want to install then use__ `{ii}install -f`. \n\n**Codes Detected :** \n• {harm}")
+                            return await zzy.edit(f"**⚠️ WARNING !!** \n\n__Replied plugin file contains some harmful codes. Please consider checking the file. If you still want to install then use__ `{ii}install -f`. \n\n**Codes Detected :** \n• {harm}")
                 except BaseException:
                     pass
             if "(" not in downloaded_file_name:
@@ -106,14 +106,14 @@ async def install(event):
                         else:
                             a = "__Installing...__"
                             b = 1
-                        await hell.edit(a)
-                    return await hell.edit(f"✅ **Installed module** :- `{shortname}` \n✨ BY :- {ram_mention}\n\n{string}\n\n        ⚡ **[RAM-UBOT Extended]({chnl_link})** ⚡", link_preview=False)
-                return await hell.edit(f"Installed module `{os.path.basename(downloaded_file_name)}`")
+                        await zzy.edit(a)
+                    return await zzy.edit(f"✅ **Installed module** :- `{shortname}` \n✨ BY :- {ram_mention}\n\n{string}\n\n        ⚡ **[RAM-UBOT Extended]({chnl_link})** ⚡", link_preview=False)
+                return await zzy.edit(f"Installed module `{os.path.basename(downloaded_file_name)}`")
             else:
                 os.remove(downloaded_file_name)
-                return await eod(hell, f"**Failed to Install** \n`Error`\nModule already installed or unknown format")
+                return await eod(zzy, f"**Failed to Install** \n`Error`\nModule already installed or unknown format")
         except Exception as e: 
-            await eod(hell, f"**Failed to Install** \n`Error`\n{str(e)}")
+            await eod(zzy, f"**Failed to Install** \n`Error`\n{str(e)}")
             return os.remove(downloaded_file_name)
 
 
@@ -122,14 +122,14 @@ async def uninstall(event):
     shortname = event.text[11:]
     if ".py" in shortname:
         shortname = shortname.replace(".py", "")
-    hell = await eor(event, f"__Trying to uninstall plugin__ `{shortname}` ...")
+    zzy = await eor(event, f"__Trying to uninstall plugin__ `{shortname}` ...")
     dir_path =f"./ramext/plugins/{shortname}.py"
     try:
         remove_plugin(shortname)
         os.remove(dir_path)
-        await eod(hell, f"**Uninstalled plugin** `{shortname}` **successfully.**")
+        await eod(zzy, f"**Uninstalled plugin** `{shortname}` **successfully.**")
     except OSError as e:
-        await eod(hell, f"**Error !!** \n\n`{dir_path}` : __{e.strerror}__")
+        await eod(zzy, f"**Error !!** \n\n`{dir_path}` : __{e.strerror}__")
 
 
 @ram_cmd(pattern="unload ([\s\S]*)")

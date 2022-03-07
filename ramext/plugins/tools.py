@@ -179,7 +179,7 @@ async def make_qr(event):
 @ram_cmd(pattern="cal(?:\s|$)([\s\S]*)")
 async def _(event):
     input_str = event.text[5:]
-    hell = await eor(event, "Processing...")
+    zzy = await eor(event, "Processing...")
     input_sgra = input_str.split(".")
     if len(input_sgra) == 3:
         yyyy = input_sgra[0]
@@ -196,9 +196,9 @@ async def _(event):
             a = json.dumps(current_date_detail_arraays, sort_keys=True, indent=4)
         else:
             a = response_content["error"]
-        await hell.edit(str(a))
+        await zzy.edit(str(a))
     else:
-        await eod(hell, f"SYNTAX: {ii}calendar YYYY.MM.DD")
+        await eod(zzy, f"SYNTAX: {ii}calendar YYYY.MM.DD")
 
 
 @ram_cmd(pattern="currency(?:\s|$)([\s\S]*)")
@@ -276,16 +276,16 @@ async def _(event):
             return False
         else:
             im = Image.new(mode="RGB", size=(1280, 720), color=usercolor)
-            im.save("hell.png", "PNG")
+            im.save("zzy.png", "PNG")
             input_str = input_str.replace("#", "#COLOR_")
             await event.client.send_file(
                 event.chat_id,
-                "hell.png",
+                "zzy.png",
                 force_document=False,
                 caption=input_str,
                 reply_to=message_id,
             )
-            os.remove("hell.png")
+            os.remove("zzy.png")
             await event.delete()
     else:
         await eod(
@@ -388,7 +388,7 @@ CmdHelp("tools").add_command(
 ).add_command(
   "url", "<link>", "Shortens the given long link"
 ).add_command(
-  "currency", "<amount> <from> <to>", "Currency converter for HellBot", ".currency 10 usd inr"
+  "currency", "<amount> <from> <to>", "Currency converter for ramubot", ".currency 10 usd inr"
 ).add_command(
   "cal", "<year ; month>", "Shows you the calendar of given month and year"
 ).add_command(

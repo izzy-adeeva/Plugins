@@ -16,7 +16,7 @@ async def _(ramevent):
     if reply_message.sender.bot:
        await eod(ramevent, "Need actual users. Not Bots")
        return
-    hell = await eor(ramevent, "Checking...")
+    zzy = await eor(ramevent, "Checking...")
     async with ramevent.client.conversation(chat) as conv:
           try:     
               first = await conv.send_message(f"/search_id {victim}")
@@ -27,16 +27,16 @@ async def _(ramevent):
               await eod(ramevent, "Please unblock @Sangmatainfo_bot")
               return
           if response1.text.startswith("Name History"):
-              await hell.edit(response1.text)
+              await zzy.edit(response1.text)
               await ramevent.client.delete_messages(conv.chat_id, [first.id, response1.id, response2.id, response3.id])
           elif response2.text.startswith("Name History"):
-              await hell.edit(response2.text)
+              await zzy.edit(response2.text)
               await ramevent.client.delete_messages(conv.chat_id, [first.id, response1.id, response2.id, response3.id])
           elif response3.text.startswith("Name History"):
-              await hell.edit(response3.text)
+              await zzy.edit(response3.text)
               await ramevent.client.delete_messages(conv.chat_id, [first.id, response1.id, response2.id, response3.id])
           else: 
-              await hell.edit("No Records Found !")
+              await zzy.edit("No Records Found !")
 
 
 @ram_cmd(pattern="unh(?:\s|$)([\s\S]*)")
@@ -50,7 +50,7 @@ async def _(ramevent):
     if reply_message.sender.bot:
        await eod(ramevent, "Need actual users. Not Bots")
        return
-    hell = await eor(ramevent, "Checking...")
+    zzy = await eor(ramevent, "Checking...")
     async with ramevent.client.conversation(chat) as conv:
           try:     
               first = await conv.send_message(f"/search_id {victim}")
@@ -61,16 +61,16 @@ async def _(ramevent):
               await eod(ramevent, "Please unblock @Sangmatainfo_bot")
               return
           if response1.text.startswith("Username History"):
-              await hell.edit(response1.text)
+              await zzy.edit(response1.text)
               await ramevent.client.delete_messages(conv.chat_id, [first.id, response1.id, response2.id, response3.id])
           elif response2.text.startswith("Username History"):
-              await hell.edit(response2.text)
+              await zzy.edit(response2.text)
               await ramevent.client.delete_messages(conv.chat_id, [first.id, response1.id, response2.id, response3.id])
           elif response3.text.startswith("Username History"):
-              await hell.edit(response3.text)
+              await zzy.edit(response3.text)
               await ramevent.client.delete_messages(conv.chat_id, [first.id, response1.id, response2.id, response3.id])
           else: 
-              await hell.edit("No Records Found !")
+              await zzy.edit("No Records Found !")
 
 
 CmdHelp("history").add_command(

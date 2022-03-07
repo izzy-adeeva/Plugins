@@ -29,7 +29,7 @@ async def _(event):
 
 @ram_cmd(pattern="vcinvite$")
 async def _(event):
-    hell = await eor(event, "`🧐 Inviting Users To Voice Chat....`")
+    zzy = await eor(event, "`🧐 Inviting Users To Voice Chat....`")
     users = []
     i = 0
     async for j in event.client.iter_participants(event.chat_id):
@@ -42,7 +42,7 @@ async def _(event):
             i += 6
         except BaseException:
             pass
-    await hell.edit(f"**🚀 Invited {i} Users to Voice Chat**")
+    await zzy.edit(f"**🚀 Invited {i} Users to Voice Chat**")
 
 
 CmdHelp("voice_chat").add_command(

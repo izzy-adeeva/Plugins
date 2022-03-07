@@ -11,10 +11,10 @@ from . import *
 
 @ram_cmd(pattern="getpic(?:\s|$)([\s\S]*)")
 async def _(event):
-    hell = await eor(event, "Getting profile photo..")
+    zzy = await eor(event, "Getting profile photo..")
     replied_user, error_i_a = await get_full_user(event)
     if replied_user is None:
-        await hell.edit(str(error_i_a))
+        await zzy.edit(str(error_i_a))
         return False
     replied_user_profile_photos = await event.client(GetUserPhotosRequest(user_id=replied_user.user.id, offset=42, max_id=0, limit=80))
     replied_user_profile_photos_count = "NaN"
@@ -60,7 +60,7 @@ async def _(event):
         force_document=False,
         silent=True,
     )
-    await hell.delete()
+    await zzy.delete()
 
 
 async def get_full_user(event):
@@ -123,7 +123,7 @@ async def potocmd(event):
     uid = "".join(event.raw_text.split(maxsplit=1)[1:])
     user = await event.get_reply_message()
     chat = event.input_chat
-    hell = await eor(event, "Getting profile pictures of this user...")
+    zzy = await eor(event, "Getting profile pictures of this user...")
     if user:
         photos = await event.client.get_profile_photos(user.sender)
         u = True
@@ -136,7 +136,7 @@ async def potocmd(event):
             send_photos = await event.client.download_media(photos[uid - 1])
             await event.client.send_file(event.chat_id, send_photos)
         else:
-            await eod(hell, "No photo found of this NIBBA. Now u Die!")
+            await eod(zzy, "No photo found of this NIBBA. Now u Die!")
             return
     elif uid.strip() == "all":
         if len(photos) > 0:
@@ -149,25 +149,25 @@ async def potocmd(event):
                     photo = await event.client.download_profile_photo(event.input_chat)
                 await event.client.send_file(event.chat_id, photo)
             except:
-                await eod(hell, "**This user has no photos!**")
+                await eod(zzy, "**This user has no photos!**")
                 return
     else:
         try:
             uid = int(uid)
             if uid <= 0:
-                await eod(hell, "`Number Invalid!` **Are you komedy Me ?**")
+                await eod(zzy, "`Number Invalid!` **Are you komedy Me ?**")
                 return
         except BaseException:
-            await eod(hell, "Are you komedy me ?")
+            await eod(zzy, "Are you komedy me ?")
             return
         if int(uid) <= (len(photos)):
             send_photos = await event.client.download_media(photos[uid - 1])
             await event.client.send_file(event.chat_id, send_photos)
         else:
-            await eod(hell, "No photo found of this NIBBA. Now u Die!")
+            await eod(zzy, "No photo found of this NIBBA. Now u Die!")
             await asyncio.sleep(2)
             return
-    await hell.delete()
+    await zzy.delete()
 
 
 CmdHelp("getpfp").add_command(

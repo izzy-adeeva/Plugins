@@ -18,12 +18,12 @@ if not os.path.isdir(dwllpath):
 async def _(event):
     if not event.reply_to_msg_id:
         return await eod(event, "Reply to a image...")
-    hell = await eor(event, "`Converting To thug Image..`")
+    zzy = await eor(event, "`Converting To thug Image..`")
     await event.get_reply_message()
     img = await convert_to_image(event, event.client)
     imagePath = img
-    maskPath = "./hellbot/resources/pics/mask (1).png"
-    cascPath = "./hellbot/resources/xmls/haarcascade_frontalface_default.xml"
+    maskPath = "./ramubot/resources/pics/mask (1).png"
+    cascPath = "./ramubot/resources/xmls/haarcascade_frontalface_default.xml"
     faceCascade = cv2.CascadeClassifier(cascPath)
     image = cv2.imread(imagePath)
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
@@ -38,7 +38,7 @@ async def _(event):
     ok = dwllpath + "/" + file_name
     background.save(ok, "PNG")
     await event.client.send_file(event.chat_id, ok)
-    await hell.delete()
+    await zzy.delete()
     for files in (ok, img):
         if files and os.path.exists(files):
             os.remove(files)
@@ -46,7 +46,7 @@ async def _(event):
 
 @ram_cmd(pattern="trigger$")
 async def _(event):
-    hell = await eor(event, "`Trigggggggggerrr`")
+    zzy = await eor(event, "`Trigggggggggerrr`")
     owo = await event.get_reply_message()
     img = await convert_to_image(event, bot)
     url_s = upload_file(img)
@@ -58,7 +58,7 @@ async def _(event):
     await event.client.send_file(
         event.chat_id, lolbruh, caption="You got triggered....", reply_to=owo
     )
-    await hell.delete()
+    await zzy.delete()
     for files in (lolbruh, img):
         if files and os.path.exists(files):
             os.remove(files)
@@ -66,7 +66,7 @@ async def _(event):
 
 @ram_cmd(pattern="geyy$")
 async def _(event):
-    hell = await eor(event, "`Geyyyy`")
+    zzy = await eor(event, "`Geyyyy`")
     owo = await event.get_reply_message()
     img = await convert_to_image(event, event.client)
     url_s = upload_file(img)
@@ -78,7 +78,7 @@ async def _(event):
     await event.client.send_file(
         event.chat_id, lolbruh, caption="`You Gey.`", reply_to=owo
     )
-    await hell.delete()
+    await zzy.delete()
     for files in (lolbruh, img):
         if files and os.path.exists(files):
             os.remove(files)
@@ -86,7 +86,7 @@ async def _(event):
 
 @ram_cmd(pattern="pix$")
 async def _(event):
-    hell = await eor(event, "`Pixing This Image.`")
+    zzy = await eor(event, "`Pixing This Image.`")
     owo = await event.get_reply_message()
     img = await convert_to_image(event, event.client)
     url_s = upload_file(img)
@@ -98,7 +98,7 @@ async def _(event):
     await event.client.send_file(
         event.chat_id, lolbruh, caption="`Pixeled This Image.`", reply_to=owo
     )
-    await hell.delete()
+    await zzy.delete()
     for files in (lolbruh, img):
         if files and os.path.exists(files):
             os.remove(files)
@@ -106,7 +106,7 @@ async def _(event):
 
 @ram_cmd(pattern="ytc(?:\s|$)([\s\S]*)")
 async def _(event):
-    hell = await eor(event, "`Making a youthuub comment...`")
+    zzy = await eor(event, "`Making a youthuub comment...`")
     owo = await event.get_reply_message()
     senderr = await event.client(GetFullUserRequest(owo.sender_id))
     if not senderr.profile_photo:
@@ -124,7 +124,7 @@ async def _(event):
     r = requests.get(doit)
     open("ytc.png", "wb").write(r.content)
     lolbruh = "ytc.png"
-    await hell.delete()
+    await zzy.delete()
     await event.client.send_file(event.chat_id, lolbruh, reply_to=owo)
     for files in (lolbruh, img):
         if files and os.path.exists(files):

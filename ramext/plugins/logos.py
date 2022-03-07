@@ -13,10 +13,10 @@ PICS_STR = []
 
 @ram_cmd(pattern="logo(?:\s|$)([\s\S]*)")
 async def _(event):
-    hell = await eor(event, "`Processing.....`")
+    zzy = await eor(event, "`Processing.....`")
     text = event.text[6:]
     if text == "":
-        await eod(hell, "**Give some text to make a logo !!**")
+        await eod(zzy, "**Give some text to make a logo !!**")
         return
     cid = await client_id(event)
     ram_mention = cid[2]
@@ -29,8 +29,8 @@ async def _(event):
         except:
             pass
     else:
-        await hell.edit("Picked a Logo BG...")
-        async for i in event.client.iter_messages("@HELLBOT_LOGOS", filter=InputMessagesFilterPhotos):
+        await zzy.edit("Picked a Logo BG...")
+        async for i in event.client.iter_messages("@ramubot_LOGOS", filter=InputMessagesFilterPhotos):
             PICS_STR.append(i)
         pic = random.choice(PICS_STR)
         logo_ = await pic.download_media()
@@ -43,7 +43,7 @@ async def _(event):
     else:
         font_size_ = 130
         strik = 20
-    await hell.edit("Making Logo...")
+    await zzy.edit("Making Logo...")
     img = Image.open(logo_)
     draw = ImageDraw.Draw(img)
     font = ImageFont.truetype(fnt, font_size_)
@@ -62,7 +62,7 @@ async def _(event):
     draw.text(
         (w_, h_), text, font=font, fill="white", stroke_width=strik, stroke_fill="black"
     )
-    file_name = "HellBot.png"
+    file_name = "ramubot.png"
     end = datetime.datetime.now()
     ms = (end - start).seconds
     img.save(file_name, "png")
@@ -71,7 +71,7 @@ async def _(event):
         file_name,
         caption=f"**Made By :** {ram_mention} \n**Time Taken :** `{ms} seconds`",
     )
-    await hell.delete()
+    await zzy.delete()
     try:
         os.remove(file_name)
         os.remove(fnt)

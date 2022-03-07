@@ -11,45 +11,45 @@ fbot = "@MissRose_bot"
 
 @ram_cmd(pattern="newfed ([\s\S]*)")
 async def _(event):
-    hell_input = event.pattern_match.group(1)
+    ram_input = event.pattern_match.group(1)
     chat = "@MissRose_Bot"
-    hell = await eor(event, "`Making new fed...`")
+    zzy = await eor(event, "`Making new fed...`")
     async with event.client.conversation(chat) as conv:
         try:
             response = conv.wait_event(
                 events.NewMessage(incoming=True, from_users=609517172)
             )
-            await event.client.send_message(chat, f"/newfed {hell_input}")
+            await event.client.send_message(chat, f"/newfed {ram_input}")
             response = await response
         except YouBlockedUserError:
-            await eod(hell, "`Please unblock` @MissRose_Bot `and try again`")
+            await eod(zzy, "`Please unblock` @MissRose_Bot `and try again`")
             return
         if response.text.startswith("You already have a federation"):
-            await eod(hell, f"You already have a federation. Do {ii}renamefed to rename your current fed.")
+            await eod(zzy, f"You already have a federation. Do {ii}renamefed to rename your current fed.")
         else:
-            await hell.edit(f"{response.message.message}")
+            await zzy.edit(f"{response.message.message}")
 
 
 @ram_cmd(pattern="renamefed ([\s\S]*)")
 async def _(event):
-    hell_input = event.pattern_match.group(1)
+    ram_input = event.pattern_match.group(1)
     chat = "@MissRose_Bot"
-    hell = await eor(event, "`Trying to rename your fed...`")
+    zzy = await eor(event, "`Trying to rename your fed...`")
     async with event.client.conversation(chat) as conv:
           try:     
               response = conv.wait_event(events.NewMessage(incoming=True,from_users=609517172))
-              await event.client.send_message(chat, f"/renamefed {hell_input}")
+              await event.client.send_message(chat, f"/renamefed {ram_input}")
               response = await response 
           except YouBlockedUserError: 
-              await eod(hell, "Please Unblock @MissRose_Bot")
+              await eod(zzy, "Please Unblock @MissRose_Bot")
               return
           else:
-             await hell.edit(response.message)
+             await zzy.edit(response.message)
 
 
 @ram_cmd(pattern="fstat ([\s\S]*)")
 async def _(event):
-    hell = await eor(event, "`Collecting fstat....`")
+    zzy = await eor(event, "`Collecting fstat....`")
     thumb = ram_logo
     if event.reply_to_msg_id:
         previous_message = await event.get_reply_message()
@@ -59,7 +59,7 @@ async def _(event):
         lavde = event.pattern_match.group(1)
         user = lavde
     if lavde == "":
-        await hell.edit("`Need username/id to check fstat`")
+        await zzy.edit("`Need username/id to check fstat`")
         return
     else:
         async with event.client.conversation(fbot) as conv:
@@ -71,12 +71,12 @@ async def _(event):
                 await event.client.send_message(event.chat_id, response)
                 await event.delete()
             except YouBlockedUserError:
-                await hell.edit("`Please Unblock` @MissRose_Bot")
+                await zzy.edit("`Please Unblock` @MissRose_Bot")
 
 
 @ram_cmd(pattern="fedinfo ([\s\S]*)")
 async def _(event):
-    hell = await eor(event, "`Fetching fed info.... please wait`")
+    zzy = await eor(event, "`Fetching fed info.... please wait`")
     lavde = event.pattern_match.group(1)
     async with event.client.conversation(fbot) as conv:
         try:
@@ -84,9 +84,9 @@ async def _(event):
             await conv.get_response()
             await conv.send_message("/fedinfo " + lavde)
             massive = await conv.get_response()
-            await hell.edit(massive.text + "\n\n**ʟɛɢɛռɖaʀʏ_ᴀғ_ɦɛʟʟɮօt**")
+            await zzy.edit(massive.text + "\n\n**ʟɛɢɛռɖaʀʏ_ᴀғ_ɦɛʟʟɮօt**")
         except YouBlockedUserError:
-            await hell.edit("`Please Unblock` @MissRose_Bot")
+            await zzy.edit("`Please Unblock` @MissRose_Bot")
             
             
 CmdHelp("federation").add_command(

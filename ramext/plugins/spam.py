@@ -16,23 +16,23 @@ async def spammer(event):
     reply_message = await event.get_reply_message()
     if counter > 100:
         return await eor(event, f"To spam more than 100 times use: \n`{ii}bigspam {counter} {spam_message}`")
-    hell = await eor(event, f"Spamming {counter} times...")
+    zzy = await eor(event, f"Spamming {counter} times...")
     for i in range(counter):
         await event.client.send_message(event.chat_id, spam_message, reply_to=reply_message)
-    await hell.delete()
+    await zzy.delete()
     await event.client.send_message(lg_id, f"#SPAM \n\nSpammed  `{counter}`  messages!!")
 
 @ram_cmd(pattern="bigspam(?:\s|$)([\s\S]*)")
 async def bigspam(event):
     msg_ = event.text[9:]
-    hellbot_count = int(msg_.split(" ")[0])
+    ramubot_count = int(msg_.split(" ")[0])
     reply_msg = await event.get_reply_message()
     if reply_msg:
-        hell_spam = reply_msg
+        ram_spam = reply_msg
     else:
-        hell_spam = msg_.replace(str(hellbot_count), "")
-    for i in range(hellbot_count):
-        await event.client.send_message(event.chat_id, hell_spam)
+        ram_spam = msg_.replace(str(ramubot_count), "")
+    for i in range(ramubot_count):
+        await event.client.send_message(event.chat_id, ram_spam)
     await event.delete()
     await event.client.send_message(lg_id, f"#BIGSPAM \n\nBigspammed  `{hell_count}`  messages !!")
 
@@ -51,18 +51,18 @@ async def spammer(event):
 @ram_cmd(pattern="uspam(?:\s|$)([\s\S]*)")
 async def _(event):
     reply_msg = await event.get_reply_message()
-    hell = event.text[7:]
+    zzy = event.text[7:]
     if reply_msg:
         input_str = reply_msg
     else:
-        input_str = hell
+        input_str = zzy
     await event.client.send_message(lg_id, f"#UNLIMITED_SPAM \n\nStarted Unlimited Spam. Will spam till floodwait. Do `{ii}restart` to stop.")
     x = 0
     while x < 69:
         await event.client.send_message(event.chat_id, input_str)
 
-# Special Break Spam Module For HellBot Made By Chirag Bhargava.
-# Team HellBot
+# Special Break Spam Module For ramubot Made By Chirag Bhargava.
+# Team ramubot
 @ram_cmd(pattern="bspam(?:\s|$)([\s\S]*)")
 async def spammer(event):
     msg_ = event.text[7:]
@@ -114,7 +114,7 @@ CmdHelp("spam").add_command(
 ).add_command(
   "bspam", "<count> <text or reply>", "Spams the message X times without floodwait. Breaks the spam count to avoid floodwait.", "bspam 9999 Hello"
 ).add_command(
-  "bigspam", "<count> <text>", "Sends the text 'X' number of times. This what hellbot iz known for. The Best BigSpam Ever", "bigspam 9999 Hello"
+  "bigspam", "<count> <text>", "Sends the text 'X' number of times. This what ramubot iz known for. The Best BigSpam Ever", "bigspam 9999 Hello"
 ).add_info(
   "Spammers Commands"
 ).add_warning(

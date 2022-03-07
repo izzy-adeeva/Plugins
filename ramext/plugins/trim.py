@@ -5,7 +5,7 @@ import time
 
 from . import *
 
-FF_MPEG_DOWN_LOAD_MEDIA_PATH = "./trim/hellbot.media.ffmpeg"
+FF_MPEG_DOWN_LOAD_MEDIA_PATH = "./trim/ramubot.media.ffmpeg"
 
 
 @ram_cmd(pattern="tsave$")

@@ -226,21 +226,21 @@ async def payf(event):
 
 
 @ram_cmd(pattern="cat$")
-async def hmm(hell):
+async def hmm(zzy):
     reactcat = nekos.textcat()
-    await eor(hell, reactcat)
+    await eor(zzy, reactcat)
 
 
 @ram_cmd(pattern="why$")
-async def hmm(hell):
+async def hmm(zzy):
     whyhell = nekos.why()
-    await eor(hell, whyhell)
+    await eor(zzy, whyhell)
 
 
 @ram_cmd(pattern="fact$")
-async def hmm(hell):
+async def hmm(zzy):
     facthell = nekos.fact()
-    await eor(hell, facthell)
+    await eor(zzy, facthell)
 
 
 CmdHelp("fun2").add_command(

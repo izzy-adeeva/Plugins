@@ -42,7 +42,7 @@ async def _(event):
     input_str = event.text[8:]
     if input_str == "":
         return await eod(event, "Give a new file name..")
-    hell = await eor(event, f"Renaming it to `{input_str}`")
+    zzy = await eor(event, f"Renaming it to `{input_str}`")
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
         os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
     if event.reply_to_msg_id:
@@ -57,17 +57,17 @@ async def _(event):
         end = datetime.datetime.now()
         ms = (end - start).seconds
         if os.path.exists(downloaded_file_name):
-            await hell.edit("Downloaded to `{}` in {} seconds.".format(downloaded_file_name, ms)
+            await zzy.edit("Downloaded to `{}` in {} seconds.".format(downloaded_file_name, ms)
             )
         else:
-            await eod(hell, "Error Occurred\n {}".format(input_str))
+            await eod(zzy, "Error Occurred\n {}".format(input_str))
     else:
-        await eod(hell, f"**Syntax Wrong !!** \n\n• `{ii}rename new file name` as reply to a Telegram file")
+        await eod(zzy, f"**Syntax Wrong !!** \n\n• `{ii}rename new file name` as reply to a Telegram file")
 
 @ram_cmd(pattern="rnupload(?:\s|$)([\s\S]*)")
 async def _(event):
     input_str = event.text[10:]
-    hell = await eor(event, f"Renaming to `{input_str}`")
+    zzy = await eor(event, f"Renaming to `{input_str}`")
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
         os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
     if event.reply_to_msg_id:
@@ -100,18 +100,18 @@ async def _(event):
             end_two = datetime.datetime.now()
             os.remove(downloaded_file_name)
             ms_two = (end_two - end).seconds
-            await hell.edit("Downloaded in {} seconds. Uploaded in {} seconds.".format(
+            await zzy.edit("Downloaded in {} seconds. Uploaded in {} seconds.".format(
                     ms_one, ms_two
                 )
             )
         else:
             await eod(event, "File Not Found {}".format(input_str))
     else:
-        await hell.edit(f"**Syntax Wrong !!** \n\n• `{ii}rnupload new file name`")
+        await zzy.edit(f"**Syntax Wrong !!** \n\n• `{ii}rnupload new file name`")
 
 @ram_cmd(pattern="rnsupload(?:\s|$)([\s\S]*)")
 async def _(event):
-    hell = await eor(event, "Rename & Upload as streamable format is in progress...")
+    zzy = await eor(event, "Rename & Upload as streamable format is in progress...")
     input_str = event.text[11:]
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
         os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
@@ -159,7 +159,7 @@ async def _(event):
                     event.chat_id,
                     downloaded_file_name,
                     thumb=thumb,
-                    caption="reuploaded by HellBot",
+                    caption="reuploaded by ramubot",
                     force_document=False,
                     allow_cache=False,
                     reply_to=event.message.id,
@@ -174,19 +174,19 @@ async def _(event):
                     ],
                 )
             except Exception as e:
-                await hell.edit(event, str(e))
+                await zzy.edit(event, str(e))
             else:
                 end = datetime.datetime.now()
                 os.remove(downloaded_file_name)
                 ms_two = (end - end_one).seconds
-                await hell.edit("Downloaded in {} seconds. Uploaded in {} seconds.".format(
+                await zzy.edit("Downloaded in {} seconds. Uploaded in {} seconds.".format(
                         ms_one, ms_two
                     )
                 )
         else:
-            await eod(hell, "File Not Found {}".format(input_str))
+            await eod(zzy, "File Not Found {}".format(input_str))
     else:
-        await hell.edit(f"**Syntax Wrong !!** \n\n• `{ii}rnsupload new file name` as reply to a Telegram file")
+        await zzy.edit(f"**Syntax Wrong !!** \n\n• `{ii}rnsupload new file name` as reply to a Telegram file")
 
 
 CmdHelp("rename").add_command(

@@ -13,43 +13,43 @@ async def install(event):
     total = int(documentss.total)
     total_doxx = range(0, total)
     ram_ = await eor(event, "Installing plugins from Plugin Channel...")
-    hell = "**Installed Plugins :**\n\n"
+    zzy = "**Installed Plugins :**\n\n"
     for ixo in total_doxx:
         mxo = documentss[ixo].id
         downloaded_file_name = await event.client.download_media(
-            await event.client.get_messages(chat, ids=mxo), "hellbot/plugins/"
+            await event.client.get_messages(chat, ids=mxo), "ramubot/plugins/"
         )
         if "(" not in downloaded_file_name:
             path1 = Path(downloaded_file_name)
             shortname = path1.stem
             load_module(shortname.replace(".py", ""))
-            hell += "• __Installed Plugin__ `{}` __successfully.__\n".format(os.path.basename(downloaded_file_name))
+            zzy += "• __Installed Plugin__ `{}` __successfully.__\n".format(os.path.basename(downloaded_file_name))
         else:
-            hell += "• __Plugin__ `{}` __has been pre-installed and cannot be installed.__\n".format(os.path.basename(downloaded_file_name))
-    await ram_.edit(hell)
+            zzy += "• __Plugin__ `{}` __has been pre-installed and cannot be installed.__\n".format(os.path.basename(downloaded_file_name))
+    await ram_.edit(zzy)
 
 
 @ram_cmd(pattern="installall ([\s\S]*)")
 async def install(event):
     chat = event.pattern_match.group(1)
     ram_ = await eor(event, f"Starting To Install Plugins From {chat} !!")
-    hell = f"**Installed Plugins From {chat} :**\n\n"
+    zzy = f"**Installed Plugins From {chat} :**\n\n"
     documentss = await event.client.get_messages(chat, None, filter=InputMessagesFilterDocument)
     total = int(documentss.total)
     total_doxx = range(0, total)
     for ixo in total_doxx:
         mxo = documentss[ixo].id
         downloaded_file_name = await event.client.download_media(
-            await event.client.get_messages(chat, ids=mxo), "hellbot/plugins/"
+            await event.client.get_messages(chat, ids=mxo), "ramubot/plugins/"
         )
         if "(" not in downloaded_file_name:
             path1 = Path(downloaded_file_name)
             shortname = path1.stem
             load_module(shortname.replace(".py", ""))
-            hell += "• __Installed Plugin__ `{}` __successfully.__\n".format(os.path.basename(downloaded_file_name))
+            zzy += "• __Installed Plugin__ `{}` __successfully.__\n".format(os.path.basename(downloaded_file_name))
         else:
-            hell += "• __Plugin__ `{}` __has been pre-installed and cannot be installed.__\n".format(os.path.basename(downloaded_file_name))
-    await ram_.edit(hell)
+            zzy += "• __Plugin__ `{}` __has been pre-installed and cannot be installed.__\n".format(os.path.basename(downloaded_file_name))
+    await ram_.edit(zzy)
 
 
 CmdHelp("extra_py").add_command(
