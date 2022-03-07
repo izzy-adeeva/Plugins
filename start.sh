@@ -1,4 +1,4 @@
 #!/bin/bash
 
-echo "••• STARTING RAM-UBOT EXTENDED •••"
-python3 -m userbot
+echo "••• STARTING RAM-UBOT Extended •••"
+python3 -m ramext

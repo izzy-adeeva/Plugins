@@ -1,24 +1,5 @@
-<h1 align="center"><img width="35px">RAMA CABUL USERBOT
+# A repo with all the codes of HellBot.
 
-<p align="center">
-    <a href="https://github.com/izzy-adeeva/Plugins"><img src="https://img.shields.io/github/last-commit/izzy-adeeva/Plugins?color=ff0000&logo=github&logoColor=ffffff&style=for-the-badge" /></a>
-    <a href="https://github.com/izzy-adeeva/Plugins"> <img src="https://img.shields.io/github/repo-size/izzy-adeeva/Plugins?logo=github&style=for-the-badge" /></a>
-    <a href="https://pypi.org/project/Telethon/"><img src="https://img.shields.io/pypi/v/telethon?color=important&label=telethon&logo=python&logoColor=brightgreen&style=for-the-badge" /></a>
-    <img alt="PYTHON" src="https://img.shields.io/badge/PYTHON-v3.9.6-purple?style=for-the-badge&logo=appveyor"/>
-    </p>
+# Railway Branch
 
-## String Session :
-[![GenerateStringName](https://img.shields.io/badge/repl.it-generateStringName-white)](https://t.me/GeezStringBot)
-
-<h2 align="center">
-   Lmao,Use Heroku Again Bruhh..
-</h2>
-
-<p align="center">
-<a href="https://dashboard.heroku.com/new?template=https://github.com/izzy-adeeva/plugins"><img src="https://img.shields.io/badge/Deploy%20To%20Heroku-blueviolet?style=for-the-badge&logo=heroku" width="250""/</a>  
-
-
-### Group Support 
-<a href="https://t.me/ramsupportt"><img src="https://img.shields.io/badge/Join-Group%20Support1-blue.svg?style=for-the-badge&logo=Telegram"></a> <a href="https://t.me/GeezSupport"><img src="https://img.shields.io/badge/Join-Groups%20Support2-blue.svg?style=for-the-badge&logo=Telegram"></a>
-
-##
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template?template=https%3A%2F%2Fgithub.com%2FHellBoy-OP%2FPlugins%2Ftree%2Frailway&plugins=postgresql&envs=APP_ID%2CAPI_HASH%2CBOT_TOKEN%2CBOT_USERNAME%2CHANDLER%2CLOGGER_ID%2CHELLBOT_SESSION%2CENV&optionalEnvs=HANDLER&APP_IDDesc=Your+telegram+api+id&API_HASHDesc=Your+telegram+api+hash&BOT_TOKENDesc=Your+bot%27s+token+from+%40BotFather&BOT_USERNAMEDesc=Your+bot%27s+username+from+%40Botfather&HANDLERDesc=Your+command+handler.&LOGGER_IDDesc=A+channel+id+for+Bot+Logger&HELLBOT_SESSIONDesc=Your+string+session&ENVDesc=Fill+ANYTHING&referralCode=HELLBOT_IS_LIT)

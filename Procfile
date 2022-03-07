@@ -1,1 +1,1 @@
-worker: bash iraa
+worker: bash start.sh
