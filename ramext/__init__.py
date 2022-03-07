@@ -6,7 +6,7 @@ import time
 from distutils.util import strtobool as sb
 from logging import DEBUG, INFO, basicConfig, getLogger
 
-from ramext.clients.session import RAM2, RAM3, RAM4, RAM5, RAM, HellBot 
+from ramext.clients.session import RAM2, RAM3, RAM4, RAM5, RAM, ramubot 
 from ramext.config import Config
 
 
@@ -27,7 +27,7 @@ else:
 LOGS = getLogger(__name__)
 
 bot = RAM
-tbot = HellBot
+tbot = ramubot
 
 
 if not Config.API_HASH:
@@ -59,7 +59,7 @@ if not Config.DB_URI:
 if not Config.STRING_SESSION:
 
 
-    LOGS.warning("Please fill var HELLBOT SESSION to continue.")
+    LOGS.warning("Please fill var ramubot SESSION to continue.")
     quit(1)
 
 
