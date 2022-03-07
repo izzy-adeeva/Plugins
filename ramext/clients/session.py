@@ -82,7 +82,7 @@ else:
     RAM5 = None
 
 
-rambot = TelegramClient(
+ramubot = TelegramClient(
     session="RAM-TBot",
     api_id=Config.APP_ID,
     api_hash=Config.API_HASH,
