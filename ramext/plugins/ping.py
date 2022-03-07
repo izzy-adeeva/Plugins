@@ -4,7 +4,7 @@ import time
 
 from . import *
 
-ping_txt = """<b><i>╰•★★  ℘ơŋɠ ★★•╯</b></i>
+ping_txt = """<b>--- PONG ---</b>
 
     Speed :</i> <code>{}</code>
     Uptime :</i> <code>{}</code>

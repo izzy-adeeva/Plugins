@@ -80,10 +80,10 @@ def load_module(shortname):
         mod.ram_cmd = ram_cmd
         mod.sudo_cmd = sudo_cmd
         # support for other userbots
-        sys.modules["userbot.utils"] = ramext.utils
-        sys.modules["userbot"] = ramext
+        sys.modules["ramext.utils"] = ramext.utils
+        sys.modules["ramext"] = ramext
         # support for paperplaneextended
-        sys.modules["userbot.events"] = ramext
+        sys.modules["ramext.events"] = ramext
         spec.loader.exec_module(mod)
         # for imports
         sys.modules["ramext.plugins." + shortname] = mod

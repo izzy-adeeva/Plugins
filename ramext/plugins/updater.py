@@ -23,20 +23,10 @@ NO_HEROKU_APP_CFGD = "No Heroku App Found!"
 HEROKU_GIT_REF_SPEC = "HEAD:refs/heads/master"
 RESTARTING_APP = "Restarting Heroku App..."
 IS_SELECTED_DIFFERENT_BRANCH = "Looks like a custom branch {branch_name} is being used!\nIn this case, updater is unable to identify the branch to be updated. Please check out to an official branch, and re-start the updater."
-ram_info = "ramext/sql/ram_info.json"
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 requirements_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "requirements.txt")
 
-
-async def ram_info(ram_info):
-    infos = requests.get(ram_info).json()
-    _version = infos['RAM_INFO']['version']
-    _release = infos['RAM_INFO']['release-date']
-    _branch = infos['RAM_INFO']['branch']
-    _author = infos['RAM_INFO']['author']
-    _auturl = infos['RAM_INFO']['author-url']
-    return _version, _release, _branch, _author, _auturl
-
+ram_info = None
 
 async def gen_chlog(repo, diff):
     d_form = "%d/%m/%y"
@@ -189,6 +179,8 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
         _version, _release, _branch, _author, _auturl = await ram_info(ram_info)
         await event.edit(f"<b><i>RAM-UBOT Docker Build In Progress !!!</b></i> \n\n<b><i><u>Update Information :</b></i></u> \n<b>• Branch :</b> {_branch} \n<b>• Release Date :</b> {_release} \n<b>• Version :</b> {_version} \n<b>• Author :</b> <a href='{_auturl}'>{_author}</a>", link_preview=False, parse_mode="HTML")
         ups_rem.fetch(ac_br)
+        cid = await client_id(event)
+        ram_mention = cid[2]
         repo.git.reset("--hard", "FETCH_HEAD")
         heroku_git_url = heroku_app.git_url.replace(
             "https://", "https://api:" + HEROKU_API_KEY + "@"
@@ -210,7 +202,7 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
             )
             await asyncio.sleep(5)
             return await event.delete()
-        await event.edit(f"**Your RAM-UBOT Is UpToDate**\n\n**Version :**  __{ram_version}__\n**Oɯɳҽɾ :**  {ram_mention}")
+        await event.edit(f"**Your RAM-UBOT Is UpToDate**\n\n**Version :**  __{ram_version}__\n**Owner :**  {ram_mention}")
     else:
         await event.edit("**Please set up**  `HEROKU_API_KEY`  **from heroku to update!**")
     return
