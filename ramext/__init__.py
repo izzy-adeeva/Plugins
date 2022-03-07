@@ -55,7 +55,10 @@ if not Config.DB_URI:
     quit(1)
 
 
+
 if not Config.STRING_SESSION:
+
+
     LOGS.warning("Please fill var HELLBOT SESSION to continue.")
     quit(1)
 
@@ -77,7 +80,7 @@ except Exception:
 
 
 # global variables
-CMD_LIST = {}
+# CMD_LIST = {}
 CMD_HELP = {}
 CMD_HELP_BOT = {}
 BRAIN_CHECKER = []
