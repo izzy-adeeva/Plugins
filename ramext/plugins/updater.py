@@ -37,7 +37,7 @@ async def gen_chlog(repo, diff):
 
 async def print_changelogs(event, ac_br, changelog):
     changelog_str = (
-        f"🔥 **New UPDATE available for [{ac_br}]:\n\n📑 CHANGELOG:**\n`{changelog}`"
+        f"**New UPDATE available for [{ac_br}]:\n\n CHANGELOG:**\n`{changelog}`"
     )
     if len(changelog_str) > 4096:
         await eor(event, "`Changelog is too big, view the file to see it.`")
