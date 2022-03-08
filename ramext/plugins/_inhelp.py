@@ -19,6 +19,7 @@ from telethon.tl.functions.messages import ExportChatInviteRequest
 
 from ramext.sql.gvar_sql import gvarstat
 from . import *
+from ramext.config import Config
 
 ram_row = Config.BUTTONS_IN_HELP
 emoji = Config.EMOJI_IN_HELP
@@ -109,9 +110,9 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
                     apn.append(y)
             a = gvarstat("HELP_PIC")
             if a:
-                help_pic = a.split("https://telegra.ph/file/e62dcb31e02594af0fab4.png")[0]
+                help_pic = a.split("")[0]
             else:
-                help_pic = ""
+                help_pic = "https://telegra.ph/file/e62dcb31e02594af0fab4.png"
             help_msg = f"**{ram_mention}**\n\n __No.of Plugins__ : `{len(CMD_HELP)}` \n __Commands__ : `{len(apn)}`\n __Page__ : 1/{veriler[0]}"
             if help_pic == "DISABLE":
                 result = builder.article(
@@ -137,7 +138,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
                 )
         elif event.query.user_id in auth and query == "alive":
             uptime = await get_time((time.time() - StartTime))
-            alv_msg = gvarstat("ALIVE_MSG") or "»»» <b>RAM-UBOT IS ONLINE</b> «««"
+            alv_msg = gvarstat("ALIVE_MSG") or "<b>RAM-UBOT IS ONLINE</b>"
             he_ll = alive_txt.format(alv_msg, telethon_ver, ram_version, uptime, abuse_m, is_sudo)
             alv_btn = [
                 [Button.url(f"{RAM_USER}", f"tg://openmessage?user_id={ramtod}")],
@@ -217,11 +218,11 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
 
         else:
             result = builder.article(
-                "@Its_RAM-UBOT",
+                "RAM-UBOT_EXTENDED",
                 text="""**Hey! This is [RAM-UBOT](https://t.me/ramsupport) \nYou can know more about me from the links given below 👇**""",
                 buttons=[
                     [
-                        custom.Button.url("🔥 CHANNEL 🔥", "https://t.me/ramsupport"),
+                        custom.Button.url("🔥 CHANNEL 🔥", "https://t.me/ramsupportt"),
                         custom.Button.url(
                             " GROUP ", "https://t.me/GeezSupport"
                         ),
