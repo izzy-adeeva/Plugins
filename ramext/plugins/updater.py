@@ -135,7 +135,7 @@ async def upstream(event):
     ram_mention = cid[2]
     if changelog == "" and not force_update:
         
-        output_ = f"**Your Bot Version :** `{ram_version}` \n**Owner :** {ram_mention} \n\n**Official RAM-UBOT Extended Version :** `{version}` \n**Release Date :** `{_release}` \n**Official Repo Branch :** `{_branch}` \n**Update By :** [{_author}]({_auturl})"
+        output_ = f"**Your Bot Version :** `{ram_version}` \n**Owner :** {ram_mention} \n\n**Official RAM-UBOT Extended Version :** `{version}`"
         if str(version) not in str(ram_version):
             output_ += f"\n\n**Do** `{ii}update build` **to update your RAM-UBOT Extended to latest version.**"
         await event.edit(output_)
@@ -176,7 +176,7 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
             )
             return repo.__del__()
     
-        await event.edit(f"<b><i>RAM-UBOT Docker Build In Progress !!!</b></i> \n\n<b><i><u>Update Information :</b></i></u> \n<b>• Branch :</b> {_branch} \n<b>• Release Date :</b> {_release} \n<b>• Version :</b> {_version} \n<b>• Author :</b> <a href='{_auturl}'>{_author}</a>", link_preview=False, parse_mode="HTML")
+        await event.edit(f"<b><i>RAM-UBOT Docker Build In Progress !!!</b></i> \n\n<b><i><u>Update Information :</b></i></u> \n<b>• ", link_preview=False, parse_mode="HTML")
         ups_rem.fetch(ac_br)
         cid = await client_id(event)
         ram_mention = cid[2]
@@ -240,8 +240,8 @@ async def upstream(event):
     ac_br = repo.active_branch.name
     ups_rem = repo.remote("upstream")
     ups_rem.fetch(ac_br)
-    _version, _release, _branch, _author, _auturl = await ram_info(ram_info)
-    await event.edit(f"<b><i>RAM-UBOT Docker Build In Progress !!</b></i> \n\n<b><i><u>Update Information :</b></i></u> \n<b>• Branch :</b> {_branch} \n<b>• Release Date :</b> {_release} \n<b>• Version :</b> {_version} \n<b>• Author :</b> <a href='{_auturl}'>{_author}</a>", link_preview=False, parse_mode="HTML")
+   # _version, _release, _branch, _author, _auturl = await ram_info(ram_info)
+    await event.edit(f"<b><i>RAM-UBOT Docker Build In Progress !!</b></i> \n\n<b><i><u>Update Information :</b></i></u> \n<b>•", link_preview=False, parse_mode="HTML")
     await deploy(event, repo, ups_rem, ac_br, txt)
 
 
