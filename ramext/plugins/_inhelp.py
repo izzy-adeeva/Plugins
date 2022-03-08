@@ -16,7 +16,8 @@ from telethon.errors.rpcerrorlist import UserNotParticipantError
 from telethon.tl.functions.channels import GetParticipantRequest
 from telethon.tl.functions.channels import JoinChannelRequest
 from telethon.tl.functions.messages import ExportChatInviteRequest
-
+from ramext.config import Config
+from ramext.clients import client_list
 from ramext.sql.gvar_sql import gvarstat
 from . import *
 
@@ -86,7 +87,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
         result = None
         query = event.text
         auth = await clients_list()
-        if event.query.user_id in auth and query == "ram_help":
+        if event.query.user_id in auth and query == "rambot_help":
             rev_text = query[::-1]
             veriler = button(0, sorted(CMD_HELP))
             apn = []
@@ -420,5 +421,5 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
         else:
             return await event.answer("You are not authorized to use me! \n© RAM-UBOT ™", cache_time=0, alert=True)
 
-            
+
 # iraa
