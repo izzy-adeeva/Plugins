@@ -5,7 +5,7 @@ import os
 import requests
 import sys
 import urllib3
-
+from ramext.config import Config
 from git import Repo
 from git.exc import GitCommandError, InvalidGitRepositoryError, NoSuchPathError
 
@@ -26,7 +26,6 @@ IS_SELECTED_DIFFERENT_BRANCH = "Looks like a custom branch {branch_name} is bein
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 requirements_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "requirements.txt")
 
-ram_info = None
 
 async def gen_chlog(repo, diff):
     d_form = "%d/%m/%y"
@@ -135,9 +134,9 @@ async def upstream(event):
     cid = await client_id(event)
     ram_mention = cid[2]
     if changelog == "" and not force_update:
-        _version, _release, _branch, _author, _auturl = await ram_info(ram_info)
-        output_ = f"**Your Bot Version :** `{ram_version}` \n**Owner :** {ram_mention} \n\n**Official RAM-UBOT Extended Version :** `{_version}` \n**Release Date :** `{_release}` \n**Official Repo Branch :** `{_branch}` \n**Update By :** [{_author}]({_auturl})"
-        if str(_version) not in str(ram_version):
+        
+        output_ = f"**Your Bot Version :** `{ram_version}` \n**Owner :** {ram_mention} \n\n**Official RAM-UBOT Extended Version :** `{version}` \n**Release Date :** `{_release}` \n**Official Repo Branch :** `{_branch}` \n**Update By :** [{_author}]({_auturl})"
+        if str(version) not in str(ram_version):
             output_ += f"\n\n**Do** `{ii}update build` **to update your RAM-UBOT Extended to latest version.**"
         await event.edit(output_)
         return repo.__del__()
@@ -176,7 +175,7 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
                 f"{txt}\n" "`Invalid Heroku vars for updating."
             )
             return repo.__del__()
-        _version, _release, _branch, _author, _auturl = await ram_info(ram_info)
+    
         await event.edit(f"<b><i>RAM-UBOT Docker Build In Progress !!!</b></i> \n\n<b><i><u>Update Information :</b></i></u> \n<b>• Branch :</b> {_branch} \n<b>• Release Date :</b> {_release} \n<b>• Version :</b> {_version} \n<b>• Author :</b> <a href='{_auturl}'>{_author}</a>", link_preview=False, parse_mode="HTML")
         ups_rem.fetch(ac_br)
         cid = await client_id(event)

@@ -85,7 +85,7 @@ class Config(object):
     TEMP_DIR = os.environ.get("TEMP_DIR", None)
     TMP_DOWNLOAD_DIRECTORY = os.environ.get("TMP_DOWNLOAD_DIRECTORY", "./DOWNLOADS/")
     TZ = os.environ.get("TZ", "Asia/Kolkata")
-    UPSTREAM_REPO = os.environ.get("UPSTREAM_REPO", "https://github.com/izzy-adeeva/Plugins")
+    UPSTREAM_REPO = os.environ.get("UPSTREAM_REPO", "https://github.com/hitokizzy/RAM-UBOT_EXTENDED")
     USE_EVAL = os.environ.get("USE_EVAL", None)
     WEATHER_API = os.environ.get("WEATHER_API", None)
     YOUR_NAME = os.environ.get("YOUR_NAME", None)
