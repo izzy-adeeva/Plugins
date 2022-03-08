@@ -176,7 +176,7 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
             )
             return repo.__del__()
     
-        await event.edit(f"<b><i>RAM-UBOT Docker Build In Progress !!!</b></i> \n\n<b><i><u>Update Information :</b></i></u> \n<b>• ", link_preview=False, parse_mode="HTML")
+        await event.edit(f"<b><i>RAM-UBOT Docker Build In Progress !!!</b></i> ", link_preview=False, parse_mode="HTML")
         ups_rem.fetch(ac_br)
         cid = await client_id(event)
         ram_mention = cid[2]
@@ -210,11 +210,11 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
 @ram_cmd(pattern="update build$")
 async def upstream(event):
     event = await eor(event, "`Hard-Update In Progress... \nPlease wait until docker build is finished...`")
-    off_repo = "https://github.com/izzy-adeeva/Plugins"
+    off_repo = "https://github.com/hitokizzy/RAM-UBOT_EXTENDED"
     os.chdir("/app")
-    git_hell = f"rm -rf .git"
+    ibels = f"rm -rf .git"
     try:
-        await runcmd(git_hell)
+        await runcmd(ibels)
     except BaseException:
         pass
     txt = "😕 `Updater cannot continue due to some problems occured`\n\n**LOGTRACE:**\n"
@@ -241,7 +241,7 @@ async def upstream(event):
     ups_rem = repo.remote("upstream")
     ups_rem.fetch(ac_br)
    # _version, _release, _branch, _author, _auturl = await ram_info(ram_info)
-    await event.edit(f"<b><i>RAM-UBOT Docker Build In Progress !!</b></i> \n\n<b><i><u>Update Information :</b></i></u> \n<b>•", link_preview=False, parse_mode="HTML")
+    await event.edit(f"<b><i>RAM-UBOT Docker Build In Progress !!</b></i>", link_preview=False, parse_mode="HTML")
     await deploy(event, repo, ups_rem, ac_br, txt)
 
 
