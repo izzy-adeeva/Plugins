@@ -9,7 +9,7 @@ msg = f"""
 **⚡ RAM-UBOT Extended ⚡**
   •        [ Repo 📑](https://github.com/hitokizzy/RAM-UBOT_EXTENDED)
   •        [ Deploy 🚀](https://dashboard.heroku.com/new?button-url=https%3A%2F%2Fgithub.com%2hitokizzy%2FRAM-UBOT_EXTENDED&template=https%3A%2F%2Fgithub.com%2Fhitokizzy%2FRAM-UBOT_EXTENDED)
-  •  ©️ {hell_channel} ™
+  •  ©️ {ram_channel} ™
 """
 botname = Config.BOT_USERNAME
 
