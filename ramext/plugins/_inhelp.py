@@ -17,10 +17,10 @@ from telethon.tl.functions.channels import GetParticipantRequest
 from telethon.tl.functions.channels import JoinChannelRequest
 from telethon.tl.functions.messages import ExportChatInviteRequest
 from ramext.config import Config
-from ramext.clients import client_list
+
 from ramext.sql.gvar_sql import gvarstat
 from . import *
-
+client_list =  RAM, RAM2, RAM3, RAM4, RAM5
 ram_row = Config.BUTTONS_IN_HELP
 ram_emoji = Config.EMOJI_IN_HELP
 PM_WARNS = {}
@@ -35,8 +35,8 @@ LOG_GP = Config.LOGGER_ID
 USER_BOT_WARN_ZERO = "Enough Of Your Flooding In My Master's PM!! \n\n**🚫 Blocked and Reported**"
 
 alive_txt = """{}\n
-<b><i>🏅 𝙱𝚘𝚝 𝚂𝚝𝚊𝚝𝚞𝚜 🏅</b></i>
-<b>Telethon ≈</b>  <i>{}</i>
+<b> 𝙱𝚘𝚝 𝚂𝚝𝚊𝚝𝚞𝚜 </b>
+<b>Telethon ≈</b>  <i>3.10</i>
 <b>RAM-UBOT ≈</b>  <i>{}</i>
 <b>Uptime ≈</b>  <i>{}</i>
 <b>Sudo ≈</b>  <i>{}</i>
@@ -124,7 +124,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
                 )
         elif event.query.user_id in auth and query == "alive":
             uptime = await get_time((time.time() - StartTime))
-            alv_msg = gvarstat("ALIVE_MSG") or "»»»RAM-UBOT Extended is online</b> «««"
+            alv_msg = gvarstat("ALIVE_MSG") or "RAM-UBOT Extended is online</b>"
             he_ll = alive_txt.format(alv_msg, telethon_ver, ram_version, uptime, abuse_m, is_sudo)
             alv_btn = [
                 [Button.url(f"{RAM_USER}", f"tg://openmessage?user_id={ramtod}")],
