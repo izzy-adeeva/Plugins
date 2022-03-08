@@ -20,7 +20,7 @@ ALIVE_TEMP = """
 ┣─ <b>Uptime ~</b> <i>{}</i>
 ┣─ <b>Ping ~</b> <i>{}</i>
 ╰──────────────
-<b><a href='https://t.me/ramsupport'>[ RAM-UBOT Extended ]</a></b>
+<b><a href='https://t.me/ramsupportt'>[ RAM-UBOT Extended ]</a></b>
 """
 #-------------------------------------------------------------------------------
 

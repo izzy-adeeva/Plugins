@@ -1,5 +1,5 @@
 from telethon.errors.rpcerrorlist import YouBlockedUserError
-
+from . import *
 
 @ram_cmd(pattern="ss(?:\s|$)([\s\S]*)")
 async def _(event):

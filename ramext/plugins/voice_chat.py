@@ -1,6 +1,6 @@
 from telethon.tl.functions.channels import GetFullChannelRequest
 from telethon.tl.functions.phone import CreateGroupCallRequest, DiscardGroupCallRequest, GetGroupCallRequest, InviteToGroupCallRequest
-
+from . import *
 async def getvc(event):
     chat_ = await event.client(GetFullChannelRequest(event.chat_id))
     _chat = await event.client(GetGroupCallRequest(chat_.full_chat.call))

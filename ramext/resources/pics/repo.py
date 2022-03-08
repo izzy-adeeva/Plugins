@@ -1,9 +1,8 @@
 from ramext.helpers import *
 
 Chakka = "You"
-Print(f"Teri vhen ki .....")
+Print(f"Loading.....")
 
 """
-Bhag ja madarchod
-Kahi aur gand mra
+under construction
 """
