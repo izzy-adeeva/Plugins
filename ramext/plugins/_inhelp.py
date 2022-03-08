@@ -8,7 +8,7 @@ from telethon.events import InlineQuery, callbackquery
 from telethon.sync import custom
 from telethon.tl.functions.users import GetFullUserRequest
 
-from userbot.sql.gvar_sql import gvarstat
+from ramext.sql.gvar_sql import gvarstat
 
 from . import *
 
