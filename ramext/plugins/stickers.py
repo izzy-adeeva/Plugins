@@ -20,41 +20,35 @@ from ramext.sql.gvar_sql import addgvar, gvarstat, delgvar
 from . import *
 
 KANGING_STR = [
-    "Using Witchery to kang this sticker...",
-    "Plagiarising hehe...",
-    "Inviting this sticker over to my pack...",
-    "Kanging this sticker...",
-    "Hey that's a nice sticker!\nMind if I kang?!..",
-    "hehe me stel ur stikér\nhehe.",
-    "Ay look over there (☉｡☉)!→\nWhile I kang this...",
-    "Roses are red violets are blue, kanging this sticker so my pacc looks cool",
-    "Imprisoning this sticker...",
-    "Mr.Steal Your Sticker is stealing this sticker... ",
-    "Hey! That's my sticker. Lemme get it back...",
-    "Turn around, Go straight and f*ck off...",
+    "simsalabim, jadi apa.. prok prok prok..",
+    "dua tiga anak kalong, stiker ini saya colong",
+    "pinjem bentar, tar dibalikin..."
 ]
 
 ramubot = gvarstat("STICKER_PACKNAME")
 
 
+
 @ram_cmd(pattern="kang(?:\s|$)([\s\S]*)")
 async def kang(event):
     user = await event.client.get_me()
-    ramtod, RAM_USER, ram_mention = await client_id(event)
-    un = f"@{user.username}" if user.username else user.first_name
-    un_ = user.username if user.username else ramtod
+    karin, RAM_USER, ram_mention = await client_id(event)
+    izzy = f"@{user.username}" if user.username else user.first_name
+    izzy_ = user.username if user.username else karin
     message = await event.get_reply_message()
+    queen = gvarstat("STICKER_PACKNAME")
     photo = None
     emojibypass = False
     is_anim = False
+    is_vid = False
     emoji = None
     if message and message.media:
-        if isinstance(message.media, MessageMediaPhoto):
-            zzy = await eor(event, f"`{random.choice(KANGING_STR)}`")
+        if message.photo:
+            zyy = await eor(event, f"`{random.choice(KANGING_STR)}`")
             photo = io.BytesIO()
             photo = await event.client.download_media(message.photo, photo)
         elif "image" in message.media.document.mime_type.split("/"):
-            zzy = await eor(event, f"`{random.choice(KANGING_STR)}`")
+            zyy = await eor(event, f"`{random.choice(KANGING_STR)}`")
             photo = io.BytesIO()
             await event.client.download_file(message.media.document, photo)
             if (
@@ -64,22 +58,36 @@ async def kang(event):
                 emoji = message.media.document.attributes[1].alt
                 emojibypass = True
         elif "tgsticker" in message.media.document.mime_type:
-            zzy = await eor(event, f"`{random.choice(KANGING_STR)}`")
+            zyy = await eor(event, f"`{random.choice(KANGING_STR)}`")
             await event.client.download_file(message.media.document, "AnimatedSticker.tgs")
 
             attributes = message.media.document.attributes
             for attribute in attributes:
                 if isinstance(attribute, DocumentAttributeSticker):
                     emoji = attribute.alt
-
             emojibypass = True
             is_anim = True
             photo = 1
+        elif "video" in message.media.document.mime_type.split("/"):
+            if message.media.document.mime_type == "video/webm":
+                zyy = await eor(event, f"`{random.choice(KANGING_STR)}`")
+                VS = await args.client.download_media(message.media.document, "VideoSticker.webm")
+                attributes = message.media.document.attributes
+                for attribute in attributes:
+                    if isinstance(attribute, DocumentAttributeSticker):
+                        emoji = attribute.alt
+                        emojibypass = True
+            elif message.media.document.mime_type == "video/mp4":
+                zyy = await eor(event, "bismillah, video... **[ Converting ]**")
+                VS = await VSticker(event, message)
+                await eor(zyy, f"`{random.choice(KANGING_STR)}`")
+            is_vid = True
+            photo = 1
         else:
-            await eod(event, "`Unsupported File!`")
+            await eod(event, "`File tidak disupport!`")
             return
     else:
-        await eod(event, "`I can't kang that...`")
+        await eod(event, "`Gagal mengambil stiker...`")
         return
 
     if photo:
@@ -88,35 +96,35 @@ async def kang(event):
             emoji = "😎"
         pack = 1
         if len(splat) == 3:
-            pack = splat[2]  # User sent both
+            pack = splat[2]
             emoji = splat[1]
         elif len(splat) == 2:
             if splat[1].isnumeric():
-                # User wants to push into different pack, but is okay with
-                # thonk as emote.
                 pack = int(splat[1])
             else:
-                # User sent just custom emote, wants to push to default
-                # pack
                 emoji = splat[1]
 
-        packname = f"ramubot_{un_}_{pack}"
+        packname = f"Ram-ubot_{izzy_}_{pack}"
         packnick = (
-            f"{ramubot} Vol.{pack}"
-            if ramubot
-            else f"{un}'s RAM-UBOT Vol.{pack}"
+            f"{queen} Vol.{pack}"
+            if queen
+            else f"{izzy}'s RAM-UBOT Vol.{pack}"
         )
         cmd = "/newpack"
         file = io.BytesIO()
 
-        if not is_anim:
+        if not is_anim and not is_vid:
             image = await resize_photo(photo)
             file.name = "sticker.png"
             image.save(file, "PNG")
-        else:
+        elif is_anim:
             packname += "_anim"
             packnick += " (Animated)"
             cmd = "/newanimated"
+        elif is_vid:
+            packname += "_vid"
+            packnick += " (Video)"
+            cmd = "/newvideo"
 
         response = urllib.request.urlopen(
             urllib.request.Request(f"http://t.me/addstickers/{packname}")
@@ -124,144 +132,132 @@ async def kang(event):
         htmlstr = response.read().decode("utf8").split("\n")
 
         if (
-            "  A <strong>Telegram</strong> user has created the <strong>Sticker&nbsp;Set</strong>."
+            "  Pengguna <strong>RAM-UBOT</strong> Membuat <strong>Sticker&nbsp;Set</strong>."
             not in htmlstr
         ):
             async with event.client.conversation("@Stickers") as conv:
                 await conv.send_message("/addsticker")
                 await conv.get_response()
-                # Ensure user doesn't get spamming notifications
                 await event.client.send_read_acknowledge(conv.chat_id)
                 await conv.send_message(packname)
                 x = await conv.get_response()
-                while "120" in x.text:
+                while ("50" in x.text) or ("120" in x.text):
                     pack += 1
-                    packname = f"ramubot_{un_}_pack_{pack}"
+                    packname = f"ram-ubot{izzy_}_{pack}"
                     packnick = (
-                        f"{ramubot} Vol.{pack}"
-                        if ramubot
-                        else f"{un}'s RAM-UBOT Vol.{pack}"
+                        f"{queen} Vol.{pack}"
+                        if queen
+                        else f"{izzy}'s RAM-UBOT Vol.{pack}"
                     )
-                    await zzy.edit(
-                        "`Switching to Pack "
-                        + str(pack)
-                        + " due to insufficient space`"
-                    )
+                    cmd = "/newpack"
+
+                    if is_anim:
+                        packname += "_anim"
+                        packnick += " (Animated)"
+                        cmd = "/newanimated"
+                    elif is_vid:
+                        packname += "_vid"
+                        packnick += " (Video)"
+                        cmd = "/newvideo"
+                    await zyy.edit(f"`Switching to Pack {str(pack)} due to insufficient space`")
                     await conv.send_message(packname)
                     x = await conv.get_response()
-                    if x.text == "Invalid pack selected.":
+                    if x.text == "Invalid set selected.":
                         await conv.send_message(cmd)
                         await conv.get_response()
-                        # Ensure user doesn't get spamming notifications
                         await event.client.send_read_acknowledge(conv.chat_id)
                         await conv.send_message(packnick)
                         await conv.get_response()
-                        # Ensure user doesn't get spamming notifications
                         await event.client.send_read_acknowledge(conv.chat_id)
                         if is_anim:
                             await conv.send_file("AnimatedSticker.tgs")
                             remove("AnimatedSticker.tgs")
+                        elif is_vid:
+                            await conv.send_file("VideoSticker.webm")
+                            remove("VideoSticker.webm")
                         else:
                             file.seek(0)
                             await conv.send_file(file, force_document=True)
                         await conv.get_response()
                         await conv.send_message(emoji)
-                        # Ensure user doesn't get spamming notifications
                         await event.client.send_read_acknowledge(conv.chat_id)
                         await conv.get_response()
                         await conv.send_message("/publish")
                         if is_anim:
                             await conv.get_response()
                             await conv.send_message(f"<{packnick}>")
-                        # Ensure user doesn't get spamming notifications
                         await conv.get_response()
                         await event.client.send_read_acknowledge(conv.chat_id)
                         await conv.send_message("/skip")
-                        # Ensure user doesn't get spamming notifications
                         await event.client.send_read_acknowledge(conv.chat_id)
                         await conv.get_response()
                         await conv.send_message(packname)
-                        # Ensure user doesn't get spamming notifications
                         await event.client.send_read_acknowledge(conv.chat_id)
                         await conv.get_response()
-                        # Ensure user doesn't get spamming notifications
                         await event.client.send_read_acknowledge(conv.chat_id)
-                        await zzy.edit(
-                            f"`Sticker added in a Different Pack !\
-                            \nThis Pack is Newly created!\
-                            \nYour pack can be found [here](t.me/addstickers/{packname})",
-                            parse_mode="md",
-                        )
+                        await zyy.edit(f"**Menambahkan stiker di pack yang lain !**\nPack stiker baru dibuat!\nLink [here](t.me/addstickers/{packname})")
                         return
                 if is_anim:
                     await conv.send_file("AnimatedSticker.tgs")
                     remove("AnimatedSticker.tgs")
+                elif is_vid:
+                    await conv.send_file("VideoSticker.webm")
+                    remove("VideoSticker.webm")
                 else:
                     file.seek(0)
                     await conv.send_file(file, force_document=True)
                 rsp = await conv.get_response()
-                if "Sorry, the file type is invalid." in rsp.text:
-                    await zzy.edit(
-                        "`Failed to add sticker, use` @Stickers `bot to add the sticker manually.`"
-                    )
-                    return
+                if "File tidak didukung." in rsp.text:
+                    return await zyy.edit("`gagal menambahkan stiker, chat` @Stickers `dan tambahkan secara manual.`")
                 await conv.send_message(emoji)
-                # Ensure user doesn't get spamming notifications
                 await event.client.send_read_acknowledge(conv.chat_id)
                 await conv.get_response()
                 await conv.send_message("/done")
                 await conv.get_response()
-                # Ensure user doesn't get spamming notifications
                 await event.client.send_read_acknowledge(conv.chat_id)
         else:
-            await zzy.edit("`Preparing a new pack....`")
+            await zyy.edit("`Membuat Pack baru....`")
             async with event.client.conversation("Stickers") as conv:
                 await conv.send_message(cmd)
                 await conv.get_response()
-                # Ensure user doesn't get spamming notifications
                 await event.client.send_read_acknowledge(conv.chat_id)
                 await conv.send_message(packnick)
                 await conv.get_response()
-                # Ensure user doesn't get spamming notifications
                 await event.client.send_read_acknowledge(conv.chat_id)
                 if is_anim:
                     await conv.send_file("AnimatedSticker.tgs")
                     remove("AnimatedSticker.tgs")
+                if is_vid:
+                    await conv.send_file("VideoSticker.webm")
+                    remove("VideoSticker.webm")
                 else:
                     file.seek(0)
                     await conv.send_file(file, force_document=True)
                 rsp = await conv.get_response()
-                if "Sorry, the file type is invalid." in rsp.text:
-                    await zzy.edit(
-                        "`Failed to add sticker, use` @Stickers `bot to add the sticker manually.`"
-                    )
-                    return
+                if "File tidak didukung." in rsp.text:
+                    return await zyy.edit("`gagal menambahkan stiker, chat` @Stickers `dan tambahkan secara manual`")
                 await conv.send_message(emoji)
-                # Ensure user doesn't get spamming notifications
                 await event.client.send_read_acknowledge(conv.chat_id)
                 await conv.get_response()
                 await conv.send_message("/publish")
                 if is_anim:
                     await conv.get_response()
                     await conv.send_message(f"<{packnick}>")
-                # Ensure user doesn't get spamming notifications
                 await conv.get_response()
                 await event.client.send_read_acknowledge(conv.chat_id)
                 await conv.send_message("/skip")
-                # Ensure user doesn't get spamming notifications
                 await event.client.send_read_acknowledge(conv.chat_id)
                 await conv.get_response()
                 await conv.send_message(packname)
-                # Ensure user doesn't get spamming notifications
                 await event.client.send_read_acknowledge(conv.chat_id)
                 await conv.get_response()
-                # Ensure user doesn't get spamming notifications
                 await event.client.send_read_acknowledge(conv.chat_id)
 
-        await zzy.edit(
-            f"⚡** This Sticker iz [kanged](t.me/addstickers/{packname}) successfully to your pack **⚡",
-            parse_mode="md",
-        )
+        await eod(zyy, f"** Stiker berhasil di ambil [kanged](t.me/addstickers/{packname}) berhasil ditambahkan ke pack **")
+        await tbot.send_message(Config.LOGGER_ID,
+                                "#KANG #STICKER \n\n**Stiker telah ditambahkan. Click link dibawah!**",
+                                buttons=[[Button.url("Pack Stiker", f"t.me/addstickers/{packname}")]],
+                            )
 
 
 async def resize_photo(photo):
@@ -292,21 +288,21 @@ async def resize_photo(photo):
 @ram_cmd(pattern="stkrinfo$")
 async def get_pack_info(event):
     if not event.is_reply:
-        await eod(event, "`I can't fetch info from black hole!!!`")
+        await eod(event, "`Balas ke stiker!!!`")
         return
     rep_msg = await event.get_reply_message()
     if not rep_msg.document:
-        await eod(event, "`Reply to a sticker to get the pack details`")
+        await eod(event, "`Balas ke stiker untuk mendapatkan info`")
         return
     try:
         stickerset_attr = rep_msg.document.attributes[1]
-        zzy = await eor(event, "`Fetching details of the sticker pack, please wait..`")
+        zyy = await eor(event, "`Mengambil data, mohon memnunggu..`")
     except BaseException:
-        await eod(event, "`This is not a sticker. Reply to a sticker.`")
+        await eod(event, "`Stiker tidak ditemukan, harap balas pesan ke stiker.`")
         return
 
     if not isinstance(stickerset_attr, DocumentAttributeSticker):
-        await zzy.edit("`This is not a sticker. Reply to a sticker.`")
+        await zyy.edit("`Stiker tidak ditemukan, harap balas pesan ke stiker.`")
         return
 
     get_stickerset = await event.client(
@@ -331,18 +327,18 @@ async def get_pack_info(event):
         f"🔸 **Emojis In Pack :**\n{' '.join(pack_emojis)}"
     )
 
-    await zzy.edit(OUTPUT)
+    await zyy.edit(OUTPUT)
 
 
 @ram_cmd(pattern="delst(?:\s|$)([\s\S]*)")
 async def _(event):
     if not event.reply_to_msg_id:
-        await eod(event, "`Reply to any user's message.`")
+        await eod(event, "`Balas ke pesan stiker.`")
         return
     reply_message = await event.get_reply_message()
     chat = "@Stickers"
     reply_message.sender
-    zzy = await eor(event, "🥴 `Deleting sticker...`")
+    zyy = await eor(event, "Menghapus stiker...`")
     async with event.client.conversation(chat) as conv:
         try:
             response = conv.wait_event(
@@ -350,26 +346,26 @@ async def _(event):
             )
             await conv.send_message("/delsticker")
             await conv.get_response()
-            await asyncio.sleep(2)
+            await asyncio.sleep(1)
             await event.client.forward_messages(chat, reply_message)
-            response = await response
+            response = await conv.get_response()
         except YouBlockedUserError:
-            await zzy.edit("Please unblock @Stickers and try again")
+            await zyy.edit("Mohon unblock @Stickers dan coba lagi")
             return
-        await zzy.edit(response.message)
+        await zyy.edit(response.text)
 
 
 @ram_cmd(pattern="editst(?:\s|$)([\s\S]*)")
 async def _(event):
     if not event.reply_to_msg_id:
-        await eod(event, "`Reply to any user's message.`")
+        await eod(event, "`Blas ke pesan stiker.`")
         return
     reply_message = await event.get_reply_message()
-    hel_ = event.pattern_match.group(1)
+    ram_ = event.pattern_match.group(1)
     chat = "@Stickers"
-    zzy = await eor(event, "📝 `Editing sticker emoji...`")
-    if hel_ == "":
-        await zzy.edit("**🤧 Nashe me hai kya lawde**")
+    zyy = await eor(event, "Menganti emoji stiker...`")
+    if ram_ == "":
+        await zyy.edit("**Error, terjadi kesalahan**")
     else:
         async with event.client.conversation(chat) as conv:
             try:
@@ -382,37 +378,37 @@ async def _(event):
                 await event.client.forward_messages(chat, reply_message)
                 await conv.get_response()
                 await asyncio.sleep(2)
-                await conv.send_message(f"{hel_}")
-                response = await response
+                await conv.send_message(f"{ram_}")
+                response = await conv.get_response()
             except YouBlockedUserError:
-                await zzy.edit("Please unblock @Stickers and try again")
+                await zyy.edit("Mohon unblock @Stickers dan coba lagi")
                 return
-            await zzy.edit(f"{response.message}")
+            await zyy.edit(f"{response.text}")
 
 
 @ram_cmd(pattern="pkang(?:\s|$)([\s\S]*)")
 async def _(event):
-    hel_ = await eor(event, "`Preparing pack kang...`")
+    ram_ = await eor(event, "`Menyiapkan Pack...`")
     rply = await event.get_reply_message()
-    ramtod, RAM_USER, ram_mention = await client_id(event)
-    zzy = event.text[7:]
+    karin, RAM_USER, ram_mention = await client_id(event)
+    zyy = event.text[7:]
     bot_ = Config.BOT_USERNAME
     bot_un = bot_.replace("@", "")
     user = await event.client.get_me()
-    un = f"@{user.username}" if user.username else user.first_name
-    un_ = user.username if user.username else ramtod
+    izzy = f"@{user.username}" if user.username else user.first_name
+    izzy_ = user.username if user.username else karin
     if not rply:
-        return await eod(hel_, "`Reply to a stciker to kang that pack.`")
-    if zzy == "":
-        pname = f"{un}'s RAM-UBOT Pack"
+        return await eod(ram_, "`Balas pesan stiker untuk mengambil Pack.`")
+    if zyy == "":
+        pname = f"{izzy}'s Ram Pack"
     else:
-        pname = zzy
+        pname = zyy
     if rply and rply.media and rply.media.document.mime_type == "image/webp":
-        hell_id = rply.media.document.attributes[1].stickerset.id
-        hell_hash = rply.media.document.attributes[1].stickerset.access_hash
+        ram_id = rply.media.document.attributes[1].stickerset.id
+        ram_hash = rply.media.document.attributes[1].stickerset.access_hash
         got_stcr = await event.client(
             functions.messages.GetStickerSetRequest(
-                stickerset=types.InputStickerSetID(id=hell_id, access_hash=hell_hash)
+                stickerset=types.InputStickerSetID(id=ram_id, access_hash=ram_hash)
             )
         )
         stcrs = []
@@ -430,33 +426,37 @@ async def _(event):
             pack = int(y) + 1
         else:
             pack = int(x) + 1
-        await hel_.edit("`Starting kang process...`")
+        await ram_.edit("`Mengambil Pack...`")
         try:
             create_st = await tbot(
                 functions.stickers.CreateStickerSetRequest(
-                    user_id=ramtod,
+                    user_id=karin,
                     title=pname,
-                    short_name=f"ram_{un_}_V{pack}_by_{bot_un}",
+                    short_name=f"ram_{izzy_}_V{pack}_by_{bot_un}",
                     stickers=stcrs,
                 )
             )
             addgvar("PKANG", str(pack))
         except PackShortNameOccupiedError:
             await asyncio.sleep(1)
-            await hel_.edit("`Pack name already occupied... making new pack`")
+            await ram_.edit("`Nama Pack telah ada... membuat pack stiker baru`")
             pack = int(pack) + 1
             create_st = await tbot(
                 functions.stickers.CreateStickerSetRequest(
-                    user_id=ramtod,
+                    user_id=karin,
                     title=pname,
-                    short_name=f"ram_{un_}_V{pack}_by_{bot_un}",
+                    short_name=f"ram_{izzy_}_V{pack}_by_{bot_un}",
                     stickers=stcrs,
                 )
             )
             addgvar("PKANG", str(pack))
-        await hel_.edit(f"⚡** This Sticker Pack iz [kanged](t.me/addstickers/{create_st.set.short_name}) successfully **⚡")
+        await eod(ram_, f"** Pack stiker berhasil diambil [kanged](t.me/addstickers/{create_st.set.short_name}) **")
+        await tbot.send_message(Config.LOGGER_ID,
+                                "#PKANG #STICKER \n\n**stiker pack berhasil diambil. Link...!**",
+                                buttons=[[Button.url("Pack Stiker", f"t.me/addstickers/{create_st.set.short_name}")]],
+                            )
     else:
-        await hel_.edit("Unsupported File. Please Reply to a sticker only.")
+        await ram_.edit("File tidak disupport. balas ke pesan stiker.")
 
 
 @ram_cmd(pattern="text(?:\s|$)([\s\S]*)")
@@ -475,7 +475,7 @@ async def sticklet(event):
     draw = ImageDraw.Draw(image)
     fontsize = 230
 
-    FONT_FILE = await get_font_file(event.client, "@HellFonts")
+    FONT_FILE = await get_font_file(event.client, "@Ramfonts")
 
     font = ImageFont.truetype(FONT_FILE, size=fontsize)
 
@@ -489,7 +489,7 @@ async def sticklet(event):
     )
 
     image_stream = io.BytesIO()
-    image_stream.name = "ramubot.webp"
+    image_stream.name = "RAM.webp"
     image.save(image_stream, "WebP")
     image_stream.seek(0)
 
@@ -538,21 +538,20 @@ async def waifu(event):
     )
     await event.delete()
 
-
 CmdHelp("stickers").add_command(
-  "kang", "<emoji> <number>", "Adds the sticker to desired pack with a custom emoji of your choice. If emoji is not mentioned then default is 😎. And if number is not mentioned then Pack will go on serial wise. \n  ✓(1 pack = 120 non-animated stickers)\n  ✓(1 pack = 50 animated stickers)"
+  "kang", "<emoji> <number>", "menambahkan stiker ke pack. emoji default adalah 😎. \n  ✓(1 pack = 120 non-animated stickers)\n  ✓(1 pack = 50 animated stickers)"
 ).add_command(
-  "stkrinfo", "<reply to sticker>", "Gets all the infos of the sticker pack"
+  "stkrinfo", "<balas ke stiker>", "Mandapatkan info dari stiker pack"
 ).add_command(
-  "delst", "<reply to sticker>", "Deletes The Replied Sticker from your pack."
+  "delst", "<balas ke stiker>", "menghapus stiker dari pack."
 ).add_command(
-  "editst", "<reply to sticker> <new emoji>", "Edits the emoji of replied sticker of your pack."
+  "editst", "<balas ke stiker> <emoji baru>", "mengganti emoji stiker."
 ).add_command(
-  "text", "<word>", "Sends the written text in sticker format."
+  "text", "<kata-kata>", "membuat kata kata dalam bentuk stiker."
 ).add_command(
-  "waifu", "<word>", "Waifu writes the word for you."
+  "waifu", "<kata-kata>", "membuat anime mengetik pesan anda."
 ).add_command(
-  "pkang", "<reply to a sticker> <pack name>", "Kangs all the stickers in replied pack to your pack. Also supports custom pack name. Just give name after command.", "pkang My kang pack"
+  "pkang", "<balas ke stiker> <nama pack>", "mengambil pack stiker, kostumisasi nama pack setelah command.", "pkang Stiker pack saya"
 ).add_info(
   "Everything about Sticker."
 ).add_warning(
