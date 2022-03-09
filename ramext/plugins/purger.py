@@ -49,7 +49,6 @@ async def fastpurger(event):
 
 
 @ram_cmd(pattern="purgeme$")
-@errors_handler
 async def purgeme(event):
     message = event.text
     count = int(message[9:])
@@ -69,7 +68,6 @@ async def purgeme(event):
         lg_id, "#PURGE \nSelf Purged  `" + str(count) + "`  messages."
     )
     await sleep(4)
-    i = 1
     await smsg.delete()
 
 
