@@ -8,9 +8,8 @@ PLACE = TZ = os.environ.get("TZ", "Asia/Jakarta")
 
 @ram_cmd(pattern="adzan$")
 async def get_adzan(adzan):
-    if not adzan.pattern_match.group(1):
-        LOCATION = PLACE
-        if not LOCATION:
+    LOCATION = PLACE
+    if not LOCATION:
             await adzan.edit("`Harap Menentukan Kota Atau Negara.`")
             return
     else:
