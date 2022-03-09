@@ -27,8 +27,6 @@ logging.basicConfig(
     datefmt="%H:%M:%S",
 )
 
-plugin_category = "tools"
-
 LOGS = logging.getLogger(__name__)
 # -- Constants -- #
 
