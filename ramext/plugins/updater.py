@@ -134,17 +134,17 @@ async def upstream(event):
     cid = await client_id(event)
     ram_mention = cid[2]
    if changelog == "" and not force_update:
-        await event.edit(
-            "\n`RAM-UBOT_EXTENDED is`  **up-to-date**  `with`  "
+        #_version, _release, _branch, _author, _auturl = await ram_info(ram_info)
+        output_ = f"\n`SadUserbot is`  **up-to-date**  `with`  "
             f"**{UPSTREAM_REPO_BRANCH}**\n"
-        )
+        if str(_version) not in str(ram_ver):
+            output_ += f"\n\n**Do** `{ii}update build` **to update your RAM to latest version.**"
+        await event.edit(output_)
         return repo.__del__()
     if conf == "" and not force_update:
         await print_changelogs(event, ac_br, changelog)
         await event.delete()
-        return await event.respond(
-            f"do `{ii}update build` to update your **RAM-UBOT**!!"
-        )
+        return await event.respond(f"🌚 Do `{ii}update build` to update your RAM !!")
     if force_update:
         await event.edit(
             "`Force-Updating RAM-UBOT. Please wait...`"
