@@ -11,7 +11,7 @@ from git.exc import GitCommandError, InvalidGitRepositoryError, NoSuchPathError
 
 from ramext.config import Config
 from . import *
-from utils.extras import edit_delete, edit_or_reply
+from ramext.utils.extras import edit_delete, edit_or_reply
 from ramext.sql.global_collection import (
     add_to_collectionlist,
     del_keyword_collectionlist,
