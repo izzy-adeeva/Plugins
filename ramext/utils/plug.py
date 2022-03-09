@@ -73,8 +73,8 @@ def load_module(shortname):
         mod.ramext = bot
         mod.edit_or_reply = edit_or_reply
         mod.eor = edit_or_reply
-        mod.del_ram = del_ram
-        mod.eod = del_ram
+        mod.edit_delete = edit_delete
+        mod.eod = edit_delete
         mod.Var = Config
         mod.admin_cmd = admin_cmd
         mod.ram_cmd = ram_cmd
