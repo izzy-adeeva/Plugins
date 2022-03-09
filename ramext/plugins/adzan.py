@@ -13,7 +13,7 @@ async def get_adzan(adzan):
             await adzan.edit("`Harap Menentukan Kota Atau Negara.`")
             return
     else:
-        LOCATION = adzan.pattern_match.group(1)
+        LOCATION = "Jakarta"
 
    
     url = f"https://api.pray.zone/v2/times/today.json?city={LOCATION}"
