@@ -133,18 +133,18 @@ async def upstream(event):
     changelog = await gen_chlog(repo, f"HEAD..upstream/{ac_br}")
     cid = await client_id(event)
     ram_mention = cid[2]
-    if changelog == "" and not force_update:
-        
-        output_ = f"**Your Bot Version :** `{ram_version}` \n**Owner :** {ram_mention} \n\n**Official RAM-UBOT Extended Version :** `{version}`"
-        if str(version) not in str(ram_version):
-            output_ += f"\n\n**Do** `{ii}update build` **to update your RAM-UBOT Extended to latest version.**"
-        await event.edit(output_)
+   if changelog == "" and not force_update:
+        await event.edit(
+            "\n`RAM-UBOT_EXTENDED is`  **up-to-date**  `with`  "
+            f"**{UPSTREAM_REPO_BRANCH}**\n"
+        )
         return repo.__del__()
     if conf == "" and not force_update:
         await print_changelogs(event, ac_br, changelog)
         await event.delete()
-        return await event.respond(f" Do `{ii}update build` to update your **RAM-UBOT** !!")
-
+        return await event.respond(
+            f"do `{ii}update build` to update your **RAM-UBOT**!!"
+        )
     if force_update:
         await event.edit(
             "`Force-Updating RAM-UBOT. Please wait...`"
