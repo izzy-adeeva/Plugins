@@ -25,8 +25,6 @@ KANGING_STR = [
     "pinjem bentar, tar dibalikin..."
 ]
 
-ramubot = gvarstat("STICKER_PACKNAME")
-
 
 
 @ram_cmd(pattern="kang(?:\s|$)([\s\S]*)")

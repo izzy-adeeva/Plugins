@@ -90,8 +90,8 @@ class Config(object):
     WEATHER_API = os.environ.get("WEATHER_API", None)
     YOUR_NAME = os.environ.get("YOUR_NAME", None)
     YOUTUBE_API_KEY = os.environ.get("YOUTUBE_API_KEY", None)
-
-
+    PING_PIC = (os.environ.get("PING_PIC"))
+    PING_TEXT = os.environ.get("PING_TEXT")
 
 class Production(Config):
     LOGGER = False
