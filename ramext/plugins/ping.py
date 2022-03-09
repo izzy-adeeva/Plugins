@@ -29,7 +29,7 @@ async def pong(zzy):
 
 @ram_cmd(pattern="fping$")
 async def _(event):
-    start = datetime.now()
+    start = datetime.datetime.now()
     animation_interval = 0.3
     animation_ttl = range(26)
     event = await edit_or_reply(event, "ping....")
@@ -64,7 +64,7 @@ async def _(event):
     for i in animation_ttl:
         await asyncio.sleep(animation_interval)
         await event.edit(animation_chars[i % 26])
-    end = datetime.now()
+    end = datetime.datetime.now()
     ms = (end - start).microseconds / 1000
     await event.edit(
         f"‎‎‎‎‎‎‎‎‎⬛⬛⬛⬛⬛⬛⬛⬛⬛\n⬛📶📶📶📶📶📶📶⬛\n⬛⬛⬛⬛📶⬛⬛📶⬛\n⬛⬛⬛⬛📶⬛⬛📶⬛\n⬛⬛⬛⬛📶⬛⬛📶⬛\n⬛⬛⬛⬛⬛📶📶⬛⬛\n⬛⬛⬛⬛⬛⬛⬛⬛⬛\n⬛⬛📶📶📶📶📶⬛⬛\n⬛📶⬛⬛⬛⬛⬛📶⬛\n⬛📶⬛⬛⬛⬛⬛📶⬛\n⬛📶⬛⬛⬛⬛⬛📶⬛\n⬛⬛📶📶📶📶📶⬛⬛\n⬛⬛⬛⬛⬛⬛⬛⬛⬛\n⬛📶📶📶📶📶📶📶⬛\n⬛⬛⬛⬛⬛⬛📶⬛⬛\n⬛⬛⬛⬛⬛📶⬛⬛⬛\n⬛⬛⬛⬛📶⬛⬛⬛⬛\n⬛📶📶📶📶📶📶📶⬛\n⬛⬛⬛⬛⬛⬛⬛⬛⬛\n⬛⬛📶📶📶📶📶⬛⬛\n⬛📶⬛⬛⬛⬛⬛📶⬛\n⬛📶⬛⬛⬛⬛⬛📶⬛\n⬛📶⬛📶⬛⬛⬛📶⬛\n⬛⬛📶📶⬛⬛📶⬛⬛\n⬛⬛⬛⬛⬛⬛⬛⬛⬛\n⬛📶⬛📶📶📶📶📶⬛\n⬛⬛⬛⬛⬛⬛⬛⬛⬛ \n‎‎‎‎‎‎‎‎‎ \n \n My 🇵 🇮 🇳 🇬  Is : {ms} ms"
@@ -75,15 +75,15 @@ async def _(event):
     if event.fwd_from:
         return
     reply_to_id = await reply_id(event)
-    start = datetime.now()
+    start = datetime.datetime.now()    
     sad = await edit_or_reply(
         event,
         "<b><i>“RAM-UBOT Extended” !! </b></i>",
         "html",
     )
-    end = datetime.now()
     await asyncio.sleep(3)
     await sad.delete()
+    end = datetime.datetime.now()
     ms = (end - start).microseconds / 1000
     cid = await client_id(event)
     ramtod, RAM_USER = cid[0], cid[1]
