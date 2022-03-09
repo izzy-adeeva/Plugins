@@ -6,18 +6,6 @@ from telethon.tl.functions.users import GetFullUserRequest
 from . import *
 
 
-@ram_cmd(pattern="indflag$")
-async def _(event):
-    animation_interval = 0.1
-    animation_ttl = range(0, 36)
-    await eor(event, "Hello")
-    animation_chars = [
-        "Indian Flag",
-        "**🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧\n🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧\n🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧\n⬜️⬜️⬜️⬜️⬜️🟦🟦🟦⬜️⬜️⬜️⬜️⬜️\n⬜️⬜️⬜️⬜️⬜️🟦🟦🟦⬜️⬜️⬜️⬜️⬜️\n⬜️⬜️⬜️⬜️⬜️🟦🟦🟦⬜️⬜️⬜️⬜️⬜️\n🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩\n🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩\n🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩\n\n                🧡🤍💚\n\nProud To Be An Indian❣️!!**",
-    ]
-    for i in animation_ttl:
-        await asyncio.sleep(animation_interval)
-        await event.edit(animation_chars[i % 18])
 
 
 @ram_cmd(pattern="yo$")
@@ -106,7 +94,7 @@ async def _(event):
     await event.edit("▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n😵😵😵😵 \n")
     await asyncio.sleep(0.5)
     await event.edit(
-        "[Marr gya madarchod \nLaaa laaa......\nLa la la la](https://telegra.ph/file/19c7b9d1b7a7454ab2918.mp4)",
+        "[hai gaeesss \nLaaa laaa......\nLa la la la](https://telegra.ph/file/20061b24059cffbb0ee50.mp4)",
         link_preview=True,
     )
     await asyncio.sleep(2)
@@ -118,21 +106,21 @@ async def _(event):
     ram_mention = xyz[2]
     animation_interval = 3
     animation_ttl = range(18)
-    event = await eor(event, "Calling Narendra Modi ......")
+    event = await eor(event, "Calling KIM JON UN......")
     animation_chars = [
-        "`Connecting To Raj Bhawan`",
+        "`Connecting To NORTH KOREA`",
         "`Call Connected.`",
-        "`Secretary: Hello This is Raj Bhawan. Who is this?`",
-        f"`Me: Hello this is` `{ram_mention}` .Please connect me to Prime Minister",
+        "`Secretary: Hello This is President Office. Who is this?`",
+        f"`Me: Hello this is` `{ram_mention}` .Please connect me to Presiden",
         "`User Authorised.`",
         "`Calling`  `At +9189*#*#*#56`",
         "`Private  Call Connected...`",
         "`Me: Hello Sir, How are you!!`",
-        "`Prime Minister: May I Know Who Is This?`",
+        "`Presiden: May I Know Who Is This?`",
         f"`Me: Yes sur, itz me` `{ram_mention}`",
-        "`Prime Minister: OMG!!! Long time no see, Wassup Brother...\nI'm fine btw... how are you?`",
+        "`Presiden: OMG!!! Long time no see, Wassup Brother...\nI'm fine btw... how are you?`",
         "`Me: I good too sar.`",
-        "`Prime Minister: Ok! I'll call you later.. I'm busy a bit...`",
+        "`Presiden: Ok! I'll call you later.. I'm busy a bit...`",
         "`Me: Sure Sur \nTC Bye Bye :)`",
         "`Private Call Disconnected`",
     ]

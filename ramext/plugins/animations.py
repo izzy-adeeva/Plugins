@@ -31,14 +31,14 @@ async def _(event):
     animation_ttl = range(12)
     event = await eor(event, "`Deploying...`")
     animation_chars = [
-        "**Heroku Connecting To Latest [Github Build](The-ramubot/ramubot)**",
+        "**Heroku Connecting To Latest [Github Build](hitokizzy/RAM-UBOT_EXTENDED)**",
         f"**Build started by user** {ram_mention}",
         f"**Deploy** `535a74f0` **by user** **{ram_mention}**",
         "**Restarting Heroku Server...**",
         "**State changed from up to starting**",
         "**Stopping all processes with SIGTERM**",
         "**Process exited with** `status 143`",
-        "**Starting process with command** `python3 -m stdborg`",
+        "**Starting process with command** `python3 -m RAM-UBOT`",
         "**State changed from starting to up**",
         "__INFO:RAM-UBOT:Logged in as 557667062__",
         "__INFO:RAM-UBOT:Successfully loaded all plugins__",
@@ -206,7 +206,7 @@ async def _(event):
 async def _(event):
     animation_interval = 0.3
     animation_ttl = range(15)
-    event = await eor(event, "`Hacking this kid....`")
+    event = await eor(event, "`Hacking target....`")
     animation_chars = [
             "Looking for WhatsApp databases in targeted person...",
             " User online: True\nTelegram access: True\nRead Storage: True ",
@@ -229,13 +229,13 @@ async def _(event):
         await event.edit(animation_chars[i % 15])
 
 
-@ram_cmd(pattern="jio$")
+@ram_cmd(pattern="signal$")
 async def _(event):
     animation_interval = 1
     animation_ttl = range(19)
-    event = await eor(event, "jio network boosting...")
+    event = await eor(event, "LTE/wifi reset...")
     animation_chars = [
-        "`Connecting To JIO NETWORK ....`",
+        "`Connecting...`",
         "`█ ▇ ▆ ▅ ▄ ▂ ▁`",
         "`▒ ▇ ▆ ▅ ▄ ▂ ▁`",
         "`▒ ▒ ▆ ▅ ▄ ▂ ▁`",
@@ -244,7 +244,7 @@ async def _(event):
         "`▒ ▒ ▒ ▒ ▒ ▂ ▁`",
         "`▒ ▒ ▒ ▒ ▒ ▒ ▁`",
         "`▒ ▒ ▒ ▒ ▒ ▒ ▒`",
-        "*Optimising JIO NETWORK...*",
+        "*Optimising NETWORK...*",
         "`▒ ▒ ▒ ▒ ▒ ▒ ▒`",
         "`▁ ▒ ▒ ▒ ▒ ▒ ▒`",
         "`▁ ▂ ▒ ▒ ▒ ▒ ▒`",
@@ -253,7 +253,7 @@ async def _(event):
         "`▁ ▂ ▄ ▅ ▆ ▒ ▒`",
         "`▁ ▂ ▄ ▅ ▆ ▇ ▒`",
         "`▁ ▂ ▄ ▅ ▆ ▇ █`",
-        "**JIO NETWORK Boosted....**",
+        "**NETWORK Connected....**",
     ]
     for i in animation_ttl:
         await asyncio.sleep(animation_interval)
@@ -280,26 +280,26 @@ async def _(event):
         await event.edit(animation_chars[i % 8])
 
 
-@ram_cmd(pattern="degi$")
+@ram_cmd(pattern="bacot$")
 async def _(event):
-    event = await eor(event, "degi")
-    await event.edit("WO")
+    event = await eor(event, "bacot")
+    await event.edit("ANAK HARAM")
     await asyncio.sleep(1.5)
-    await event.edit("DegI")
+    await event.edit("UDAH JELEK")
     await asyncio.sleep(1.5)
-    await event.edit("TuM")
+    await event.edit("DEKIL")
     await asyncio.sleep(1.5)
-    await event.edit("EkbaR")
+    await event.edit("BAU SAWI")
     await asyncio.sleep(1.5)
-    await event.edit("ManG")
+    await event.edit("MUKA LU KOTAK")
     await asyncio.sleep(1.5)
-    await event.edit("KaR")
+    await event.edit("GA GUNA")
     await asyncio.sleep(1.5)
-    await event.edit("ToH")
+    await event.edit("BEBAN DUNIA")
     await asyncio.sleep(1.5)
-    await event.edit("DekhO")
+    await event.edit("MATI AJA LU")
     await asyncio.sleep(1.5)
-    await event.edit("Wo DeGi TuM eKbAr MaNg KaR tOh DeKhO😄")
+    await event.edit("NENTOT!!!")
 
 
 @ram_cmd(pattern="nehi$")
@@ -350,18 +350,18 @@ async def _(event):
         await event.edit(animation_chars[i % 10])
 
 
-@ram_cmd(pattern="amore$")
+@ram_cmd(pattern="karin$")
 async def _(event):
     animation_interval = 0.5
     animation_ttl = range(0, 101)
-    await eor(event, "amore")
+    await eor(event, "karin")
     animation_chars = [
-        "A_",
-        "AM_",
-        "AMO_",
-        "AMOR_",
-        "AMORE_",
-        "AMORE❤_",
+        "K_",
+        "KA_",
+        "KAR_",
+        "KARI_",
+        "KARIN_",
+        "KARIN❤_",
         ".-.",
     ]
     for i in animation_ttl:
@@ -391,13 +391,13 @@ async def _(event):
 async def ammastar(hellstar):
     animation_interval = 2
     animation_ttl = range(0, 11)
-    await eor(hellstar, "I am A Star")
+    await eor(hellstar, "I am A DEVELOPER")
     animation_chars = [
-        "I Party like a rockstar",
-        "I Look like a movie star",
-        "I Play like an all star",
-        "I Fuck like a pornstar",
-        "Baby I'm a superstar",
+        "I kang people repo",
+        "I edit people repo",
+        "I publish",
+        "I claimed",
+        "Baby I'm DEVELOPER",
     ]
     for i in animation_ttl:
         await asyncio.sleep(animation_interval)
@@ -440,7 +440,7 @@ async def cheer(event):
 
 @ram_cmd(pattern="getwell$")
 async def getwell(event):
-    await eor(event, "🌹🌹🌹🌹🌹🌹🌹🌹 \n🌹😷😢😓😷😢💨🌹\n🌹💝💉🍵💊💐💝🌹\n🌹 GetBetter Soon! 🌹\n🌹🌹🌹🌹🌹🌹🌹🌹")
+    await eor(event, "🌹🌹🌹🌹🌹🌹🌹🌹 \n🌹😷😢😓😷😢💨🌹\n🌹💝💉🍵💊💐💝🌹\n🌹 GWS! 🌹\n🌹🌹🌹🌹🌹🌹🌹🌹")
 
 
 @ram_cmd(pattern="switch$")
@@ -449,16 +449,16 @@ async def _(event):
     animation_ttl = range(0, 11)
     await eor(event, "Switch")
     animation_chars = [
-         "⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜[🔲](https://github.com/The-ramubot/ramubot)\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜",
-         "⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜[🔲](https://github.com/The-ramubot/ramubot)\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n[👉](https://t.me/ramtod)⬜⬜⬜⬜⬜⬜",
-         "⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜[🔲](https://github.com/The-ramubot/ramubot)\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬛[👉](https://t.me/ramtod)⬜⬜⬜⬜⬜",
-         "⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜[🔲](https://github.com/The-ramubot/ramubot)\n⬜⬜⬜⬜⬜⬜⬜\n⬜[👆](https://t.me/ramtod)⬜⬜⬜⬜⬜\n⬛⬛⬜⬜⬜⬜⬜",
-         "⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜[🔲](https://github.com/The-ramubot/ramubot)\n⬜[👆](https://t.me/ramtod)⬜⬜⬜⬜⬜\n⬜⬛⬜⬜⬜⬜⬜\n⬛⬛⬜⬜⬜⬜⬜",
-         "⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜[🔲](https://github.com/The-ramubot/ramubot)\n⬜⬛[👉](https://t.me/ramtod)⬜⬜⬜⬜\n⬜⬛⬜⬜⬜⬜⬜\n⬛⬛⬜⬜⬜⬜⬜",
-         "⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜[🔲](https://github.com/The-ramubot/ramubot)\n⬜⬛⬛[👉](https://t.me/ramtod)⬜⬜⬜\n⬜⬛⬜⬜⬜⬜⬜\n⬛⬛⬜⬜⬜⬜⬜",
-         "⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜🔲\n⬜⬛⬛⬛[👉](https://t.me/ramtod)⬜⬜\n⬜⬛⬜⬜⬜⬜⬜\n⬛⬛⬜⬜⬜⬜⬜",
-         "⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜[👆](https://t.me/ramtod)⬜🔲\n⬜⬛⬛⬛⬛⬜⬜\n⬜⬛⬜⬜⬜⬜⬜\n⬛⬛⬜⬜⬜⬜⬜",
-         "⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬛[👉](https://t.me/ramtod)🔲\n⬜⬛⬛⬛⬛⬜⬜\n⬜⬛⬜⬜⬜⬜⬜\n⬛⬛⬜⬜⬜⬜⬜",
+         "⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜[🔲](https://github.com/hitokizzy/RAM-UBOT_EXTENDED)\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜",
+         "⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜[🔲](https://github.com/hitokizzy/RAM-UBOT_EXTENDED)\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n[👉](https://t.me/ramsupport)⬜⬜⬜⬜⬜⬜",
+         "⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜[🔲](https://github.com/hitokizzy/RAM-UBOT_EXTENDED)\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬛[👉](https://t.me/ramsupport)⬜⬜⬜⬜⬜",
+         "⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜[🔲](https://github.com/hitokizzy/RAM-UBOT_EXTENDED)\n⬜⬜⬜⬜⬜⬜⬜\n⬜[👆](https://t.me/ramsupport)⬜⬜⬜⬜⬜\n⬛⬛⬜⬜⬜⬜⬜",
+         "⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜[🔲](https://github.com/hitokizzy/RAM-UBOT_EXTENDED)\n⬜[👆](https://t.me/ramsupport)⬜⬜⬜⬜⬜\n⬜⬛⬜⬜⬜⬜⬜\n⬛⬛⬜⬜⬜⬜⬜",
+         "⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜[🔲](https://github.com/hitokizzy/RAM-UBOT_EXTENDED)\n⬜⬛[👉](https://t.me/ramsupport)⬜⬜⬜⬜\n⬜⬛⬜⬜⬜⬜⬜\n⬛⬛⬜⬜⬜⬜⬜",
+         "⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜[🔲](https://github.com/hitokizzy/RAM-UBOT_EXTENDED)\n⬜⬛⬛[👉](https://t.me/ramsupport)⬜⬜⬜\n⬜⬛⬜⬜⬜⬜⬜\n⬛⬛⬜⬜⬜⬜⬜",
+         "⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜🔲\n⬜⬛⬛⬛[👉](https://t.me/ramsupport)⬜⬜\n⬜⬛⬜⬜⬜⬜⬜\n⬛⬛⬜⬜⬜⬜⬜",
+         "⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜[👆](https://t.me/ramsupport)⬜🔲\n⬜⬛⬛⬛⬛⬜⬜\n⬜⬛⬜⬜⬜⬜⬜\n⬛⬛⬜⬜⬜⬜⬜",
+         "⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬛[👉](https://t.me/ramsupport)🔲\n⬜⬛⬛⬛⬛⬜⬜\n⬜⬛⬜⬜⬜⬜⬜\n⬛⬛⬜⬜⬜⬜⬜",
          "⬛⬛⬛⬛⬛⬛⬛\n⬛⬛⬛⬛⬛⬛⬛\n⬛⬛⬛⬛⬛⬛⬛\n⬛⬛⬛⬛⬛⬛🔳\n⬛⬛⬛⬛⬛⬛⬛\n⬛⬛⬛⬛⬛⬛⬛\n⬛⬛⬛⬛⬛⬛⬛",
     ]
     for i in animation_ttl:
@@ -497,29 +497,6 @@ async def _(event):
         await asyncio.sleep(animation_interval)
         await event.edit(animation_chars[i % 8])
 
-
-@ram_cmd(pattern="eye$")
-async def _(event):
-    animation_interval = 3
-    animation_ttl = range(10)
-    event = await eor(event, "👁👁")
-    animation_chars = [
-        "👁👁\n  👄  =====> Kya dekh rha hai lawde",
-        "👁👁\n  👅  =====> Chal gandu nikal",
-        "👁👁\n  💋  =====> Teri maa nach rhi h idhar?",
-        "👁👁\n  👄  =====> Bhag madarchod",
-        "👁👁\n  👅  =====> Abee ja naa gandu",
-        "👁👁\n  💋  =====> Abee jaa naa suar",
-        "👁👁\n  👄  =====> Abe jaa naa chakke",
-        "👁👁\n  👅  =====> Aae madarchod apna kaam kar",
-        "👁👁\n  💋  =====> Chal abb gand mra bsdk",
-        "👁👁\n  👄  =====> Bhag lode",
-    ]
-    for i in animation_ttl:
-        await asyncio.sleep(animation_interval)
-        await event.edit(animation_chars[i % 10])
-    await asyncio.sleep(animation_interval)
-    await event.delete()
 
 
 @ram_cmd(pattern="thinking$")

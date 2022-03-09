@@ -4,11 +4,9 @@ import time
 
 from . import *
 
-ping_txt = """<b>--- PONG ---</b>
-
-    Speed :</i> <code>{}</code>
-    Uptime :</i> <code>{}</code>
-    Owner:</i> {}"""
+ping_txt = """<b><i> PONG </i></b>
+    <b>Speed</b> : <i><code>{}</code></i>
+    <b>Uptime</b> : <i><code>{}</code></i>"""
 
 
 @ram_cmd(pattern="ping$")

@@ -12,14 +12,14 @@ from . import *
 
 ALIVE_TEMP = """
 <b><i>RAM-UBOT Extended</b></i>
-<i><b>- owner -</i></b> : 『 <a href='tg://user?id={}'>{}</a> 』
-╭──────────────
-┣─ <b>Telethon ~</b> <i>{}</i>
-┣─ <b>RAM-UBOT ~</b> <i>{}</i>
-┣─ <b>Sudo ~</b> <i>{}</i>
-┣─ <b>Uptime ~</b> <i>{}</i>
-┣─ <b>Ping ~</b> <i>{}</i>
-╰──────────────
+<i><b>- owner -</i></b> : 💀 <a href='tg://user?id={}'>{}</a> 💀
+=============================================================
+<b>⎆Telethon ⮕</b> <i>{}</i>
+<b>⎆RAM-UBOT ⮕</b> <i>extended</i>
+<b>⎆Sudo ⮕</b> <i>{}</i>
+<b>⎆Uptime ⮕</b> <i>{}</i>
+<b>⎆Ping ⮕</b> <i>{}</i>
+=============================================================
 <b><a href='https://t.me/ramsupportt'>[ RAM-UBOT Extended ]</a></b>
 """
 #-------------------------------------------------------------------------------
@@ -29,7 +29,7 @@ async def up(event):
     cid = await client_id(event)
     ramtod, RAM_USER, ram_mention = cid[0], cid[1], cid[2]
     start = datetime.datetime.now()
-    zzy = await eor(event, "`Building Alive....`")
+    zzy = await eor(event, "`i am alive....`")
     uptime = await get_time((time.time() - StartTime))
     a = gvarstat("ALIVE_PIC")
     if a is not None:
@@ -51,10 +51,10 @@ async def up(event):
 
 msg = """{}\n
 <b>RAM-UBOT Extended </b>
-<b>Telethon ≈</b>  <i>{}</i>
-<b>RAM-UBOT ≈</b>  <i>{}</i>
-<b>Uptime ≈</b>  <i>{}</i>
-<b>Sudo ≈</b>  <i>{}</i>
+<b>Telethon =</b>  <i>{}</i>
+<b>RAM-UBOT =</b>  <i>{}</i>
+<b>Uptime =</b>  <i>{}</i>
+<b>Sudo =</b>  <i>{}</i>
 """
 botname = Config.BOT_USERNAME
 

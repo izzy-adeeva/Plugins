@@ -28,17 +28,17 @@ LOG_GP = Config.LOGGER_ID
 mssge = (
     str(cstm_pmp)
     if cstm_pmp
-    else "**You Have Trespassed To My Master's PM!\nThis Is Illegal And Regarded As Crime.**"
+    else "**Anda telah mengirimkan pesan kepada User saya!\nDan itu melanggar privasi.**"
 )
 
 USER_BOT_WARN_ZERO = (
-    "Enough Of Your Flooding In My Master's PM!! \n\n**🚫 Blocked and Reported**"
+    "Berhenti melakukan SPAM!! \n\n**Anda Telah Diblokir**"
 )
 
 RAM_FIRST = (
-    "** RAM-UBOT Extended **\n\nThis is to inform you that "
-    "{} is currently unavailable.\nThis is an automated message.\n\n"
-    "{}\n\n**Please Choose Why You Are Here!!**"
+    "** RAM-UBOT Extended **\n\nIngin memberitahukan jika "
+    "{} sedang offline.\ndan ini adalah pesan otomatis.\n\n"
+    "{}\n\n**Silahkan pilih maksud dan tujuan anda!!**"
 )
 
 alive_txt = """{}\n
@@ -216,7 +216,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
             part = query.split(" ")
             result = builder.article(
                 "File uploaded",
-                text=f"**File uploaded successfully to {part[2]} site.\n\nUpload Time : {part[1][:3]} second\n[‏‏‎ ‎]({part[0]})",
+                text=f"**File berhasil di unggah {part[2]} site.\n\nUpload Time : {part[1][:3]} second\n[‏‏‎ ‎]({part[0]})",
                 buttons=[[custom.Button.url("URL", part[0])]],
                 link_preview=True,
             )
@@ -224,7 +224,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
         else:
             result = builder.article(
                 "RAM-UBOT EXTENDED",
-                text="""**Hey! This is [RAM-UBOT Extended](https://t.me/ramsupportt) \nYou can know more about me from the links given below **""",
+                text="""**Hai, ini adalah [RAM-UBOT Extended](https://t.me/ramsupportt) \nKlik link dibawah untuk info lebih lanjut **""",
                 buttons=[
                     [
                         custom.Button.url(" RAM-UBOT ", "https://t.me/ramsupportt"),
@@ -234,7 +234,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
                         custom.Button.url(
                             " REPO ", "https://github.com/hitokizzy/RAM-UBOT_EXTENDED"
                         ),
-                        custom.Button.url(" TUTORIAL ", "https://xnxx.com"),
+                        custom.Button.url(" TUTORIAL ", "https://telegra.ph/file/04ec810e9f0ec2c363bf2.png"),
                     ],
                 ],
                 link_preview=False,
@@ -249,11 +249,11 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
 
         auth = await clients_list(Config, RAM, RAM2, RAM3, RAM4, RAM5)
         if event.query.user_id in auth:
-            reply_pop_up_alert = "This is for Other Users..."
+            reply_pop_up_alert = "Tidak tersedia untuk anda..."
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
         else:
             await event.edit(
-                f"🔰 This is RAM-UBOT Extended PM Security for {ram_mention} to keep away unwanted retards from spamming PM..."
+                f"Ini adalah RAM-UBOT Extended PM Security milik {ram_mention} untuk menjaga privasi anda dari spam..."
             )
 
     @tgbot.on(callbackquery.CallbackQuery(data=compile(b"req")))
@@ -264,18 +264,18 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
 
         auth = await clients_list(Config, RAM, RAM2, RAM3, RAM4, RAM5)
         if event.query.user_id in auth:
-            reply_pop_up_alert = "This is for other users!"
+            reply_pop_up_alert = "Tidak tersedia untuk anda!"
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
         else:
             await event.edit(
-                f" **Request Registered** \n\n{ram_mention} will now decide to look for your request or not.\n😐 Till then wait patiently and don't spam!!"
+                f" **Request Telah dicatat** \n\n{ram_mention} akan meninjau permintaan anda.\n mohon jangan spam!!"
             )
             target = await event.client(GetFullUserRequest(event.query.user_id))
             first_name = html.escape(target.user.first_name)
             ok = event.query.user_id
             if first_name is not None:
                 first_name = first_name.replace("\u2060", "")
-            tosend = f"**👀 Hey {ram_mention} !!** \n\n You Got A Request From [{first_name}](tg://user?id={ok}) In PM!!"
+            tosend = f"**Hai {ram_mention} !!** \n\n ada request dari [{first_name}](tg://user?id={ok})cek pm!!"
             await event.client.send_message(LOG_GP, tosend)
 
     @tgbot.on(callbackquery.CallbackQuery(data=compile(b"chat")))
@@ -287,18 +287,18 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
         auth = await clients_list(Config, RAM, RAM2, RAM3, RAM4, RAM5)
         event.query.user_id
         if event.query.user_id in auth:
-            reply_pop_up_alert = "This is for other users!"
+            reply_pop_up_alert = "Tidak tersedia untuk anda!"
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
         else:
             await event.edit(
-                f"Ahh!! You here to do chit-chat!!\n\nPlease wait for {ram_mention} to come. Till then keep patience and don't spam."
+                f"Mau ngobrol!!\n\nSilahkan tunggu {ram_mention} online. mohon bersabar dan jangan melakukan spam."
             )
             target = await event.client(GetFullUserRequest(event.query.user_id))
             ok = event.query.user_id
             first_name = html.escape(target.user.first_name)
             if first_name is not None:
                 first_name = first_name.replace("\u2060", "")
-            tosend = f"**👀 Hey {ram_mention} !!** \n\n You Got A PM from  [{first_name}](tg://user?id={ok})  for random chats!!"
+            tosend = f"**hai {ram_mention} !!** \n\n ada pesan dari  [{first_name}](tg://user?id={ok}) !!"
             await event.client.send_message(LOG_GP, tosend)
 
     @tgbot.on(callbackquery.CallbackQuery(data=compile(b"heheboi")))
@@ -308,7 +308,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
         f"[{x.first_name}]({x.id})"
         auth = await clients_list(Config, RAM, RAM2, RAM3, RAM4, RAM5)
         if event.query.user_id in auth:
-            reply_pop_up_alert = "This is for other users!"
+            reply_pop_up_alert = "Tidak tersedia untuk anda!"
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
         else:
             await event.edit(f" **Shut up**")
@@ -344,7 +344,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
             )
         else:
             reply_pop_up_alert = (
-                "This bot its not your, make your own RAM-UBOT Extended ™"
+                "BOT ini bukan milik anda, silahkan buat RAM-UBOT Extended untuk anda sendiri"
             )
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
@@ -355,16 +355,16 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
         auth = await clients_list(Config, RAM, RAM2, RAM3, RAM4, RAM5)
         if event.query.user_id in auth:
             veriler = custom.Button.inline(
-                f"{ram_emoji} Re-Open Menu {ram_emoji}", data="reopen"
+                f"{ram_emoji} Buka Menu {ram_emoji}", data="reopen"
             )
             await event.edit(
-                f"** RAM-UBOT Extended menu closed **\n\n**Bot Of :**  {ram_mention}\n\n        [©️ RAM-UBOT Extended ™️]({chnl_link})",
+                f"** Menu RAM-UBOT Extended ditutup **\n\n**Bot milik :**  {ram_mention}\n\n        [©️ RAM-UBOT Extended ™️]({chnl_link})",
                 buttons=veriler,
                 link_preview=False,
             )
         else:
             reply_pop_up_alert = (
-                "This bot its not your, make your own RAM-UBOT Extended ™"
+                "BOT ini bukan milik anda, silahkan buat RAM-UBOT Extended untuk anda sendiri"
             )
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
@@ -387,7 +387,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
             )
         else:
             return await event.answer(
-                "This bot its not your, make your own RAM-UBOT Extended ™",
+                "BOT ini bukan milik anda, silahkan buat RAM-UBOT Extended untuk anda sendiri",
                 cache_time=0,
                 alert=True,
             )
@@ -404,20 +404,20 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
         try:
             buttons = [
                 custom.Button.inline(
-                    "⚡ " + cmd[0] + " ⚡", data=f"commands[{commands}[{page}]]({cmd[0]})"
+                    "- " + cmd[0] + " -", data=f"commands[{commands}[{page}]]({cmd[0]})"
                 )
                 for cmd in CMD_HELP_BOT[commands]["commands"].items()
             ]
         except KeyError:
             return await event.answer(
-                "No Description is written for this plugin", cache_time=0, alert=True
+                "Belum ada penjelasan untuk plugin ini", cache_time=0, alert=True
             )
 
         buttons = [buttons[i : i + 2] for i in range(0, len(buttons), 2)]
         buttons.append(
             [
                 custom.Button.inline(
-                    f"{ram_emoji} Main Menu {ram_emoji}", data=f"page({page})"
+                    f"{ram_emoji} Menu Utama {ram_emoji}", data=f"page({page})"
                 )
             ]
         )
@@ -429,7 +429,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
             )
         else:
             return await event.answer(
-                "This bot its not your, make your own RAM-UBOT Extended ™",
+                "BOT ini bukan milik anda, silahkan buat RAM-UBOT Extended untuk anda sendiri",
                 cache_time=0,
                 alert=True,
             )
@@ -466,10 +466,10 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
         else:
             result += f"**🛠 Commands :**  `{HANDLER[:1]}{command['command']} {command['params']}`\n"
         if command["example"] is None:
-            result += f"**💬 Explanation :**  `{command['usage']}`\n\n"
+            result += f"**💬 Penjelasan :**  `{command['usage']}`\n\n"
         else:
-            result += f"**💬 Explanation :**  `{command['usage']}`\n"
-            result += f"**⌨️ For Example :**  `{HANDLER[:1]}{command['example']}`\n\n"
+            result += f"**💬 Penjelasan :**  `{command['usage']}`\n"
+            result += f"**⌨️ Contoh :**  `{HANDLER[:1]}{command['example']}`\n\n"
         if event.query.user_id in auth:
             await event.edit(
                 result,
@@ -483,7 +483,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
             )
         else:
             return await event.answer(
-                "This bot its not your, make your own RAM-UBOT Extended ™",
+                "BOT ini bukan milik anda, silahkan buat RAM-UBOT Extended untuk anda sendiri",
                 cache_time=0,
                 alert=True,
             )

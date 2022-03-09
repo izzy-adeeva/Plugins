@@ -6,9 +6,9 @@ from telethon.errors.rpcerrorlist import YouBlockedUserError
 from . import *
 
 msg = f"""
-**⚡ RAM-UBOT Extended ⚡**
-  •        [ Repo 📑](https://github.com/hitokizzy/RAM-UBOT_EXTENDED)
-  •        [ Deploy 🚀](https://dashboard.heroku.com/new?button-url=https%3A%2F%2Fgithub.com%2hitokizzy%2FRAM-UBOT_EXTENDED&template=https%3A%2F%2Fgithub.com%2Fhitokizzy%2FRAM-UBOT_EXTENDED)
+**-RAM-UBOT Extended-**
+  •        [ Repo ](https://github.com/hitokizzy/RAM-UBOT_EXTENDED)
+  •        [ Deploy ](https://dashboard.heroku.com/new?button-url=https%3A%2F%2Fgithub.com%2hitokizzy%2FRAM-UBOT_EXTENDED&template=https%3A%2F%2Fgithub.com%2Fhitokizzy%2FRAM-UBOT_EXTENDED)
   •  ©️ {ram_channel} ™
 """
 botname = Config.BOT_USERNAME
@@ -41,7 +41,7 @@ async def _(event):
         except noinline:
             TOD = await eor(
                 event,
-                "**Inline Mode is disabled.** \n__Turning it on, please wait for a minute...__",
+                "**Mode Inline tidak aktif.** \n__Mengangtifkan mode inline...__",
             )
             async with bot.conversation(chat) as conv:
                 try:
@@ -53,9 +53,9 @@ async def _(event):
                     sixth = await conv.get_response()
                     await bot.send_read_acknowledge(conv.chat_id)
                 except YouBlockedUserError:
-                    return await TOD.edit("Unblock @Botfather first.")
+                    return await TOD.edit("Tolong Unblock @Botfather.")
                 await TOD.edit(
-                    f"**Turned On Inline Mode Successfully.** \n\nDo `{ii}help` again to get the help menu."
+                    f"**Mode inline berhasil diaktifkan.** \n\nKetik `{ii}help` untuk membuka menu."
                 )
             await bot.delete_messages(
                 conv.chat_id,
@@ -64,7 +64,7 @@ async def _(event):
     else:
         await eor(
             event,
-            "**⚠️ ERROR !!** \nPlease Re-Check BOT_TOKEN & BOT_USERNAME on Heroku.",
+            "**⚠️ ERROR !!** \nCheck BOT_TOKEN & BOT_USERNAME di vars Heroku.",
         )
 
 
@@ -75,7 +75,7 @@ async def userbott(event):
         if args in CMD_HELP:
             await eor(event, str(CMD_HELP[args]))
         else:
-            await eod(event, "**⚠️ Error !** \nNeed a module name to show plugin info.")
+            await eod(event, "**⚠️ Error !** \nMasukan nama modul untuk info.")
     else:
         string = ""
         sayfa = [
@@ -94,5 +94,5 @@ async def userbott(event):
             string += "\n"
         await eor(
             event,
-            "Please Specify A Module Name Of Which You Want Info" + "\n\n" + string,
+            "Masukan nama modul untuk info lebih lanjut" + "\n\n" + string,
         )
