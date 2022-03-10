@@ -39,14 +39,14 @@ UPSTREAM_REPO_BRANCH = "master"
 
 REPO_REMOTE_NAME = "temponame"
 IFFUCI_ACTIVE_BRANCH_NAME = "master"
-NO_HEROKU_APP_CFGD = "no heroku aplication found, but a key given? 😕 "
+NO_HEROKU_APP_CFGD = "Heroku app tidak ditemukan"
 HEROKU_GIT_REF_SPEC = "HEAD:refs/heads/master"
 RESTARTING_APP = "re-starting heroku aplication"
 IS_SELECTED_DIFFERENT_BRANCH = (
-    "looks like a custom branch {branch_name} "
-    "is being used:\n"
-    "in this case, Updater is unable to identify the branch to be updated."
-    "please check out to an official branch, and re-start the updater."
+    "Branch kostumisasi {branch_name} "
+    "digunakan:\n"
+    "Update tidak bisa dilanjutkan."
+    "Silahkan gunakan branch official untuk melanjutkan."
 )
 
 
@@ -72,7 +72,7 @@ async def print_changelogs(event, ac_br, changelog):
         f"**New UPDATE available for [{ac_br}]:\n\nCHANGELOG:**\n`{changelog}`"
     )
     if len(changelog_str) > 4096:
-        await event.edit("`Changelog is too big, view the file to see it.`")
+        await event.edit("`Changelog terlalu banyak, silahkan liat file output.`")
         with open("output.txt", "w+") as file:
             file.write(changelog_str)
         await event.client.send_file(
@@ -111,21 +111,37 @@ async def update(event, repo, ups_rem, ac_br):
         repo.git.reset("--hard", "FETCH_HEAD")
     await update_requirements()
     zzy = await event.edit(
-        "`Successfully Updated!\n" "Bot is restarting... Wait for a minute!`"
+        "`Berhasil diupdate!\n" "Me-restart bot... Harap bersabar!`"
     )
     await event.client.reload(zzy)
 
+async def restart_script(client: TelegramClient, zzy):
+    try:
+        ulist = get_collectionlist_items()
+        for i in ulist:
+            if i == "restart_update":
+                del_keyword_collectionlist("restart_update")
+    except Exception as e:
+        LOGS.error(e)
+    try:
+        add_to_collectionlist("restart_update", [zzy.chat_id, zzy.id])
+    except Exception as e:
+        LOGS.error(e)
+    executable = sys.executable.replace(" ", "\\ ")
+    args = [executable, "-m", "ramext"]
+    os.execle(executable, *args, os.environ)
+    os._exit(143)
 
 async def deploy(event, repo, ups_rem, ac_br, txt):
     if HEROKU_API_KEY is None:
-        return await event.edit("`Please set up`  **HEROKU_API_KEY**  ` Var...`")
+        return await event.edit("`Masukan vars`  **HEROKU_API_KEY**  `...`")
     heroku = heroku3.from_key(HEROKU_API_KEY)
     heroku_app = None
     heroku_aplications = heroku.apps()
     if HEROKU_APP_NAME is None:
         await event.edit(
-            "`Please set up the` **HEROKU_APP_NAME** `Var`"
-            " to be able to deploy your userbot...`"
+            "`Masukan vars` **HEROKU_APP_NAME** "
+            " untuk dapat melanjutkan proses deploy...`"
         )
         repo.__del__()
         return
@@ -135,11 +151,11 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
             break
     if heroku_app is None:
         await event.edit(
-            f"{txt}\n" "`Invalid Heroku credentials for deploying userbot dyno.`"
+            f"{txt}\n" "`Heroku app/key tidak valid.`"
         )
         return repo.__del__()
     zzy = await event.edit(
-        "`Userbot dyno build in progress, please wait until the process finishes it usually takes 4 to 5 minutes .`"
+        "`RAM-UBOT sedang di deploy, proses akan berlangsung 4-5 menit.`"
     )
     try:
         ulist = get_collectionlist_items()
@@ -170,14 +186,14 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
     build_status = heroku_app.builds(order_by="created_at", sort="desc")[0]
     if build_status.status == "failed":
         return await edit_delete(
-            event, "`Build failed!\n" "Cancelled or there were some errors...`"
+            event, "`Deploy GAGAL!\n" "silahkan check logs deploy...`"
         )
     try:
         remote.push("master:main", force=True)
     except Exception as error:
-        await event.edit(f"{txt}\n**Here is the error log:**\n`{error}`")
+        await event.edit(f"{txt}\n**Error logs:**\n`{error}`")
         return repo.__del__()
-    await event.edit("`Deploy was failed. So restarting to update`")
+    await event.edit("`Deploy GAGAL, mencoba ulang update`")
     delgvar("ipaddress")
     try:
         await event.client.disconnect()
@@ -191,29 +207,29 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
 async def upstream(event):
     "To check if the bot is up to date and update if specified"
     conf = event.pattern_match.group(1).strip()
-    event = await edit_or_reply(event, "`Checking for updates, please wait....`")
+    event = await edit_or_reply(event, "`Memeriksa pembaharuan, Tunggu sebentar....`")
     off_repo = "https://github.com/izzy-adeeva/Plugins"
     force_update = False
     if HEROKU_API_KEY is None or HEROKU_APP_NAME is None:
         return await edit_or_reply(
-            event, "`Set the required vars first to update the bot`"
+            event, "`Harap masukan vars yg dibutuhkan untuk update`"
         )
     try:
-        txt = "`Oops.. Updater cannot continue due to "
-        txt += "some problems occured`\n\n**LOGTRACE:**\n"
+        txt = "`Update GAGAL"
+        txt += "Logs`\n\n**LOGTRACE:**\n"
         repo = Repo()
     except NoSuchPathError as error:
-        await event.edit(f"{txt}\n`directory {error} is not found`")
+        await event.edit(f"{txt}\n`directory {error} tidak ditemukan`")
         return repo.__del__()
     except GitCommandError as error:
-        await event.edit(f"{txt}\n`Early failure! {error}`")
+        await event.edit(f"{txt}\n`GAGAL! {error}`")
         return repo.__del__()
     except InvalidGitRepositoryError as error:
         if conf is None:
             return await event.edit(
-                f"`Unfortunately, the directory {error} "
-                "does not seem to be a git repository.\n"
-                "But we can fix that by force updating the userbot using "
+                f"`Direktori/folder {error} "
+                "bukan git yang valid.\n"
+                "silahkan coba untuk memperbaiki dengan update now "
                 ".update now.`"
             )
         repo = Repo.init()
@@ -227,10 +243,9 @@ async def upstream(event):
     if ac_br != UPSTREAM_REPO_BRANCH:
         await event.edit(
             "**[UPDATER]:**\n"
-            f"`Looks like you are using your own custom branch ({ac_br}). "
-            "in that case, Updater is unable to identify "
-            "which branch is to be merged. "
-            "please checkout to any official branch`"
+            f"`Anda menggunakan branch non-official ({ac_br}). "
+            "Update tidak dapat dilanjutkan "
+            "Branch kustom tidak dapat dukungan`"
         )
         return repo.__del__()
     try:
@@ -243,23 +258,23 @@ async def upstream(event):
     # Special case for deploy
     if changelog == "" and not force_update:
         await event.edit(
-            "\n`RAM-UBOT is`  **up-to-date**  `with`  "
-            f"**{UPSTREAM_REPO_BRANCH}**\n"
+            "\n`RAM-UBOT`  **telah diperbaharui**  `dengan branch`  "
+            f"**{UPSTREAM_REPO_BRANCH}** belum ada pembaharuan yang tersedia\n"
         )
         return repo.__del__()
     if conf == "" and not force_update:
         await print_changelogs(event, ac_br, changelog)
         await event.delete()
         return await event.respond(
-            f"do `{ii}update deploy` to update the RAM-UBOT"
+            f"ketik`{ii}update deploy` untuk update"
         )
 
     if force_update:
         await event.edit(
-            "`Force-Syncing to latest stable userbot code, please wait...`"
+            "`Update paksa, tunggu sebentar...`"
         )
     if conf == "now":
-        await event.edit("`Updating userbot, please wait....`")
+        await event.edit("`memproses update....`")
         await update(event, repo, ups_rem, ac_br)
     return
 
@@ -268,18 +283,18 @@ async def upstream(event):
     pattern="update deploy$",
 )
 async def upstream(event):
-    event = await edit_or_reply(event, "`Pulling the repo wait a sec ....`")
-    off_repo = "https://github.com/izzy-adeeva/Plugins"
+    event = await edit_or_reply(event, "`Pulling repo....`")
+    off_repo = "https://github.com/hitokizzy/RAM-UBOT_EXTENDED"
     os.chdir("/app")
     try:
-        txt = "`Oops.. Updater cannot continue due to "
-        txt += "some problems occured`\n\n**LOGTRACE:**\n"
+        txt = "`Update GAGAL "
+        txt += "logs`\n\n**LOGTRACE:**\n"
         repo = Repo()
     except NoSuchPathError as error:
-        await event.edit(f"{txt}\n`directory {error} is not found`")
+        await event.edit(f"{txt}\n`directori {error} tidak ditemukan`")
         return repo.__del__()
     except GitCommandError as error:
-        await event.edit(f"{txt}\n`Early failure! {error}`")
+        await event.edit(f"{txt}\n`GAGAL! {error}`")
         return repo.__del__()
     except InvalidGitRepositoryError:
         repo = Repo.init()
@@ -295,17 +310,17 @@ async def upstream(event):
     ac_br = repo.active_branch.name
     ups_rem = repo.remote("upstream")
     ups_rem.fetch(ac_br)
-    await event.edit("`Deploying userbot, please wait....`")
+    await event.edit("`Proses Deploy RAM, harap bersabar....`")
     await deploy(event, repo, ups_rem, ac_br, txt)
 
 
     
 CmdHelp("update").add_command(
-  "update", None, "Checks if any new update is available."
+  "update", None, "Memeriksa pembaharuan RAM-UBOT."
 ).add_command(
-  "update now", None, "Soft-Update Your RAM-UBOT. Basically if you restart dyno it will go back to previous deploy."
+  "update now", None, "Soft-Update RAM-UBOT.."
 ).add_command(
-  "update build", None, "Hard-Update Your RAM-UBOT. This won't take you back to your previous deploy. This will be triggered even if there is no changelog."
+  "update build", None, "Hard-Update Your RAM-UBOT.."
 ).add_info(
   "RAM-UBOT Updater."
 ).add_warning(
