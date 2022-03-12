@@ -1,4 +1,4 @@
-FROM teamvaders/hellbot:latest
+FROM vckyouubitch/geez:master
 
 RUN git clone https://github.com/izzy-adeeva/Plugins.git /root/ramext
 
