@@ -107,7 +107,7 @@ async def _(event):
 <b>🤖 BOT</b>: {}
 <b>👥 Groups in Common</b>: {}
 
-<b>⚡ <a href='https://t.me/its_ramubot'>From DataBase of ramubot</a> ⚡ </b>
+<b>⚡ <a href='https://t.me/ramsupportt'>From DataBase of RAM-UBOT</a> ⚡ </b>
 """.format(
         user_id,
         user_id,
