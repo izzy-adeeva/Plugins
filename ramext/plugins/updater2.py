@@ -285,7 +285,7 @@ async def upstream(event):
 async def upstream(event):
     event = await edit_or_reply(event, "`Pulling repo....`")
     off_repo = "https://github.com/hitokizzy/RAM-UBOT_EXTENDED"
-    os.chdir("/app")
+    os.chdir("/ramext")
     try:
         txt = "`Update GAGAL "
         txt += "logs`\n\n**LOGTRACE:**\n"
