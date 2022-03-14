@@ -50,9 +50,9 @@ async def up(event):
 
 
 msg = """{}\n
-<b>RAM-UBOT Extended </b>
+<b> -RAM-UBOT- </b>
 <b>Telethon =</b>  <i>{}</i>
-<b>RAM-UBOT =</b>  <i>{}</i>
+<b>RAM-UBOT =</b>  <i>extended</i>
 <b>Uptime =</b>  <i>{}</i>
 <b>Sudo =</b>  <i>{}</i>
 """

@@ -5,7 +5,7 @@ from telethon.tl.functions.account import UpdateNotifySettingsRequest
 from . import *
 
 
-@ram_cmd(pattern="history(?:\s|$)([\s\S]*)")
+@ram_cmd(pattern="sa(?:\s|$)([\s\S]*)")
 async def _(ramevent):
     if not ramevent.reply_to_msg_id:
        await eod(ramevent, "`Please reply to a user to get his history`")
@@ -39,7 +39,7 @@ async def _(ramevent):
               await zzy.edit("No Records Found !")
 
 
-@ram_cmd(pattern="unh(?:\s|$)([\s\S]*)")
+@ram_cmd(pattern="sg(?:\s|$)([\s\S]*)")
 async def _(ramevent):
     if not ramevent.reply_to_msg_id:
        await eod(ramevent, "`Please Reply To A User To Get This Module Work`")
@@ -73,10 +73,10 @@ async def _(ramevent):
               await zzy.edit("No Records Found !")
 
 
-CmdHelp("history").add_command(
+CmdHelp("sa").add_command(
   "history", "<reply to a user>", "Fetches the name history of replied user."
 ).add_command(
-  "unh", "<reply to user>", "Fetches the Username History of replied users."
+  "sg", "<reply to user>", "Fetches the Username History of replied users."
 ).add_info(
   "Telegram Name History"
 ).add_warning(
