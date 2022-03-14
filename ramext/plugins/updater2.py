@@ -1,6 +1,8 @@
 import asyncio
+from email.mime import base
 import os
 import sys
+import base64
 from asyncio.exceptions import CancelledError
 
 import heroku3
@@ -208,7 +210,7 @@ async def upstream(event):
     "To check if the bot is up to date and update if specified"
     conf = event.pattern_match.group(1).strip()
     event = await edit_or_reply(event, "`Memeriksa pembaharuan, Tunggu sebentar....`")
-    off_repo = "https://github.com/izzy-adeeva/Plugins"
+    off_repo = base64.b64decode("aHR0cHM6Ly9naXRodWIuY29tL2l6enktYWRlZXZhL1BsdWdpbnM=")
     force_update = False
     if HEROKU_API_KEY is None or HEROKU_APP_NAME is None:
         return await edit_or_reply(
@@ -284,7 +286,7 @@ async def upstream(event):
 )
 async def upstream(event):
     event = await edit_or_reply(event, "`Pulling repo....`")
-    off_repo = "https://github.com/hitokizzy/RAM-UBOT_EXTENDED"
+    off_repo = base64.b64decode("aHR0cHM6Ly9naXRodWIuY29tL2hpdG9raXp6eS9SQU0tVUJPVF9FWFRFTkRFRA==")
     os.chdir("/app")
     try:
         txt = "`Update GAGAL "
