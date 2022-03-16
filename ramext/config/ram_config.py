@@ -6,7 +6,7 @@ from telethon.tl.types import ChatBannedRights
 class Config(object):
     LOGGER = True
     ABUSE = os.environ.get("PROFANITY", "ON")
-    ALIVE_MSG = os.environ.get("ALIVE_MSG", None)
+    ALIVE_MSG = os.environ.get("ALIVE_MSG", "RAM UBOT EXTENDED")
     ALIVE_PIC = os.environ.get("ALIVE_PIC", None)
     ANTI_FLOOD_WARN_MODE = ChatBannedRights(until_date=None, view_messages=None, send_messages=True)
     API_HASH = os.environ.get("API_HASH", None)
