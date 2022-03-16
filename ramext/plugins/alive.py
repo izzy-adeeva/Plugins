@@ -44,7 +44,7 @@ async def up(event):
     ram_pic = PIC
     end = datetime.datetime.now()
     ling = (end - start).microseconds / 1000
-    omk = ALIVE_TEMP.format(ramtod, RAM_USER, telethon_ver, ram_version, is_sudo, uptime, ling)
+    omk = ALIVE_TEMP.format(ramtod, RAM_USER, telethon_ver, is_sudo, uptime, ling)
     await event.client.send_file(event.chat_id, file=ram_pic, caption=omk, parse_mode="HTML")
     await zzy.delete()
 
@@ -70,7 +70,7 @@ async def ram_a(event):
         if event.sender_id == ramtod:
             await event.delete()
     except (noin, dedbot):
-        await eor(event, msg.format(am, telethon_ver, ram_version, uptime, abuse_m, is_sudo), parse_mode="HTML")
+        await eor(event, msg.format(am, telethon_ver, uptime, is_sudo), parse_mode="HTML")
 
 
 CmdHelp("alive").add_command(
