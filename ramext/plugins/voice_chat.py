@@ -15,7 +15,7 @@ def all_users(a, b):
 async def _(event):
     try:
         await event.client(CreateGroupCallRequest(event.chat_id))
-        await eor(event, "**🔊 Voice Chat Started Successfully**")
+        await eor(event, "**Memulai Voice Chat Group**")
     except Exception as e:
         await eod(event, f"`{str(e)}`")
 
@@ -23,13 +23,13 @@ async def _(event):
 async def _(event):
     try:
         await event.client(DiscardGroupCallRequest(await getvc(event)))
-        await eor(event, "**📍 Voice Chat Ended Successfully !!**")
+        await eor(event, "**Menghentikan voice chat group!**")
     except Exception as e:
         await eod(event, f"`{str(e)}`")
 
 @ram_cmd(pattern="vcinvite$")
 async def _(event):
-    zzy = await eor(event, "`🧐 Inviting Users To Voice Chat....`")
+    zzy = await eor(event, "` Mengundang ke voice chat....`")
     users = []
     i = 0
     async for j in event.client.iter_participants(event.chat_id):
@@ -42,15 +42,15 @@ async def _(event):
             i += 6
         except BaseException:
             pass
-    await zzy.edit(f"**🚀 Invited {i} Users to Voice Chat**")
+    await zzy.edit(f"**Mengundang {i} ke voice chat**")
 
 
 CmdHelp("voice_chat").add_command(
-  "startvc", None, "Starts the voice chat in current group."
+  "startvc", None, "memulai voice chat."
 ).add_command(
-  "endvc", None, "Ends the voice chat in current group."
+  "endvc", None, "menghentikan voice chat."
 ).add_command(
-  "vcinvite", None, "Invites members of the current group to voice chat."
+  "vcinvite", None, "mengundang user ke voice chat."
 ).add_info(
   "Voice Chat Tools."
 ).add_warning(
