@@ -12,11 +12,11 @@ if Config.TAG_LOGGER:
     async def all_messages_catcher(event):
         await event.forward_to(tagger)
         ammoca_message = ""
-        __, _, hell_men = await client_id(event)
+        __, _, ram_men = await client_id(event)
         iraa = await event.client.get_entity(event.sender_id)
         if iraa.bot or iraa.verified or iraa.support:
             return
-        krakenm = f"[{get_display_name(iraa)}](tg://user?id={iraa.id})"
+        ibels = f"[{get_display_name(iraa)}](tg://user?id={iraa.id})"
         where_ = await event.client.get_entity(event.chat_id)
         where_m = get_display_name(where_)
         button_text = "See the tag 📬"
@@ -24,7 +24,7 @@ if Config.TAG_LOGGER:
             message_link = f"https://t.me/c/{where_.id}/{event.id}"
         else:
             message_link = f"tg://openmessage?chat_id={where_.id}&message_id={event.id}"
-        ammoca_message += f"👆 #TAG\n\n**• Tag By :** {krakenm} \n**• Tag For :** {hell_men} \n**• Chat :** [{where_m}]({message_link})"
+        ammoca_message += f"👆 #TAG\n\n**• Tag By :** {ibels} \n**• Tag For :** {ram_men} \n**• Chat :** [{where_m}]({message_link})"
         if tagger is not None:
             await tbot.send_message(
                 entity=tagger,

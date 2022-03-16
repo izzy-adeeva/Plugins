@@ -16,8 +16,8 @@ async def _(event):
     sed = 0
     owo = 0
     if "-all" in flag:
-        async for allhell in event.client.iter_dialogs():
-            chat = allhell.id
+        async for all in event.client.iter_dialogs():
+            chat = all.id
             try:
                 zzy = OwO.replace("-all", "")
             except:
@@ -31,9 +31,9 @@ async def _(event):
             except BaseException:
                 sed += 1
     elif "-pvt" in flag:
-        async for pvthell in event.client.iter_dialogs():
-            if pvthell.is_user and not pvthell.entity.bot:
-                chat = pvthell.id
+        async for pvt in event.client.iter_dialogs():
+            if pvt.is_user and not pvt.entity.bot:
+                chat = pvt.id
                 try:
                     zzy = OwO.replace("-pvt", "")
                 except:
@@ -44,9 +44,9 @@ async def _(event):
                 except BaseException:
                     sed += 1
     elif "-grp" in flag:
-        async for ghell in event.client.iter_dialogs():
-            if ghell.is_group:
-                chat = ghell.id
+        async for g in event.client.iter_dialogs():
+            if g.is_group:
+                chat = g.id
                 try:
                     zzy = OwO.replace("-grp", "")
                 except:
@@ -73,7 +73,7 @@ async def _(event):
 # This is a bad way. but works just fine (*﹏*;)
 
 CmdHelp("gcast").add_command(
-  "gcast", "<text/reply> <flag>", "Globally Broadcast the replied or given message based on flag given.", f"gcast Hello -all / {ii}gcast Hello -grp / {ii}gcast Hello -pvt"
+  "gcast", "<text/reply> <flag>", "Globally Broadcast the replied or given message based on flag given.", f"gcast o -all / {ii}gcast o -grp / {ii}gcast o -pvt"
 ).add_info(
   "Global Broadcast."
 ).add_extra(

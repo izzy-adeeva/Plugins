@@ -11,12 +11,12 @@ groupsid = []
 
 
 async def all_groups_id(zzy):
-    hellgroups = []
+    ramgroups = []
     async for dialog in zzy.client.iter_dialogs():
         entity = dialog.entity
         if isinstance(entity, Channel) and entity.megagroup:
-            hellgroups.append(entity.id)
-    return hellgroups
+            ramgroups.append(entity.id)
+    return ramgroups
 
 
 @ram_cmd(pattern="frwd$")

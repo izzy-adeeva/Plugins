@@ -13,7 +13,7 @@ from PIL import Image, ImageDraw, ImageEnhance, ImageFont, ImageOps
 from . import *
 
 
-path = "./hellmify/"
+path = "./ramf/"
 if not os.path.isdir(path):
     os.makedirs(path)
 
@@ -108,7 +108,7 @@ async def nope(event):
             (await event.get_reply_message()).message
         else:
             if Config.ABUSE == "ON":
-                return await eor(event, "Abe chumtiye kuch likhne ke liye de")
+                return await eor(event, "")
             else:
                 return await eor(event, "Doge need some text to make sticker.")
 
@@ -135,7 +135,7 @@ async def nope(event):
             (await event.get_reply_message()).message
         else:
             if Config.ABUSE == "ON":
-                return await eor(event, "Abe chumtiye kuch likhne ke liye de")
+                return await eor(event, "")
             else:
                 return await eor(event, "Googlax need some text to make sticker.")
 
@@ -162,7 +162,7 @@ async def nope(event):
             (await event.get_reply_message()).message
         else:
             if Config.ABUSE == "ON":
-                return await eor(event, "Abe chumtiye kuch likhne ke liye de")
+                return await eor(event, "")
             else:
                 return await eor(event, "Honka need some text to make sticker.")
 
@@ -189,7 +189,7 @@ async def nope(event):
             (await event.get_reply_message()).message
         else:
             if Config.ABUSE == "ON":
-                return await eor(event, "Abe chumtiye kuch likhne ke liye de")
+                return await eor(event, "")
             else:
                 return await eor(event, "Need some text...")
 

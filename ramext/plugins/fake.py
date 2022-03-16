@@ -56,7 +56,7 @@ async def gbun(event):
         usname = replied_user.user.username
         idd = reply_message.sender_id
         if idd == 1432756163:
-            await zzy.edit("`Wait a second, This is my master!`\n**How dare you threaten to ban my master nigger!**\n\n__Your account has been hacked! Pay 69$ to my master__ [HellBoy](https://t.me/ramtod) __to release your account__😏", link_preview=False)
+            await zzy.edit("`Wait a second, This is my master!`\n**How dare you threaten to ban my master nigger!**\n\n__Your account has been hacked! ", link_preview=False)
         else:
             jnl = (
                 "`Warning!! `"

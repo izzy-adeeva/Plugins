@@ -233,14 +233,14 @@ async def hmm(zzy):
 
 @ram_cmd(pattern="why$")
 async def hmm(zzy):
-    whyhell = nekos.why()
-    await eor(zzy, whyhell)
+    why = nekos.why()
+    await eor(zzy, why)
 
 
 @ram_cmd(pattern="fact$")
 async def hmm(zzy):
-    facthell = nekos.fact()
-    await eor(zzy, facthell)
+    fact = nekos.fact()
+    await eor(zzy, fact)
 
 
 CmdHelp("fun2").add_command(

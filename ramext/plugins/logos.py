@@ -21,7 +21,7 @@ async def _(event):
     cid = await client_id(event)
     ram_mention = cid[2]
     start = datetime.datetime.now()
-    fnt = await get_font_file(event.client, "@HELL_FRONTS")
+    fnt = await get_font_file(event.client, "@FRONTS")
     if event.reply_to_msg_id:
         rply = await event.get_reply_message()
         try:

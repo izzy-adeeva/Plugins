@@ -388,10 +388,10 @@ async def _(event):
 
 
 @ram_cmd(pattern="istar$")
-async def ammastar(hellstar):
+async def ammastar(star):
     animation_interval = 2
     animation_ttl = range(0, 11)
-    await eor(hellstar, "I am A DEVELOPER")
+    await eor(star, "I am A DEVELOPER")
     animation_chars = [
         "I kang people repo",
         "I edit people repo",
@@ -401,7 +401,7 @@ async def ammastar(hellstar):
     ]
     for i in animation_ttl:
         await asyncio.sleep(animation_interval)
-        await hellstar.edit(animation_chars[i % 11])
+        await star.edit(animation_chars[i % 11])
 
 
 @ram_cmd(pattern="lmoon$")
