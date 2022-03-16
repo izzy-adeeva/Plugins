@@ -123,10 +123,10 @@ for name in files:
 
 
 # let the party begin...
-LOGS.info("Starting Bot Mode !")
+LOGS.info("MENGAKTIFKAN RAM-UBOT EXTENDED !")
 tbot.start()
-LOGS.info(" RAM-UBOT Extended is Online ")
-LOGS.info("Shut up and Enjoy your bot.")
+LOGS.info(" RAM-UBOT Extended ONLINE ")
+LOGS.info("JIKA ANDA MEMBACA TULISAN INI DI AKHIR LOGS BERARTI BOT SUDAH AKTIF.")
 LOGS.info(f"» Total Clients = {total} «")
 
 # that's life...
@@ -138,7 +138,7 @@ async def ram_on():
         await bot.send_file(
             send_to,
             RAM_PIC,
-            caption=f"#RAM-UBOT Extended \n\n<b><i>Version :</b></i> <code>{ramver}</code> \n<b><i>Clients :</b></i> <code>{total}</code> \n\n<b><u><a href='https://t.me/ramsupportt'>RAM-UBOT Extended</a></u></b>",
+            caption=f"RAM-UBOT Extended \n\n<b><i>Version :</b></i> <code>{ramver}</code> \n<b><i>Clients :</b></i> <code>{total}</code> \n\n<b><u><a href='https://t.me/ramsupportt'>RAM-UBOT Extended</a></u></b>",
             parse_mode="HTML",
         )
     except Exception as e:
